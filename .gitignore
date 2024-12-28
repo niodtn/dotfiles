@@ -1,0 +1,4 @@
+.DS_Store
+
+/nix-darwin/result
+/nix-darwin/flake.lock
