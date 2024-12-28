@@ -17,14 +17,5 @@
         ./pkgs.nix
         ];
     };
-    darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem { # "" <- `$ scutil --get LocalHostName`
-      modules =
-        [
-        mac-app-util.darwinModules.default
-        ./configuration.nix
-        ./macbook.nix
-        ./pkgs.nix
-        ];
-    };
   };
 }

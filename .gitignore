@@ -2,3 +2,11 @@
 
 /nix-darwin/result
 /nix-darwin/flake.lock
+
+/code-server
+/iterm2
+/karabiner
+/linearmouse
+/neofetch
+/ohmyposh
+/zed

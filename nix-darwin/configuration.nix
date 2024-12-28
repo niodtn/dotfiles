@@ -10,7 +10,17 @@
   # nix.settings.warn-dirty = false;
   # nix.gc.automatic = true;
 
+  # Enable touch ID support for sudo.
+  security.pam.enableSudoTouchIdAuth = true;
+
   system.defaults.WindowManager.EnableTiledWindowMargins = false;
+  system.defaults.controlcenter.BatteryShowPercentage = true;
+
+  # Trackpad configuration
+  system.defaults.trackpad.Clicking = true;
+  # system.defaults.NSGlobalDomain."com.apple.mouse.tapBehavior" = 1;
+  # system.defaults.trackpad.FirstClickThreshold = 0;
+  # system.defaults.trackpad.SecondClickThreshold = 0;
 
   # Dock configuration
   system.defaults.dock.autohide = true;
