@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  imports = [./pkgs.nix];
+
   environment.darwinConfig = "$HOME/.config/nix-darwin/configuration.nix";
   system.stateVersion = 5;
   nixpkgs.hostPlatform = "aarch64-darwin";
