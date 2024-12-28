@@ -31,7 +31,8 @@
   # Function 키 표준 기능키 설정
   # system.defaults.NSGlobalDomain."com.apple.keyboard.fnState" = boolean;
 
-  # programs.direnv.enable = true;
+  # direnv configuration
+  programs.direnv.enable = true;
 
   # zsh configuration
   # programs.zsh.enable = true;
