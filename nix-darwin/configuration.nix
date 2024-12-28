@@ -1,20 +1,16 @@
 { config, pkgs, ... }:
 
 {
-  imports = [./pkgs.nix];
-
   environment.darwinConfig = "$HOME/.config/nix-darwin/configuration.nix";
   system.stateVersion = 5;
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
-
-  # Enable touch ID support for sudo.
-  security.pam.enableSudoTouchIdAuth = true;
+  # nix.settings.warn-dirty = false;
+  # nix.gc.automatic = true;
 
   system.defaults.WindowManager.EnableTiledWindowMargins = false;
-  system.defaults.controlcenter.BatteryShowPercentage = true;
 
   # Dock configuration
   system.defaults.dock.autohide = true;
@@ -26,11 +22,6 @@
   system.defaults.dock.wvous-tl-corner = 1;
   system.defaults.dock.wvous-tr-corner = 1;
 
-  # Trackpad configuration
-  system.defaults.trackpad.Clicking = true;
-  # system.defaults.trackpad.TrackpadThreeFingerDrag = true;
-
-  # Function 키 표준 기능키 설정
   # system.defaults.NSGlobalDomain."com.apple.keyboard.fnState" = boolean;
 
   # direnv configuration
