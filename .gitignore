@@ -4,6 +4,7 @@
 /nix-darwin/flake.lock
 
 /code-server
+/flutter
 /iterm2
 /karabiner
 /linearmouse

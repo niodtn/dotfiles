@@ -2,12 +2,8 @@
 
 {
   environment.darwinConfig = "$HOME/.config/nix-darwin/configuration.nix";
-  system.stateVersion = 5;
-  nixpkgs.hostPlatform = "aarch64-darwin";
+  services.nix-daemon.enable = true;
 
-  # Necessary for using flakes on this system.
-  nix.settings.experimental-features = "nix-command flakes";
-  # nix.settings.warn-dirty = false;
   # nix.gc.automatic = true;
 
   # Enable touch ID support for sudo.
