@@ -9,7 +9,7 @@
       pkgs.bat
       pkgs.neofetch
 
-      pkgs.tailscale
+      # pkgs.tailscale
       pkgs.iterm2
     ];
 }
