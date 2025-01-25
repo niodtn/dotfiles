@@ -48,8 +48,10 @@
   programs.zsh.enableSyntaxHighlighting = true;
   programs.zsh.enableCompletion = true;
   programs.zsh.enableBashCompletion = true;
+  programs.zsh.enableFzfCompletion = true;
   programs.zsh.interactiveShellInit = ''
     source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
     if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
 	      . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
     fi
