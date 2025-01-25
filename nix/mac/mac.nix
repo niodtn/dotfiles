@@ -15,9 +15,7 @@
   homebrew.enable = true;
   homebrew.onActivation.cleanup = "zap";
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.users."20nabi" = import ./home.nix;
+  programs.direnv.enable = true;
 
   security.pam.enableSudoTouchIdAuth = true;
 
@@ -41,5 +39,20 @@
   nix.gc.automatic = true;
   system.defaults.WindowManager.EnableTiledWindowMargins = false;
   system.defaults.controlcenter.BatteryShowPercentage = true;
-  programs.direnv.enable = true;
+
+  environment.shellAliases.ls = "lsd";
+  environment.shellAliases.cat = "bat";
+
+  # zsh
+  programs.zsh.enable = true;
+  programs.zsh.enableSyntaxHighlighting = true;
+  programs.zsh.enableCompletion = true;
+  programs.zsh.enableBashCompletion = true;
+  programs.zsh.interactiveShellInit = ''
+    source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+	      . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+    fi
+  '';
+  programs.bash.completion.enable = true;
 }

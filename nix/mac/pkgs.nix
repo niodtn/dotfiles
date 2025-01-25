@@ -2,31 +2,30 @@
 
 {
   environment.systemPackages = [
-    # pkgs.zsh-autocomplete
-    # pkgs.zsh-autosuggestions
+    pkgs.lsd # `ls` command
+    pkgs.bat # `cat` command
+    pkgs.nixfmt-rfc-style # For vscode Nix IDE extension
+    pkgs.stow
+    pkgs.zsh-autosuggestions
 
-    pkgs.fzf
-    pkgs.bat
-    pkgs.nixfmt-rfc-style
-
-    pkgs.iterm2
+    # pkgs.fzf
     # pkgs.betterdisplay
     # pkgs.rectangle
     # pkgs.obsidian
   ];
 
-  homebrew.brews = [
-    "mas"
-    "oh-my-posh"
-    "starship"
-  ];
+  homebrew.brews = [ "mas" ];
   homebrew.casks = [
     "font-jetbrains-mono-nerd-font"
+    "font-hack-nerd-font"
     "tailscale"
     "filen"
     # "godot"
     # "guitar-pro"
     # "linearmouse"
+  # Terminal
+    "warp"
+    # "wave"
   ];
   # homebrew.masApps = {
   #   "Folder Hub" = 6473019059;

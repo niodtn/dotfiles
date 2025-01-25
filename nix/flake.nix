@@ -6,9 +6,6 @@
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
@@ -18,7 +15,6 @@
       self,
       nix-darwin,
       nixpkgs,
-      home-manager,
       mac-app-util,
       nix-homebrew,
       ...
@@ -33,7 +29,6 @@
         }
       ];
       mac-configuration = global-configuration ++ [
-        home-manager.darwinModules.default
         mac-app-util.darwinModules.default
         nix-homebrew.darwinModules.nix-homebrew
       ];
