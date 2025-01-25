@@ -1,8 +1,5 @@
 .DS_Store
 
-/nix-darwin/result
-/nix-darwin/flake.lock
-
 /code-server
 /flutter
 /iterm2
@@ -11,3 +8,5 @@
 /neofetch
 /ohmyposh
 /zed
+
+/nix/flake.lock
