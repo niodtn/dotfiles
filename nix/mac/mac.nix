@@ -34,15 +34,6 @@
   system.defaults.finder.AppleShowAllExtensions = true;
   system.defaults.finder.QuitMenuItem = true;
 
-  system.defaults.trackpad.Clicking = true;
-
-  nix.gc.automatic = true;
-  system.defaults.WindowManager.EnableTiledWindowMargins = false;
-  system.defaults.controlcenter.BatteryShowPercentage = true;
-
-  environment.shellAliases.ls = "lsd";
-  environment.shellAliases.cat = "bat";
-
   # zsh
   programs.zsh.enable = true;
   programs.zsh.enableSyntaxHighlighting = true;
@@ -53,8 +44,28 @@
     source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
     if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-	      . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+    	. '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
     fi
   '';
   programs.bash.completion.enable = true;
+
+  # Aliases
+  environment.shellAliases.ls = "lsd";
+  environment.shellAliases.cat = "bat";
+
+  # Vim
+  # programs.vim.package = pkgs.neovim.override {
+  #   configure = {
+  #     packages.darwin.start = with pkgs.vimPlugins; [
+
+  #     ];
+  #   };
+  # };
+
+  system.defaults.trackpad.Clicking = true;
+
+  nix.gc.automatic = true;
+  system.defaults.WindowManager.EnableTiledWindowMargins = false;
+  system.defaults.controlcenter.BatteryShowPercentage = true;
+
 }

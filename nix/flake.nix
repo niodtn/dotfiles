@@ -19,6 +19,7 @@
       nix-homebrew,
       ...
     }:
+
     let
       global-configuration = [
         {
@@ -32,6 +33,7 @@
         mac-app-util.darwinModules.default
         nix-homebrew.darwinModules.nix-homebrew
       ];
+
     in
     {
       darwinConfigurations = {
