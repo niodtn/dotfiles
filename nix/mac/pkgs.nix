@@ -8,9 +8,9 @@
     pkgs.stow
     pkgs.vim
     # pkgs.betterdisplay
-    # pkgs.rectangle
     # pkgs.obsidian
-  # Shell
+
+    # Shell
     pkgs.zsh-autosuggestions
     pkgs.fzf
     pkgs.zsh-fzf-tab
@@ -20,13 +20,16 @@
   homebrew.casks = [
     "tailscale"
     "filen"
+    "rectangle"
     # "godot"
     # "guitar-pro"
     # "linearmouse"
-  # Terminal
+
+    # Terminal
     "warp"
     # "wave"
-  # Fonts
+
+    # Fonts
     "font-sarasa-gothic"
     "jonz94/sarasa-nerd-fonts/font-sarasa-mono-k-nerd-font"
     "font-jetbrains-mono-nerd-font"
