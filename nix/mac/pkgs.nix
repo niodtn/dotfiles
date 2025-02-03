@@ -7,8 +7,7 @@
     pkgs.nixfmt-rfc-style # For vscode Nix IDE extension
     pkgs.stow
     pkgs.vim
-    # pkgs.betterdisplay
-    # pkgs.obsidian
+    pkgs.devbox
 
     # Shell
     pkgs.zsh-autosuggestions
@@ -16,14 +15,22 @@
     pkgs.zsh-fzf-tab
   ];
 
-  homebrew.brews = [ "mas" ];
+  homebrew.brews = [
+    "mas"
+
+  ];
   homebrew.casks = [
-    "tailscale"
     "filen"
-    "rectangle"
+    "discord"
     # "godot"
     # "guitar-pro"
     # "linearmouse"
+    # pkgs.betterdisplay
+    # pkgs.obsidian
+
+    # macOS Utils
+    "rectangle"
+    "tailscale"
 
     # Terminal
     "warp"

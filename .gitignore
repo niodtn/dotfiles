@@ -1,6 +1,7 @@
 .DS_Store
 
 /code-server
+/direnv/lib/flox-direnv.sh
 /flutter
 /iterm2
 /karabiner

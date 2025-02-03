@@ -67,5 +67,4 @@
   nix.gc.automatic = true;
   system.defaults.WindowManager.EnableTiledWindowMargins = false;
   system.defaults.controlcenter.BatteryShowPercentage = true;
-
 }
