@@ -11,7 +11,7 @@
   nix-homebrew.enable = true;
   nix-homebrew.enableRosetta = true;
   nix-homebrew.autoMigrate = true;
-  nix-homebrew.user = "20nabi";
+  nix-homebrew.user = "niodtn";
   homebrew.enable = true;
   homebrew.onActivation.cleanup = "zap";
 
