@@ -17,20 +17,21 @@
 
   homebrew.brews = [
     "mas"
-
   ];
   homebrew.casks = [
+    "arc" # browser
+    "cursor" # editor
     "filen"
     "discord"
+    "obsidian"
     # "godot"
     # "guitar-pro"
-    # "linearmouse"
     # pkgs.betterdisplay
-    # pkgs.obsidian
 
     # macOS Utils
     "rectangle"
     "tailscale"
+    "linearmouse"
 
     # Terminal
     "warp"
