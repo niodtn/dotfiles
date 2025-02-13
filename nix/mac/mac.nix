@@ -34,10 +34,12 @@
   system.defaults.dock.autohide = true;
   system.defaults.dock.minimize-to-application = true;
   system.defaults.dock.mru-spaces = false;
+  system.defaults.dock.show-recents = false;
   system.defaults.dock.wvous-bl-corner = 1;
   system.defaults.dock.wvous-br-corner = 1;
   system.defaults.dock.wvous-tl-corner = 1;
   system.defaults.dock.wvous-tr-corner = 1;
+  system.defaults.dock.mineffect = "scale";
 
   # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/finder.nix
   system.defaults.finder.ShowStatusBar = true;
@@ -48,6 +50,9 @@
   # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/trackpad.nix
   system.defaults.trackpad.Clicking = true;
   system.defaults.trackpad.TrackpadThreeFingerDrag = true;
+
+  system.defaults.WindowManager.EnableTiledWindowMargins = false;
+  system.defaults.WindowManager.EnableStandardClickToShowDesktop = false;
 
   # zsh
   programs.zsh.enable = true;
@@ -78,6 +83,5 @@
   # };
 
   nix.gc.automatic = true;
-  system.defaults.WindowManager.EnableTiledWindowMargins = false;
   system.defaults.controlcenter.BatteryShowPercentage = true;
 }
