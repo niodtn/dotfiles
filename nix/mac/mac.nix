@@ -45,6 +45,10 @@
   system.defaults.finder.AppleShowAllExtensions = true;
   system.defaults.finder.QuitMenuItem = true;
 
+  # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/trackpad.nix
+  system.defaults.trackpad.Clicking = true;
+  system.defaults.trackpad.TrackpadThreeFingerDrag = true;
+
   # zsh
   programs.zsh.enable = true;
   programs.zsh.enableSyntaxHighlighting = true;
@@ -72,8 +76,6 @@
   #     ];
   #   };
   # };
-
-  system.defaults.trackpad.Clicking = true;
 
   nix.gc.automatic = true;
   system.defaults.WindowManager.EnableTiledWindowMargins = false;
