@@ -7,14 +7,17 @@ local inputKorean = "com.apple.inputmethod.Korean.2SetKorean"
 -- Switch between Hangul and English
 function toggleHangulInput()
     local inputSource = hs.keycodes.currentSourceID()
+    print(inputSource)
 
     -- Switch to Hangul
-    if not (inputSource == inputEnglish) then
+    if not (inputSource == inputKorean) then
+        print("Change to Hangul")
         hs.keycodes.currentSourceID(inputKorean)
     end
 
     -- Switch to English
-    if not (inputSource == inputKorean) then
+    if not (inputSource == inputEnglish) then
+        print("Change to English")
         hs.keycodes.currentSourceID(inputEnglish)
     end
 end
