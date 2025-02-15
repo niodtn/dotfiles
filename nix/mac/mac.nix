@@ -15,10 +15,13 @@
   homebrew.enable = true;
   homebrew.onActivation.cleanup = "zap";
 
+  # Direnv
   programs.direnv.enable = true;
 
+  # Security
   security.pam.enableSudoTouchIdAuth = true;
 
+  # Keyboard
   # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/NSGlobalDomain.nix
   system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
   system.defaults.NSGlobalDomain.InitialKeyRepeat = 10;
@@ -30,6 +33,7 @@
   system.defaults.NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;
   system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
 
+  # Dock
   # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/dock.nix
   system.defaults.dock.autohide = true;
   system.defaults.dock.minimize-to-application = true;
@@ -41,16 +45,19 @@
   system.defaults.dock.wvous-tr-corner = 1;
   system.defaults.dock.mineffect = "scale";
 
+  # Finder
   # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/finder.nix
   system.defaults.finder.ShowStatusBar = true;
   system.defaults.finder.ShowPathbar = true;
   system.defaults.finder.AppleShowAllExtensions = true;
   system.defaults.finder.QuitMenuItem = true;
 
+  # Trackpad
   # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/trackpad.nix
   system.defaults.trackpad.Clicking = true;
   system.defaults.trackpad.TrackpadThreeFingerDrag = true;
 
+  # Window Manager
   system.defaults.WindowManager.EnableTiledWindowMargins = false;
   system.defaults.WindowManager.EnableStandardClickToShowDesktop = false;
 
