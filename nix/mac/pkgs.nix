@@ -31,6 +31,7 @@
     "rectangle"
     "tailscale"
     "linearmouse"
+    "hammerspoon"
 
     # Terminal
     "warp"
