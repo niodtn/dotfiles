@@ -23,6 +23,7 @@
     "filen"
     "discord"
     "obsidian"
+    "moonlight"
     # "godot"
     # "guitar-pro"
     # pkgs.betterdisplay
