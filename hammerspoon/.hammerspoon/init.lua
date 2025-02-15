@@ -1,25 +1,21 @@
 local excludeApps = {
     "Moonlight"  -- Exclude Moonlight app
 }
+local inputEnglish = "com.apple.keylayout.ABC"
+local inputKorean = "com.apple.inputmethod.Korean.2SetKorean"
 
 -- Switch between Hangul and English
 function toggleHangulInput()
-    local inputSources = hs.keycodes.inputSources()
+    local inputSource = hs.keycodes.currentSourceID()
 
     -- Switch to Hangul
-    for _, inputSource in ipairs(inputSources) do
-        if inputSource.id == 'com.apple.keylayout.Hangul' then
-            hs.keycodes.setLayout(inputSource.id)
-            return
-        end
+    if not (inputSource == inputEnglish) then
+        hs.keycodes.currentSourceID(inputKorean)
     end
 
     -- Switch to English
-    for _, inputSource in ipairs(inputSources) do
-        if inputSource.id == 'com.apple.keylayout.US' then
-            hs.keycodes.setLayout(inputSource.id)
-            return
-        end
+    if not (inputSource == inputKorean) then
+        hs.keycodes.currentSourceID(inputEnglish)
     end
 end
 
