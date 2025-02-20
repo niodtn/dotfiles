@@ -20,12 +20,15 @@
   homebrew.casks = [
     "arc" # browser
     "cursor" # editor
-    "filen"
     "discord"
     "obsidian"
     "moonlight"
+    {
+      name = "guitar-pro";
+      greedy = true;
+    }
+    # "filen"
     # "godot"
-    # "guitar-pro"
     # pkgs.betterdisplay
 
     # macOS Utils
