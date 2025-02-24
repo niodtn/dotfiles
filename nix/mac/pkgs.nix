@@ -19,7 +19,7 @@
   ];
   homebrew.casks = [
     "arc" # browser
-    "cursor" # editor
+    "visual-studio-code" # editor
     "discord"
     "obsidian"
     "moonlight"
