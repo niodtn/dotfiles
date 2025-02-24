@@ -7,6 +7,7 @@
     pkgs.nixfmt-rfc-style # For vscode Nix IDE extension
     pkgs.stow
     pkgs.vim
+    pkgs.aider-chat
 
     # Shell
     pkgs.zsh-autosuggestions

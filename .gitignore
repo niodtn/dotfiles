@@ -1,5 +1,7 @@
+# OS Specifics
 .DS_Store
 
+# Folder
 /code-server
 /direnv/lib/flox-direnv.sh
 /flutter
@@ -11,4 +13,8 @@
 /waveterm
 /zed
 
+# Nix
 /nix/flake.lock
+
+# Aider
+.aider*
