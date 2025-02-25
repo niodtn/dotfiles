@@ -1,5 +1,8 @@
 {
   "files.exclude": {
-    "**/.aider.*": true
+    "**/.aider.*": true,
+    "**/.vscode": true,
+    "**/flake.lock": true,
+    "**/LICENSE": true
   }
 }
