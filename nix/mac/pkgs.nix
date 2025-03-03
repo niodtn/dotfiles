@@ -28,6 +28,10 @@
       name = "guitar-pro";
       greedy = true;
     }
+    {
+      name = "anki";
+      greedy = true;
+    }
     # "filen"
     # "godot"
     # pkgs.betterdisplay
