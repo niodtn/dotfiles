@@ -24,14 +24,8 @@
     "discord"
     "obsidian"
     "moonlight"
-    {
-      name = "guitar-pro";
-      greedy = true;
-    }
-    {
-      name = "anki";
-      greedy = true;
-    }
+    "guitar-pro"
+    "anki"
     # "filen"
     # "godot"
     # pkgs.betterdisplay
