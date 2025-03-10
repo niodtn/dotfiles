@@ -45,8 +45,8 @@
     "jonz94/sarasa-nerd-fonts/font-sarasa-mono-k-nerd-font"
     "font-jetbrains-mono-nerd-font"
   ];
-  # homebrew.masApps = {
-  #   "Folder Hub" = 6473019059;
-  #   "Amphetamine" = 937984704;
-  # };
+  homebrew.masApps = {
+    #   "Folder Hub" = 6473019059;
+    "Amphetamine" = 937984704;
+  };
 }
