@@ -51,7 +51,6 @@
   system.defaults.finder.ShowStatusBar = true;
   system.defaults.finder.ShowPathbar = true;
   system.defaults.finder.AppleShowAllExtensions = true;
-  system.defaults.finder.QuitMenuItem = true;
 
   # Trackpad
   # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/trackpad.nix
