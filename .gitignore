@@ -17,4 +17,4 @@
 /nix/flake.lock
 
 # Aider
-.aider*
+/.aider.*
