@@ -29,7 +29,7 @@
     # "godot"
     # pkgs.betterdisplay
 
-    # macOS Utils
+    # macOS Utilities
     "rectangle" # Window Manager
     "linearmouse" # Mouse
     "hammerspoon" # Keyboard
