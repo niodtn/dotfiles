@@ -68,8 +68,13 @@
   system.defaults.WindowManager.EnableStandardClickToShowDesktop = false;
 
   # Aliases
+  environment.shellAliases.".." = "cd ../";
+  environment.shellAliases."..." = "cd ../../";
   environment.shellAliases.ls = "lsd";
+  environment.shellAliases.ll = "ls -al";
+  environment.shellAliases.c = "clear";
   environment.shellAliases.cat = "bat";
+  environment.shellAliases.myip = "curl http://ipecho.net/plain; echo";
 
   # Direnv
   programs.direnv.enable = true;
