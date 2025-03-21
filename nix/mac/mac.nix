@@ -5,6 +5,8 @@
 {
   imports = [ ./pkgs.nix ];
 
+  nix.gc.automatic = true;
+
   # For pkgs.nix
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config.allowUnfree = true;
@@ -15,24 +17,12 @@
   homebrew.enable = true;
   homebrew.onActivation.cleanup = "zap";
 
-  # Direnv
-  programs.direnv.enable = true;
-
   # Security
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  # Keyboard
-  # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/NSGlobalDomain.nix
-  system.defaults.NSGlobalDomain."com.apple.keyboard.fnState" = true;
-  system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
-  system.defaults.NSGlobalDomain.InitialKeyRepeat = 10;
-  system.defaults.NSGlobalDomain.KeyRepeat = 1;
-  system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
-  system.defaults.NSGlobalDomain.NSAutomaticInlinePredictionEnabled = false;
-  system.defaults.NSGlobalDomain.NSAutomaticDashSubstitutionEnabled = false;
-  system.defaults.NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
-  system.defaults.NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;
-  system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
+  # Status Bar
+  system.defaults.controlcenter.BatteryShowPercentage = true;
+  system.defaults.NSGlobalDomain.AppleICUForce24HourTime = true;
 
   # Dock
   # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/dock.nix
@@ -52,6 +42,19 @@
   system.defaults.finder.ShowPathbar = true;
   system.defaults.finder.AppleShowAllExtensions = true;
 
+  # Keyboard
+  # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/NSGlobalDomain.nix
+  system.defaults.NSGlobalDomain."com.apple.keyboard.fnState" = true;
+  system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
+  system.defaults.NSGlobalDomain.InitialKeyRepeat = 10;
+  system.defaults.NSGlobalDomain.KeyRepeat = 1;
+  system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
+  system.defaults.NSGlobalDomain.NSAutomaticInlinePredictionEnabled = false;
+  system.defaults.NSGlobalDomain.NSAutomaticDashSubstitutionEnabled = false;
+  system.defaults.NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
+  system.defaults.NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;
+  system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
+
   # Trackpad
   # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/trackpad.nix
   system.defaults.trackpad.Clicking = true;
@@ -63,6 +66,13 @@
   # Window Manager
   system.defaults.WindowManager.EnableTiledWindowMargins = false;
   system.defaults.WindowManager.EnableStandardClickToShowDesktop = false;
+
+  # Aliases
+  environment.shellAliases.ls = "lsd";
+  environment.shellAliases.cat = "bat";
+
+  # Direnv
+  programs.direnv.enable = true;
 
   # zsh
   programs.zsh.enable = true;
@@ -79,10 +89,6 @@
   '';
   programs.bash.completion.enable = true;
 
-  # Aliases
-  environment.shellAliases.ls = "lsd";
-  environment.shellAliases.cat = "bat";
-
   # Vim
   # programs.vim.package = pkgs.neovim.override {
   #   configure = {
@@ -91,8 +97,4 @@
   #     ];
   #   };
   # };
-
-  nix.gc.automatic = true;
-  system.defaults.controlcenter.BatteryShowPercentage = true;
-  system.defaults.NSGlobalDomain.AppleICUForce24HourTime = true;
 }

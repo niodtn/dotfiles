@@ -24,7 +24,7 @@
         {
           # https://github.com/LnL7/nix-darwin/blob/master/modules/examples/flake/flake.nix
           system.configurationRevision = self.rev or self.dirtyRev or null;
-          system.stateVersion = 5;
+          system.stateVersion = 6;
           nix.settings.experimental-features = "nix-command flakes";
         }
       ];
