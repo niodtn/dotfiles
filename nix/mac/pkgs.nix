@@ -26,7 +26,7 @@
     "moonlight"
     "guitar-pro"
     "anki"
-    # "filen"
+    "filen"
     # "godot"
     # pkgs.betterdisplay
 
@@ -38,7 +38,6 @@
 
     # Terminal
     "warp"
-    # "wave"
 
     # Fonts
     "font-sarasa-gothic"
