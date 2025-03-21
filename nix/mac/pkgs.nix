@@ -30,10 +30,10 @@
     # pkgs.betterdisplay
 
     # macOS Utils
-    "rectangle"
-    "linearmouse"
-    "hammerspoon"
-    "tailscale"
+    "rectangle" # Window Manager
+    "linearmouse" # Mouse
+    "hammerspoon" # Keyboard
+    "tailscale" # Mesh VPN
 
     # Dev
     "warp" # Terminal
