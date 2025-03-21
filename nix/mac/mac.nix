@@ -56,6 +56,9 @@
   # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/trackpad.nix
   system.defaults.trackpad.Clicking = true;
   system.defaults.trackpad.TrackpadThreeFingerDrag = true;
+  system.defaults.trackpad.ActuationStrength = 0;
+  system.defaults.trackpad.FirstClickThreshold = 0;
+  system.defaults.trackpad.SecondClickThreshold = 0;
 
   # Window Manager
   system.defaults.WindowManager.EnableTiledWindowMargins = false;
@@ -91,4 +94,5 @@
 
   nix.gc.automatic = true;
   system.defaults.controlcenter.BatteryShowPercentage = true;
+  system.defaults.NSGlobalDomain.AppleICUForce24HourTime = true;
 }
