@@ -20,7 +20,6 @@
   ];
   homebrew.casks = [
     "arc" # browser
-    "visual-studio-code" # editor
     "discord"
     "obsidian"
     "moonlight"
@@ -32,12 +31,13 @@
 
     # macOS Utils
     "rectangle"
-    "tailscale"
     "linearmouse"
     "hammerspoon"
+    "tailscale"
 
-    # Terminal
-    "warp"
+    # Dev
+    "warp" # Terminal
+    "visual-studio-code" # editor
 
     # Fonts
     "font-sarasa-gothic"
