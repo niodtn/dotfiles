@@ -16,6 +16,7 @@
   nix-homebrew.user = "niodtn";
   homebrew.enable = true;
   homebrew.onActivation.cleanup = "zap";
+  homebrew.onActivation.upgrade = true;
 
   # Security
   security.pam.services.sudo_local.touchIdAuth = true;
