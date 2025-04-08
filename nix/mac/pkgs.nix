@@ -13,35 +13,42 @@
     pkgs.zsh-autosuggestions
     pkgs.fzf
     pkgs.zsh-fzf-tab
+
+    # Utilities
+    pkgs.rectangle
+    pkgs.betterdisplay
   ];
 
   homebrew.brews = [
     "mas"
   ];
   homebrew.casks = [
+    # Auto-updating apps (no need for brew upgrades)
     "arc" # browser
     "discord"
-    "obsidian"
-    "moonlight"
-    "guitar-pro"
-    "anki"
-    "filen"
-    # "godot"
-    # pkgs.betterdisplay
-
-    # macOS Utilities
-    "rectangle" # Window Manager
-    "linearmouse" # Mouse
-    "hammerspoon" # Keyboard
-    "tailscale" # Mesh VPN
-
-    # Dev
     "warp" # Terminal
     "visual-studio-code" # editor
 
+    # update apps with `greedy`
+    {
+      name = "guitar-pro";
+      greedy = true;
+    }
+    {
+      name = "tailscale";
+      greedy = true;
+    }
+
+    # ?
+    "linearmouse" # Mouse
+    "hammerspoon" # Keyboard
+    "obsidian"
+    "moonlight"
+    "anki"
+    "filen"
+
     # Fonts
     "font-sarasa-gothic"
-    "jonz94/sarasa-nerd-fonts/font-sarasa-mono-k-nerd-font"
     "font-jetbrains-mono-nerd-font"
   ];
   homebrew.taps = [

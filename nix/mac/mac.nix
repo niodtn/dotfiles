@@ -75,6 +75,8 @@
   environment.shellAliases.ll = "ls -al";
   environment.shellAliases.c = "clear";
   environment.shellAliases.cat = "bat";
+  environment.shellAliases.gbc = "git branch | grep -v main | xargs git branch -D && git fetch -p";
+  environment.shellAliases.rebuild = "darwin-rebuild switch --flake ~/dotfiles/nix#niodtn";
   environment.shellAliases.myip = "curl http://ipecho.net/plain; echo";
 
   # Direnv
