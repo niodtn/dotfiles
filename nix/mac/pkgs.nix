@@ -17,6 +17,7 @@
     # Utilities
     pkgs.rectangle
     pkgs.betterdisplay
+    pkgs.keka
   ];
 
   homebrew.brews = [
