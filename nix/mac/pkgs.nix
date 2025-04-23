@@ -8,6 +8,7 @@
     pkgs.stow
     pkgs.vim
     pkgs.aider-chat
+    pkgs.just
 
     # Shell
     pkgs.zsh-autosuggestions
