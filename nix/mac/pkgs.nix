@@ -27,29 +27,20 @@
     "mas"
   ];
   homebrew.casks = [
-    # Auto-updating apps (no need for brew upgrades)
-    "arc" # browser
-    "discord"
-    "warp" # Terminal
-    "visual-studio-code" # editor
-
-    # update apps with `greedy`
-    {
-      name = "guitar-pro";
-      greedy = true;
-    }
-    {
-      name = "tailscale";
-      greedy = true;
-    }
-
-    # ?
+    "guitar-pro"
+    "tailscale"
     "linearmouse" # Mouse
     "hammerspoon" # Keyboard
     "obsidian"
     "moonlight"
     "anki"
     "filen"
+
+    # Auto-updating apps (no need for brew upgrades)
+    "arc" # browser
+    "discord"
+    "warp" # Terminal
+    "visual-studio-code" # editor
 
     # Fonts
     "font-sarasa-gothic"
