@@ -19,6 +19,8 @@
     pkgs.rectangle
     pkgs.betterdisplay
     pkgs.keka
+
+    pkgs.spotify
   ];
 
   homebrew.brews = [
