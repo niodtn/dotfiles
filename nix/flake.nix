@@ -28,16 +28,16 @@
           nix.settings.experimental-features = "nix-command flakes";
         }
       ];
-      mac-configuration = global-configuration ++ [
-        mac-app-util.darwinModules.default
-        nix-homebrew.darwinModules.nix-homebrew
-      ];
     in
     {
       darwinConfigurations = {
         niodtn = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
-          modules = mac-configuration ++ [ ./mac/mac.nix ];
+          modules = global-configuration ++ [
+            mac-app-util.darwinModules.default
+            nix-homebrew.darwinModules.nix-homebrew
+            ./mac/mac.nix
+          ];
         };
       };
     };
