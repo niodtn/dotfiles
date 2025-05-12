@@ -35,6 +35,7 @@
     "moonlight"
     "anki"
     "filen"
+    "finch"
 
     # Auto-updating apps (no need for brew upgrades)
     "arc" # browser
