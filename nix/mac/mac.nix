@@ -6,6 +6,7 @@
   imports = [ ./pkgs.nix ];
 
   nix.gc.automatic = true;
+  system.primaryUser = "niodtn";
 
   # For pkgs.nix
   nixpkgs.hostPlatform = "aarch64-darwin";
