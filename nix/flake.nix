@@ -2,14 +2,15 @@
   description = "Niodtn's darwin system";
 
   inputs = {
+    # All
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
+    # Darwin
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-
-    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
   outputs =
