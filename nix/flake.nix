@@ -5,6 +5,7 @@
     # All
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    home-manager.url = "github:nix-community/home-manager";
 
     # Darwin
     nix-darwin.url = "github:LnL7/nix-darwin/master";
@@ -29,7 +30,10 @@
         modules = [
           inputs.mac-app-util.darwinModules.default
           inputs.nix-homebrew.darwinModules.nix-homebrew
+          inputs.home-manager.darwinModules.home-manager
+
           ./mac/mac.nix
+          ./mac/home.nix
           {
             # https://github.com/LnL7/nix-darwin/blob/master/modules/examples/flake/flake.nix
             system.configurationRevision = self.rev or self.dirtyRev or null;
