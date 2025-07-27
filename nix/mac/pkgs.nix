@@ -29,7 +29,6 @@
     "linearmouse" # Mouse
     "hammerspoon" # Keyboard
     "obsidian"
-    "moonlight"
     "anki"
     "filen"
     "finch"
