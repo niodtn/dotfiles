@@ -11,6 +11,10 @@
     users.niodtn.home.username = "niodtn";
   };
 
+  imports = [
+    ../common/vscode.nix
+  ];
+
   home-manager.users.niodtn = {
     programs.home-manager.enable = true;
 
