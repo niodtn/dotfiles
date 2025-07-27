@@ -7,7 +7,6 @@
     pkgs.nixfmt-rfc-style # For vscode Nix IDE extension
     pkgs.stow
     pkgs.vim
-    pkgs.aider-chat
     pkgs.just
 
     # Shell
@@ -19,8 +18,6 @@
     pkgs.rectangle
     pkgs.betterdisplay
     pkgs.keka
-
-    pkgs.spotify
   ];
 
   homebrew.brews = [
@@ -38,7 +35,6 @@
     "finch"
 
     # Auto-updating apps (no need for brew upgrades)
-    "arc" # browser
     "discord"
     "warp" # Terminal
     "visual-studio-code" # editor
@@ -53,5 +49,6 @@
   homebrew.masApps = {
     #   "Folder Hub" = 6473019059;
     "Amphetamine" = 937984704;
+    "Bitwarden" = 1352778147;
   };
 }
