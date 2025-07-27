@@ -5,7 +5,7 @@
 {
   imports = [ ./pkgs.nix ];
 
-  nix.gc.automatic = true;
+  nix.enable = false;
   system.primaryUser = "niodtn";
 
   # For pkgs.nix
