@@ -32,8 +32,8 @@
           inputs.nix-homebrew.darwinModules.nix-homebrew
           inputs.home-manager.darwinModules.home-manager
 
-          ./mac/mac.nix
-          ./mac/home.nix
+          ./mac/configuration.nix
+          ./mac/home-manager.nix
           {
             # https://github.com/LnL7/nix-darwin/blob/master/modules/examples/flake/flake.nix
             system.configurationRevision = self.rev or self.dirtyRev or null;
