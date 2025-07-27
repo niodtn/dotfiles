@@ -69,35 +69,6 @@
   system.defaults.WindowManager.EnableTiledWindowMargins = false;
   system.defaults.WindowManager.EnableStandardClickToShowDesktop = false;
 
-  # Aliases
-  environment.shellAliases.".." = "cd ../";
-  environment.shellAliases."..." = "cd ../../";
-  environment.shellAliases.ls = "lsd";
-  environment.shellAliases.ll = "lsd -al";
-  environment.shellAliases.c = "clear";
-  environment.shellAliases.cat = "bat";
-  environment.shellAliases.gbc = "git branch | grep -v main | xargs git branch -D && git fetch -p";
-  environment.shellAliases.rebuild = "sudo darwin-rebuild switch --flake ~/dotfiles/nix#mac";
-  environment.shellAliases.myip = "curl http://ipecho.net/plain; echo";
-
-  # Direnv
-  programs.direnv.enable = true;
-
-  # zsh
-  programs.zsh.enable = true;
-  programs.zsh.enableSyntaxHighlighting = true;
-  programs.zsh.enableCompletion = true;
-  programs.zsh.enableBashCompletion = true;
-  programs.zsh.enableFzfCompletion = true;
-  programs.zsh.interactiveShellInit = ''
-    source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-    source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
-    if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-    	. '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-    fi
-  '';
-  programs.bash.completion.enable = true;
-
   # Vim
   # programs.vim.package = pkgs.neovim.override {
   #   configure = {
