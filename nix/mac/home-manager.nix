@@ -12,6 +12,7 @@
   };
 
   imports = [
+    ../common/git.nix
     ../common/vscode.nix
   ];
 
@@ -24,13 +25,6 @@
       enableCompletion = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
-    };
-
-    # Git configuration
-    programs.git = {
-      enable = true;
-      userName = "niodtn";
-      userEmail = "ipete93@gmail.com";
     };
 
     # Direnv
