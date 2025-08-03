@@ -25,18 +25,20 @@
   ];
   homebrew.casks = [
     "guitar-pro"
-    "tailscale"
-    "linearmouse" # Mouse
-    "hammerspoon" # Keyboard
     "obsidian"
     "anki"
     "filen"
-    "finch"
-
-    # Auto-updating apps (no need for brew upgrades)
     "discord"
-    "warp" # Terminal
-    "visual-studio-code" # editor
+    "google-chrome"
+
+    "tailscale"
+    "linearmouse" # Mouse
+    "hammerspoon" # Keyboard
+
+    # Dev
+    "warp"
+    "visual-studio-code"
+    "finch"
 
     # Fonts
     "font-sarasa-gothic"
