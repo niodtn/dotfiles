@@ -48,8 +48,8 @@
     "jonz94/sarasa-nerd-fonts"
   ];
   homebrew.masApps = {
-    #   "Folder Hub" = 6473019059;
+    # "Folder Hub" = 6473019059;
     "Amphetamine" = 937984704;
-    "Bitwarden" = 1352778147;
+    # "Bitwarden" = 1352778147;
   };
 }
