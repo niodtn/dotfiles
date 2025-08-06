@@ -8,6 +8,7 @@
     pkgs.stow
     pkgs.vim
     pkgs.just
+    pkgs.zoxide
 
     # Shell
     pkgs.zsh-autosuggestions
