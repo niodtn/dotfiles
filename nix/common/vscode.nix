@@ -15,8 +15,17 @@
           pkief.material-icon-theme # Icon
 
           # Remote Development
-          ms-vscode-remote.vscode-remote-extensionpack
           ms-vscode-remote.remote-containers
+
+          # Nix
+          jnoortheen.nix-ide
+
+          # Python
+          charliermarsh.ruff
+          ms-toolsai.jupyter-keymap
+          ms-toolsai.jupyter-renderers
+          ms-toolsai.vscode-jupyter-cell-tags
+          ms-toolsai.vscode-jupyter-slideshow
         ];
 
         userSettings = {
@@ -86,7 +95,42 @@
 
           # Window Management
             "window.restoreWindows" = "none";
+
+          # Python
+            "[python]" = {
+              "editor.codeActionsOnSave" = {
+                "source.organizeImports" = "explicit";
+                "source.fixAll" = "explicit";
+              };
+              "editor.defaultFormatter" = "charliermarsh.ruff";
+            };
         };
+        keybindings = [
+          {
+            key = "cmd+;";
+            command = "workbench.action.toggleSidebarVisibility";
+          }
+          {
+            key = "cmd+b"; # Remove Default
+            command = "-workbench.action.toggleSidebarVisibility";
+          }
+          {
+            key = "cmd+'";
+            command = "workbench.action.toggleAuxiliaryBar";
+          }
+          {
+            key = "alt+cmd+b"; # Remove Default
+            command = "-workbench.action.toggleAuxiliaryBar";
+          }
+          {
+            key = "cmd+p";
+            command = "workbench.action.showCommands";
+          }
+          {
+            key = "shift+cmd+p"; # Remove Default
+            command = "-workbench.action.showCommands";
+          }
+        ];
       };
     };
   };

@@ -9,6 +9,7 @@
     useUserPackages = true;
     users.niodtn.home.stateVersion = "25.11";
     users.niodtn.home.username = "niodtn";
+    backupFileExtension = "backup";
   };
 
   imports = [
