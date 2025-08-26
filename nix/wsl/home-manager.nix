@@ -1,17 +1,15 @@
 { config, pkgs, ... }:
 
 {
-  users.users.nixos.home = "/home/nixos";
-  home-manager.users.nixos.home.homeDirectory = "/home/nixos";
+  imports = [ ../common/home-manager.nix ];
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.nixos.home.stateVersion = "25.11";
-    users.nixos.home.username = "nixos";
-    backupFileExtension = "backup";
+  home-manager.users.nixos.home = {
+    stateVersion = "25.11";
+    username = "nixos";
+    homeDirectory = "/home/nixos";
   };
 
+  # specific settings
   home-manager.users.nixos = {
     programs.home-manager.enable = true;
 

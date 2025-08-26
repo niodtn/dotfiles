@@ -10,6 +10,7 @@
 
   nix.enable = false;
   system.primaryUser = "niodtn";
+  users.users.niodtn.home = "/Users/niodtn";
 
   # For pkgs.nix
   nixpkgs.hostPlatform = "aarch64-darwin";

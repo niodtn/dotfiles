@@ -1,17 +1,15 @@
 { config, pkgs, ... }:
 
 {
-  users.users.niodtn.home = "/Users/niodtn";
-  home-manager.users.niodtn.home.homeDirectory = "/Users/niodtn";
+  imports = [ ../common/home-manager.nix ];
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.niodtn.home.stateVersion = "25.11";
-    users.niodtn.home.username = "niodtn";
-    backupFileExtension = "backup";
+  home-manager.users.niodtn.home = {
+    stateVersion = "25.11";
+    username = "niodtn";
+    homeDirectory = "/Users/niodtn";
   };
 
+  # specific settings
   home-manager.users.niodtn = {
     programs.home-manager.enable = true;
 
