@@ -16,8 +16,8 @@
     programs.home-manager.enable = true;
 
     imports = [
-      ../common/git.nix
-      ../common/vscode.nix
+      ../common/home-manager/git.nix
+      ../common/home-manager/vscode.nix
     ];
 
     # Basic shell configuration

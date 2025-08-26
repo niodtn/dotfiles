@@ -15,7 +15,9 @@
   home-manager.users.nixos = {
     programs.home-manager.enable = true;
 
-    imports = [ ../common/git.nix ];
+    imports = [
+      ../common/home-manager/git.nix
+    ];
 
     # Basic shell configuration
     programs.bash.enable = true;
