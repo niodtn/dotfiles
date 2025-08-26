@@ -9,14 +9,16 @@
     useUserPackages = true;
     users.niodtn.home.stateVersion = "25.11";
     users.niodtn.home.username = "niodtn";
+    backupFileExtension = "backup";
   };
-
-  imports = [
-    ../common/vscode.nix
-  ];
 
   home-manager.users.niodtn = {
     programs.home-manager.enable = true;
+
+    imports = [
+      ../common/git.nix
+      ../common/vscode.nix
+    ];
 
     # Basic shell configuration
     programs.zsh = {
@@ -24,13 +26,6 @@
       enableCompletion = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
-    };
-
-    # Git configuration
-    programs.git = {
-      enable = true;
-      userName = "niodtn";
-      userEmail = "ipete93@gmail.com";
     };
 
     # Direnv
