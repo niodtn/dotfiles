@@ -3,6 +3,7 @@
 {
   programs.vscode = {
     enable = true;
+    mutableExtensionsDir = false;
 
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
@@ -15,6 +16,10 @@
 
         # Remote Development
         ms-vscode-remote.remote-containers
+
+        # Copilot
+        github.copilot
+        github.copilot-chat
 
         # Nix
         jnoortheen.nix-ide
