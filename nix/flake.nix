@@ -1,5 +1,5 @@
 {
-  description = "Niodtn's darwin system";
+  description = "Niodtn's Flake";
 
   inputs = {
     # All
@@ -12,6 +12,9 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
+    # WSL
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
   outputs =
@@ -24,7 +27,7 @@
 
       # Darwin
       flake.darwinConfigurations.mac = inputs.nix-darwin.lib.darwinSystem {
-        system = builtins.currentSystem;
+        system = "aarch64-darwin";
         specialArgs = { inherit inputs self; };
 
         modules = [
@@ -38,6 +41,24 @@
             # https://github.com/LnL7/nix-darwin/blob/master/modules/examples/flake/flake.nix
             system.configurationRevision = self.rev or self.dirtyRev or null;
             system.stateVersion = 6;
+            nix.settings.experimental-features = "nix-command flakes";
+          }
+        ];
+      };
+
+      # WSL
+      flake.nixosConfigurations.wsl = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs self; };
+
+        modules = [
+          inputs.nixos-wsl.nixosModules.default
+          inputs.home-manager.nixosModules.home-manager
+
+          ./wsl/configuration.nix
+          ./wsl/home-manager.nix
+          {
+            system.stateVersion = "25.05";
             nix.settings.experimental-features = "nix-command flakes";
           }
         ];
