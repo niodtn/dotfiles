@@ -16,6 +16,7 @@
     programs.home-manager.enable = true;
 
     imports = [
+      ../common/home-manager/aliases.nix
       ../common/home-manager/git.nix
       ../common/home-manager/vscode.nix
     ];
@@ -41,13 +42,9 @@
 
     # Shell aliases
     home.shellAliases = {
-      ".." = "cd ../";
-      "..." = "cd ../../";
       ls = "lsd";
       ll = "lsd -al";
-      c = "clear";
       cat = "bat";
-      gbc = "git branch | grep -v main | xargs git branch -D && git fetch -p";
       rebuild = "sudo darwin-rebuild switch --flake ~/dotfiles/nix#mac";
       myip = "curl http://ipecho.net/plain; echo";
     };

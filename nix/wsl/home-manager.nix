@@ -16,6 +16,7 @@
     programs.home-manager.enable = true;
 
     imports = [
+      ../common/home-manager/aliases.nix
       ../common/home-manager/git.nix
     ];
 
@@ -24,9 +25,6 @@
 
     # Shell aliases
     home.shellAliases = {
-      ".." = "cd ../";
-      "..." = "cd ../../";
-      c = "clear";
       rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles/nix#wsl";
     };
   };
