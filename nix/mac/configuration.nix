@@ -3,7 +3,10 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./pkgs.nix ];
+  imports = [
+    ../common/pkgs.nix
+    ./pkgs.nix
+  ];
 
   nix.enable = false;
   system.primaryUser = "niodtn";

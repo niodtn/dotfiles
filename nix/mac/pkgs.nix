@@ -4,7 +4,6 @@
   environment.systemPackages = [
     pkgs.lsd # `ls` command
     pkgs.bat # `cat` command
-    pkgs.nixfmt-rfc-style # For vscode Nix IDE extension
     pkgs.stow
     pkgs.vim
     pkgs.just
