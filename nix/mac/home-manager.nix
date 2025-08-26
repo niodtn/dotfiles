@@ -15,6 +15,7 @@
 
     imports = [
       ../common/home-manager/aliases.nix
+      ../common/home-manager/atuin.nix
       ../common/home-manager/git.nix
       ../common/home-manager/vscode.nix
     ];
