@@ -12,13 +12,13 @@
     backupFileExtension = "backup";
   };
 
-  imports = [
-    ../common/git.nix
-    ../common/vscode.nix
-  ];
-
   home-manager.users.niodtn = {
     programs.home-manager.enable = true;
+
+    imports = [
+      ../common/git.nix
+      ../common/vscode.nix
+    ];
 
     # Basic shell configuration
     programs.zsh = {
