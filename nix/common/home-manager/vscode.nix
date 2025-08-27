@@ -8,6 +8,7 @@
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
         esbenp.prettier-vscode
+        ms-azuretools.vscode-containers
 
         # Themes
         sdras.night-owl # White Theme
@@ -16,6 +17,7 @@
 
         # Remote Development
         ms-vscode-remote.remote-containers
+        ms-vscode-remote.remote-wsl
 
         # Copilot
         github.copilot
