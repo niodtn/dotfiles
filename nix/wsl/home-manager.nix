@@ -1,30 +1,29 @@
 { config, pkgs, ... }:
 
 {
-  users.users.nixos.home = "/home/nixos";
-  home-manager.users.nixos.home.homeDirectory = "/home/nixos";
+  imports = [ ../common/home-manager.nix ];
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.nixos.home.stateVersion = "25.11";
-    users.nixos.home.username = "nixos";
-    backupFileExtension = "backup";
+  home-manager.users.nixos.home = {
+    stateVersion = "25.11";
+    username = "nixos";
+    homeDirectory = "/home/nixos";
   };
 
+  # specific settings
   home-manager.users.nixos = {
     programs.home-manager.enable = true;
 
-    imports = [ ../common/git.nix ];
+    imports = [
+      ../common/home-manager/aliases.nix
+      ../common/home-manager/atuin.nix
+      ../common/home-manager/git.nix
+    ];
 
     # Basic shell configuration
     programs.bash.enable = true;
 
     # Shell aliases
     home.shellAliases = {
-      ".." = "cd ../";
-      "..." = "cd ../../";
-      c = "clear";
       rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles/nix#wsl";
     };
   };

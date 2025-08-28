@@ -1,23 +1,23 @@
 { config, pkgs, ... }:
 
 {
-  users.users.niodtn.home = "/Users/niodtn";
-  home-manager.users.niodtn.home.homeDirectory = "/Users/niodtn";
+  imports = [ ../common/home-manager.nix ];
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.niodtn.home.stateVersion = "25.11";
-    users.niodtn.home.username = "niodtn";
-    backupFileExtension = "backup";
+  home-manager.users.niodtn.home = {
+    stateVersion = "25.11";
+    username = "niodtn";
+    homeDirectory = "/Users/niodtn";
   };
 
+  # specific settings
   home-manager.users.niodtn = {
     programs.home-manager.enable = true;
 
     imports = [
-      ../common/git.nix
-      ../common/vscode.nix
+      ../common/home-manager/aliases.nix
+      ../common/home-manager/atuin.nix
+      ../common/home-manager/git.nix
+      ../common/home-manager/vscode.nix
     ];
 
     # Basic shell configuration
@@ -41,13 +41,9 @@
 
     # Shell aliases
     home.shellAliases = {
-      ".." = "cd ../";
-      "..." = "cd ../../";
       ls = "lsd";
       ll = "lsd -al";
-      c = "clear";
       cat = "bat";
-      gbc = "git branch | grep -v main | xargs git branch -D && git fetch -p";
       rebuild = "sudo darwin-rebuild switch --flake ~/dotfiles/nix#mac";
       myip = "curl http://ipecho.net/plain; echo";
     };
