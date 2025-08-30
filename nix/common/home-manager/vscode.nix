@@ -8,6 +8,7 @@
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
         esbenp.prettier-vscode
+        github.vscode-pull-request-github
 
         # Themes
         sdras.night-owl # White Theme
