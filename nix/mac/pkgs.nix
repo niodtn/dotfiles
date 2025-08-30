@@ -7,6 +7,7 @@
     pkgs.stow
     pkgs.vim
     pkgs.just
+    pkgs.zoxide
     pkgs.uv
 
     # Shell
