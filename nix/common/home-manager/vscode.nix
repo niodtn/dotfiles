@@ -28,6 +28,7 @@
         jnoortheen.nix-ide
 
         # Python
+        ms-python.python
         charliermarsh.ruff
         ms-toolsai.jupyter-keymap
         ms-toolsai.jupyter-renderers
