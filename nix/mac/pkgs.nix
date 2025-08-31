@@ -26,8 +26,8 @@
   homebrew.casks = [
     "guitar-pro"
     "obsidian"
-    "anki"
-    "filen"
+    # "anki"
+    # "filen"
     "discord"
     "google-chrome"
 
