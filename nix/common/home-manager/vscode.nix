@@ -29,6 +29,7 @@
 
         # Python
         ms-python.python
+        ms-python.vscode-pylance
         charliermarsh.ruff
         ms-toolsai.jupyter-keymap
         ms-toolsai.jupyter-renderers
