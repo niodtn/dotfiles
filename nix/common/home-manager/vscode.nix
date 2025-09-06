@@ -9,6 +9,7 @@
       extensions = with pkgs.vscode-extensions; [
         esbenp.prettier-vscode
         github.vscode-pull-request-github
+        tailscale.vscode-tailscale
 
         # Themes
         sdras.night-owl # White Theme
@@ -18,7 +19,7 @@
         # Remote Development
         ms-vscode-remote.remote-containers
         ms-vscode-remote.remote-wsl
-        ms-azuretools.vscode-containers
+        ms-vscode-remote.remote-ssh
 
         # Copilot
         github.copilot
