@@ -9,7 +9,6 @@
       extensions = with pkgs.vscode-extensions; [
         esbenp.prettier-vscode
         github.vscode-pull-request-github
-        tailscale.vscode-tailscale
 
         # Themes
         sdras.night-owl # White Theme
