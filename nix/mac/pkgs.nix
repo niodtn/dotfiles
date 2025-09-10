@@ -37,7 +37,7 @@
     # Dev
     "warp"
     "visual-studio-code"
-    "finch"
+    # "finch"
 
     # Fonts
     "font-sarasa-gothic"
