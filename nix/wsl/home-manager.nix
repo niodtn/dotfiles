@@ -11,12 +11,8 @@
 
   # specific settings
   home-manager.users.nixos = {
-    programs.home-manager.enable = true;
-
     imports = [
-      ../common/home-manager/aliases.nix
-      ../common/home-manager/atuin.nix
-      ../common/home-manager/git.nix
+      ../common/home-manager/defaults.nix
     ];
 
     # Basic shell configuration
