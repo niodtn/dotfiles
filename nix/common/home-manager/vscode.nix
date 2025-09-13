@@ -64,10 +64,6 @@
           "files.insertFinalNewline" = true;
           "files.trimFinalNewlines" = true;
 
-        # Dev Container with Finch
-          "dev.containers.dockerPath" = "finch";
-          "dev.containers.dockerComposePath" = "finch compose";
-
         # Terminal
           "terminal.integrated.enablePersistentSessions" = false;
           "terminal.integrated.persistentSessionReviveProcess" = "never";
