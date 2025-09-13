@@ -16,7 +16,15 @@
     ];
 
     # Basic shell configuration
-    programs.bash.enable = true;
+    programs.bash = {
+      enable = true;
+      enableCompletion = true;
+    };
+
+    # For atuin with Visual Studio Code - Remote SSH
+    programs.bash.initExtra = ''
+      export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+    '';
 
     # Shell aliases
     home.shellAliases = {
