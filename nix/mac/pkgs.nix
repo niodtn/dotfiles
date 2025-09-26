@@ -30,7 +30,7 @@
     "discord"
     "google-chrome"
 
-    "tailscale"
+    "tailscale-app"
     "linearmouse" # Mouse
     "hammerspoon" # Keyboard
 
