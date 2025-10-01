@@ -46,9 +46,11 @@ Hangul = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(event)
             rightCmdTimer = hs.timer.doAfter(longPressThreshold, function()
                 isLongPress = true
             end)
-            toggleHangulInput()
         else
             -- When right command is released
+            if rightCmdDown and not isLongPress then
+                toggleHangulInput()
+            end
             rightCmdDown = false
             if rightCmdTimer then
                 rightCmdTimer:stop()
