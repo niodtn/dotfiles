@@ -9,7 +9,7 @@ local inputKorean = "com.apple.inputmethod.Korean.2SetKorean"
 
 -- State tracking variables
 local rightCmdTimer = nil
-local longPressThreshold = 0.11  -- Time in seconds before allowing key combinations
+local longPressThreshold = 0.2  -- Time in seconds before allowing key combinations
 local isLongPress = false
 local rightCmdDown = false  -- Track if right command key is pressed
 
