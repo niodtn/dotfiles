@@ -1,27 +1,23 @@
-{ pkgs, ... }:
+{ pkgs, flake, ... }:
 
 {
+  imports = [
+    flake.darwinModules.default
+    flake.modules.darwin.homebrew
+  ];
+
+  system.primaryUser = "niodtn"; # nix-darwin
+  nix-homebrew.user = "niodtn"; # nix-homebrew
+  users.users.niodtn.home = "/Users/niodtn"; # home-manager
+
+  security.pam.services.sudo_local.touchIdAuth = true;
+
   environment.systemPackages = [
-    pkgs.lsd # `ls` command
-    pkgs.bat # `cat` command
-    pkgs.stow
-    pkgs.vim
-    pkgs.just
-
-    # Shell
-    pkgs.zsh-autosuggestions
-    pkgs.fzf
-    pkgs.zsh-fzf-tab
-
-    # Utilities
     pkgs.rectangle
     pkgs.betterdisplay
     pkgs.keka
   ];
 
-  homebrew.brews = [
-    "mas"
-  ];
   homebrew.casks = [
     "guitar-pro"
     "obsidian"
@@ -38,17 +34,13 @@
     "warp"
     "visual-studio-code"
     # "finch"
-
-    # Fonts
-    "font-sarasa-gothic"
-    "font-jetbrains-mono-nerd-font"
-  ];
-  homebrew.taps = [
-    "jonz94/sarasa-nerd-fonts"
   ];
   homebrew.masApps = {
     # "Folder Hub" = 6473019059;
     "Amphetamine" = 937984704;
     # "Bitwarden" = 1352778147;
   };
+
+  nixpkgs.hostPlatform = "aarch64-darwin";
+  system.stateVersion = 6; # https://github.com/LnL7/nix-darwin/blob/master/modules/examples/flake/flake.nix
 }

@@ -1,11 +1,12 @@
 {
-  description = "Niodtn's Flake";
+  description = "Niodtn's flake";
 
   inputs = {
     # All
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager.url = "github:nix-community/home-manager";
+    blueprint.url = "github:numtide/blueprint";
+    blueprint.inputs.nixpkgs.follows = "nixpkgs";
 
     # Darwin
     nix-darwin.url = "github:LnL7/nix-darwin/master";
@@ -17,51 +18,6 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
-  outputs =
-    inputs@{ self, flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit self inputs; } {
-      systems = [
-        "aarch64-darwin"
-        "x86_64-linux"
-      ];
-
-      # Darwin
-      flake.darwinConfigurations.mac = inputs.nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = { inherit inputs self; };
-
-        modules = [
-          inputs.mac-app-util.darwinModules.default
-          inputs.nix-homebrew.darwinModules.nix-homebrew
-          inputs.home-manager.darwinModules.home-manager
-
-          ./mac/configuration.nix
-          ./mac/home-manager.nix
-          {
-            # https://github.com/LnL7/nix-darwin/blob/master/modules/examples/flake/flake.nix
-            system.configurationRevision = self.rev or self.dirtyRev or null;
-            system.stateVersion = 6;
-            nix.settings.experimental-features = "nix-command flakes";
-          }
-        ];
-      };
-
-      # WSL
-      flake.nixosConfigurations.wsl = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs self; };
-
-        modules = [
-          inputs.nixos-wsl.nixosModules.default
-          inputs.home-manager.nixosModules.home-manager
-
-          ./wsl/configuration.nix
-          ./wsl/home-manager.nix
-          {
-            system.stateVersion = "25.05";
-            nix.settings.experimental-features = "nix-command flakes";
-          }
-        ];
-      };
-    };
+  # https://github.com/numtide/blueprint
+  outputs = inputs: inputs.blueprint { inherit inputs; };
 }
