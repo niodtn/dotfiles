@@ -1,4 +1,4 @@
-{ config, pkgs, flake, ... }:
+{ pkgs, flake, ... }:
 
 {
   imports = [
