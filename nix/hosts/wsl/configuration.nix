@@ -1,4 +1,4 @@
-{ flake, pkgs, ... }:
+{ flake, ... }:
 
 {
   imports = [ flake.modules.wsl.default ];
