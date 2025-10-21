@@ -1,15 +1,13 @@
 { flake, ... }:
 
+let
+  username = "nixos";
+in
 {
-  imports = [ flake.modules.wsl.default ];
-
-  wsl.defaultUser = "nixos"; # nixos-wsl
-  users.users.nixos.home = "/home/nixos"; # home-manager
+  imports = [ flake.nixosModules.wsl ];
 
   services.tailscale.enable = true;
 
-  # environment.systemPackages = [ ];
-
-  nixpkgs.hostPlatform = "x86_64-linux";
-  system.stateVersion = "25.05";
+  wsl.defaultUser = username; # nixos-wsl
+  users.users.${username}.home = "/home/${username}";
 }
