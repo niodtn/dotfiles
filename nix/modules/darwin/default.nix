@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }:
+{ inputs, lib, config, ... }:
 
 {
   imports = [
@@ -8,7 +8,9 @@
 
   # https://daiderd.com/nix-darwin/manual/index.html
   config = {
-    nix.enable = false;
+    nix.enable = lib.mkDefault true;
+    nix.gc.automatic = config.nix.enable;
+    nix.optimise.automatic = config.nix.enable;
 
     system.defaults = {
       controlcenter.BatteryShowPercentage = true;

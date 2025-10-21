@@ -10,6 +10,8 @@
   nix-homebrew.user = "niodtn"; # nix-homebrew
   users.users.niodtn.home = "/Users/niodtn"; # home-manager
 
+  nix.enable = false; # Managed by Determinate
+
   security.pam.services.sudo_local.touchIdAuth = true;
 
   environment.systemPackages = [
