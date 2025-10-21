@@ -12,8 +12,8 @@
 
   programs.git = {
     enable = true;
-    userName = "niodtn";
-    userEmail = "ipete93@gmail.com";
+    settings.user.name = "niodtn";
+    settings.user.email = "ipete93@gmail.com";
   };
 
   programs.atuin = {
