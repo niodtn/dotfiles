@@ -1,16 +1,31 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, flake, ... }:
+with lib;
 
 {
-  nix.settings.experimental-features = "nix-command flakes";
-  nixpkgs.config.allowUnfree = true;
+  system.stateVersion = mkDefault "25.05";
 
-  nix.gc.automatic = lib.mkDefault true;
-  nix.gc.options = "--delete-older-than 30d";
-  nix.optimise.automatic = lib.mkDefault true;
-  nix.settings.auto-optimise-store = true;
-
-  environment.systemPackages = [
-    pkgs.nixfmt-rfc-style # For vscode Nix IDE extension
-    pkgs.uv # Python version manager
+  environment.systemPackages = with pkgs; [
+    nixfmt-rfc-style # For vscode Nix IDE extension
+    uv # Python version manager
   ];
+
+  nix = {
+    gc = {
+      automatic = mkDefault true;
+      options = "--delete-older-than 30d";
+    };
+
+    settings = {
+      experimental-features = "nix-command flakes";
+      auto-optimise-store = true;
+
+      extra-substituters = flake.lib.caches.substituters;
+      extra-trusted-public-keys = flake.lib.caches.trustedPublicKeys;
+    };
+  };
+
+  nixpkgs = {
+    hostPlatform = mkDefault "x86_64-linux";
+    config.allowUnfree = true;
+  };
 }

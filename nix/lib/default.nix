@@ -1,0 +1,5 @@
+{...}:
+
+{
+  caches = import ./caches.nix;
+}
