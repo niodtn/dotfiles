@@ -10,7 +10,9 @@
   config = {
     nix.enable = lib.mkDefault true;
     nix.gc.automatic = config.nix.enable;
-    nix.optimise.automatic = config.nix.enable;
+
+    nixpkgs.hostPlatform = "aarch64-darwin";
+    system.stateVersion = 6; # https://github.com/LnL7/nix-darwin/blob/master/modules/examples/flake/flake.nix
 
     system.defaults = {
       controlcenter.BatteryShowPercentage = true;

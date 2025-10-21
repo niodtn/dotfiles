@@ -1,14 +1,13 @@
 { flake, pkgs, ... }:
 
+let
+  username = "niodtn";
+in
 {
   imports = [
     flake.darwinModules.default
     flake.modules.darwin.homebrew
   ];
-
-  system.primaryUser = "niodtn"; # nix-darwin
-  nix-homebrew.user = "niodtn"; # nix-homebrew
-  users.users.niodtn.home = "/Users/niodtn"; # home-manager
 
   nix.enable = false; # Managed by Determinate
 
@@ -43,6 +42,7 @@
     # "Bitwarden" = 1352778147;
   };
 
-  nixpkgs.hostPlatform = "aarch64-darwin";
-  system.stateVersion = 6; # https://github.com/LnL7/nix-darwin/blob/master/modules/examples/flake/flake.nix
+  system.primaryUser = username; # nix-darwin
+  nix-homebrew.user = username; # nix-homebrew
+  users.users.${username}.home = "/Users/${username}";
 }
