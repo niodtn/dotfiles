@@ -1,4 +1,4 @@
-{ flake, config, ... }:
+{ flake, pkgs, ... }:
 
 let
   username = "nixos";
@@ -7,21 +7,25 @@ in
   imports = [
     flake.nixosModules.default
     ./hardware.nix
+    ./nvidia.nix
   ];
 
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  environment.systemPackages = [
+    (pkgs.bottles.override { removeWarningPopup = true; })
+    pkgs.vulkan-loader
+    # pkgs.gtkgreet
+  ];
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  # services.desktopManager.plasma6.enable = true;
+  # services.greetd = {
+  #   enable = true;
+  #   package = pkgs.gtkgreet;
+  #   settings.default_session.user = "greeter";
+  # };
 
-  # Install firefox.
-  programs.firefox.enable = true;
+  services.getty.autologinUser = username;
 
-  # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = username;
-
-  networking.hostName = username; # NixOS
+  networking.hostName = "nixos-desktop";
   users.users.${username} = {
     isNormalUser = true;
     home = "/home/${username}";
