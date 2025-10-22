@@ -4,6 +4,8 @@ with lib;
 {
   system.stateVersion = mkDefault "25.05";
 
+  time.timeZone = "Asia/Seoul";
+
   environment.systemPackages = with pkgs; [
     nixfmt-rfc-style # For vscode Nix IDE extension
     uv # Python version manager
