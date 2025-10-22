@@ -1,7 +1,10 @@
 { flake, ... }:
 
 {
-  imports = [ ../common ];
+  imports = [
+    ../common
+    ./gaming
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

@@ -16,6 +16,9 @@
 
     # WSL
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+
+    # NixOS Gaming
+    nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
   # https://github.com/numtide/blueprint

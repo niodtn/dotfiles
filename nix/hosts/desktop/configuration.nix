@@ -10,6 +10,10 @@ in
     ./nvidia.nix
   ];
 
+  modules = {
+    gaming.enable = true;
+  };
+
   environment.systemPackages = [
     (pkgs.bottles.override { removeWarningPopup = true; })
     pkgs.vulkan-loader
