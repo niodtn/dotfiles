@@ -14,25 +14,24 @@ in
     gaming.enable = true;
   };
 
-  environment.systemPackages = [
-    (pkgs.bottles.override { removeWarningPopup = true; })
-    pkgs.vulkan-loader
-    # pkgs.gtkgreet
-  ];
+  # environment.systemPackages = [ ];
 
-  # services.desktopManager.plasma6.enable = true;
-  # services.greetd = {
-  #   enable = true;
-  #   package = pkgs.gtkgreet;
-  #   settings.default_session.user = "greeter";
-  # };
+  services.tailscale.enable = true;
+  services.tailscale.extraSetFlags = [ "--ssh" ];
 
   services.getty.autologinUser = username;
+  services.getty.greetingLine = "";
 
   networking.hostName = "nixos-desktop";
   users.users.${username} = {
     isNormalUser = true;
     home = "/home/${username}";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "video"
+      "input"
+      "uinput"
+    ];
   };
 }
