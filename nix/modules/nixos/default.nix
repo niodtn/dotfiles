@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 with lib;
 
 {
@@ -39,6 +39,10 @@ with lib;
     LC_TELEPHONE = "ko_KR.UTF-8";
     LC_TIME = "ko_KR.UTF-8";
   };
+
+  fonts.packages = with pkgs; [
+    noto-fonts-cjk-sans
+  ];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
