@@ -4,14 +4,19 @@ let
   nvidiaPkgs = config.boot.kernelPackages.nvidiaPackages.latest;
 in
 {
-  # Nvidia settings
+  hardware.nvidia = {
+    package = nvidiaPkgs;
+    open = false; # closed source drivers
+    powerManagement.enable = true;
+    modesetting.enable = true; # boot with nvidia modeset
+  };
+
+  hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
-  hardware.nvidia.package = nvidiaPkgs;
-  hardware.nvidia.powerManagement.enable = true;
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.open = false;
-  boot.blacklistedKernelModules = [ "nouveau" ];
+
   boot.extraModulePackages = [ nvidiaPkgs ];
+  boot.blacklistedKernelModules = [ "nouveau" ]; # block open source driver
   boot.kernelParams = [ "nvidia-drm.modeset=1" ];
+
   services.xserver.videoDrivers = [ "nvidia" ];
 }
