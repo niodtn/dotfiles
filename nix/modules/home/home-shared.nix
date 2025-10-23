@@ -22,6 +22,8 @@
     settings = {
       auto_sync = true;
       sync_frequency = "0";
+      style = "auto";
+      invert = true;
     };
     enableZshIntegration = true;
     enableBashIntegration = true;
