@@ -46,6 +46,12 @@ in
       };
     };
 
+    environment.systemPackages = with pkgs; [
+      steamtinkerlaunch
+      protonup-qt
+      yad
+    ];
+
     hardware.bluetooth.enable = true;
     hardware.bluetooth.powerOnBoot = true;
     hardware.xpadneo.enable = true;
