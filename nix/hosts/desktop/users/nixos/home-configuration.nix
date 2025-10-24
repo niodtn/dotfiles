@@ -3,7 +3,8 @@
 {
   imports = [
     flake.homeModules.home-shared
-    flake.homeModules.vscode
+    # flake.homeModules.vscode
+    ./hyprland.nix
   ];
 
   # Basic shell configuration
@@ -15,5 +16,6 @@
   # Shell aliases
   home.shellAliases = {
     rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles/nix#desktop";
+    ll = "ls -al";
   };
 }
