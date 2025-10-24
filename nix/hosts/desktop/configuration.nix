@@ -20,7 +20,6 @@ in
   services.tailscale.extraSetFlags = [ "--ssh" ];
 
   services.getty.autologinUser = username;
-  services.getty.greetingLine = "";
 
   networking.hostName = "nixos-desktop";
   users.users.${username} = {
