@@ -4,7 +4,7 @@
   imports = [
     flake.homeModules.home-shared
     # flake.homeModules.vscode
-    ./hyprland.nix
+    # ./hyprland.nix
   ];
 
   # Basic shell configuration

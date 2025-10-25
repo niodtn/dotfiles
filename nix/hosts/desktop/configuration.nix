@@ -11,7 +11,7 @@ in
   ];
 
   modules = {
-    gaming.enable = true;
+    gaming.enable = false;
   };
 
   # environment.systemPackages = [ ];
