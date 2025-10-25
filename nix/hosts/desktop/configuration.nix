@@ -12,12 +12,10 @@ in
 
   modules = {
     gaming.enable = false;
+    tailscale.enable = true;
   };
 
   # environment.systemPackages = [ ];
-
-  services.tailscale.enable = true;
-  services.tailscale.extraSetFlags = [ "--ssh" ];
 
   services.getty.autologinUser = username;
 

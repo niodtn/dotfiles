@@ -6,7 +6,9 @@ in
 {
   imports = [ flake.nixosModules.wsl ];
 
-  services.tailscale.enable = true;
+  modules = {
+    tailscale.enable = true;
+  };
 
   wsl.defaultUser = username; # nixos-wsl
   users.users.${username}.home = "/home/${username}";

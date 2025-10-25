@@ -5,6 +5,7 @@ with lib;
   imports = [
     ../common
     ./gaming
+    ./tailscale
   ];
 
   # Bootloader.
