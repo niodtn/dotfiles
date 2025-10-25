@@ -26,8 +26,6 @@ in
     # for gamescope
     programs.gamescope.enable = true;
     programs.gamescope.capSysNice = true;
-    services.xserver.enable = false;
-    programs.xwayland.enable = true;
 
     programs.steam = {
       enable = true;
@@ -52,8 +50,6 @@ in
       yad
     ];
 
-    hardware.bluetooth.enable = true;
-    hardware.bluetooth.powerOnBoot = true;
     hardware.xpadneo.enable = true;
   };
 }

@@ -51,6 +51,12 @@ with lib;
     pulse.enable = true;
   };
 
+  services.xserver.enable = false;
+  programs.xwayland.enable = true;
+
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
