@@ -26,6 +26,7 @@ in
     # "filen"
     "discord"
     "google-chrome"
+    "prism-launcher"
 
     "tailscale-app"
     "linearmouse" # Mouse
