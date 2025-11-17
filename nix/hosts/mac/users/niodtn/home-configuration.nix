@@ -27,9 +27,11 @@
     cat = "bat";
   };
 
-  # Direnv
-  programs.direnv = {
-    enable = true;
-    enableZshIntegration = true;
-  };
+  # # Direnv
+  # programs.direnv = {
+  #   enable = true;
+  #   enableZshIntegration = true;
+  # };
+
+  # targets.darwin.copyApps.enableChecks = false;
 }
