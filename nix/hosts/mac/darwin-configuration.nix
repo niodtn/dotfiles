@@ -25,8 +25,9 @@ in
     # "anki"
     # "filen"
     "discord"
-    "google-chrome"
-    "prismlauncher"
+    # "google-chrome"
+    "zen"
+    # "prismlauncher"
 
     "tailscale-app"
     "linearmouse" # Mouse
