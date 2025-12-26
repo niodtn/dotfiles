@@ -7,15 +7,16 @@
     ./hyprland.nix
   ];
 
-  # Basic shell configuration
   programs.bash = {
     enable = true;
     enableCompletion = true;
   };
 
-  # Shell aliases
-  home.shellAliases = {
-    rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles#desktop";
-    ll = "ls -al";
+  home = {
+    shell.enableBashIntegration = true;
+    shellAliases = {
+      rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles#desktop";
+      ll = "ls -al";
+    };
   };
 }

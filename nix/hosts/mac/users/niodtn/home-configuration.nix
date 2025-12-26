@@ -14,17 +14,19 @@
     syntaxHighlighting.enable = true;
   };
 
-  home.packages = with pkgs; [
-    lsd # `ls` command
-    bat # `cat` command
-  ];
-
-  # Shell aliases
-  home.shellAliases = {
+  home = {
+    shell.enableZshIntegration = true;
+    shellAliases = {
     rebuild = "sudo darwin-rebuild switch --flake ~/dotfiles#mac";
     ls = "lsd";
     ll = "lsd -al";
     cat = "bat";
+    };
+
+    packages = with pkgs; [
+      lsd # `ls` command
+      bat # `cat` command
+    ];
   };
 
   # # Direnv

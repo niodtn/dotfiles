@@ -25,8 +25,6 @@
       style = "auto";
       invert = true;
     };
-    enableZshIntegration = true;
-    enableBashIntegration = true;
   };
 
   home.stateVersion = "25.11";
