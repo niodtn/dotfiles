@@ -1,0 +1,11 @@
+add_newline = true
+
+[line_break]
+disabled = true
+
+[character]
+error_symbol = "[❯](bold red)"
+success_symbol = "[❯](bold green)"
+
+[git_status]
+modified = ""

@@ -4,9 +4,9 @@
   imports = [
     flake.homeModules.home-shared
     flake.homeModules.vscode
+    flake.homeModules.starship
   ];
 
-  # Basic shell configuration
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -17,10 +17,10 @@
   home = {
     shell.enableZshIntegration = true;
     shellAliases = {
-    rebuild = "sudo darwin-rebuild switch --flake ~/dotfiles#mac";
-    ls = "lsd";
-    ll = "lsd -al";
-    cat = "bat";
+      rebuild = "sudo darwin-rebuild switch --flake ~/dotfiles#mac";
+      ls = "lsd";
+      ll = "lsd -al";
+      cat = "bat";
     };
 
     packages = with pkgs; [
