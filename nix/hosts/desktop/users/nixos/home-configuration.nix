@@ -15,7 +15,7 @@
 
   # Shell aliases
   home.shellAliases = {
-    rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles/nix#desktop";
+    rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles#desktop";
     ll = "ls -al";
   };
 }

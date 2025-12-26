@@ -21,7 +21,7 @@
 
   # Shell aliases
   home.shellAliases = {
-    rebuild = "sudo darwin-rebuild switch --flake ~/dotfiles/nix#mac";
+    rebuild = "sudo darwin-rebuild switch --flake ~/dotfiles#mac";
     ls = "lsd";
     ll = "lsd -al";
     cat = "bat";

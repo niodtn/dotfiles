@@ -1,20 +1,7 @@
 # OS Specifics
 .DS_Store
 
-# Folder
-/code-server
-/direnv/lib/flox-direnv.sh
-/flutter
-/iterm2
-/karabiner
-/linearmouse
-/neofetch
-/ohmyposh
-/waveterm
-/zed
-
-# Nix
-/nix/flake.lock
+flake.lock
 
 # Aider
 /.aider.*
