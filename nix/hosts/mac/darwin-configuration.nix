@@ -19,15 +19,12 @@ in
     pkgs.keka
   ];
 
+  homebrew.brews = [ "syncthing" ];
   homebrew.casks = [
     "guitar-pro"
     "obsidian"
-    # "anki"
-    # "filen"
     "discord"
-    # "google-chrome"
     "zen"
-    # "prismlauncher"
 
     "tailscale-app"
     "linearmouse" # Mouse

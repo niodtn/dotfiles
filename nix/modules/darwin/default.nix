@@ -14,6 +14,8 @@
     nixpkgs.hostPlatform = "aarch64-darwin";
     system.stateVersion = 6; # https://github.com/LnL7/nix-darwin/blob/master/modules/examples/flake/flake.nix
 
+    # networking.computerName = lib.mkDefault "mac";
+
     system.defaults = {
       controlcenter.BatteryShowPercentage = true;
 
@@ -22,8 +24,11 @@
         autohide = true;
         minimize-to-application = true;
         mru-spaces = false;
+        scroll-to-open = true;
         show-recents = false;
+        # static-only = true;
         mineffect = "scale";
+
         # corners
         wvous-bl-corner = 1;
         wvous-br-corner = 1;
@@ -38,7 +43,7 @@
         FXRemoveOldTrashItems = true;
         AppleShowAllExtensions = true;
         _FXEnableColumnAutoSizing = true;
-        _FXSortFoldersFirst = false;
+        _FXSortFoldersFirst = true;
         FXEnableExtensionChangeWarning = false;
       };
 
@@ -58,7 +63,13 @@
 
       # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/NSGlobalDomain.nix
       NSGlobalDomain = {
+        AppleShowScrollBars = "WhenScrolling";
+        NSDocumentSaveNewDocumentsToCloud = false;
+        NSNavPanelExpandedStateForSaveMode = true;
+
+        # Menu Bar
         AppleICUForce24HourTime = true;
+        _HIHideMenuBar = true;
 
         # Keyboard
         "com.apple.keyboard.fnState" = true;
