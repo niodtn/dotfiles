@@ -5,6 +5,7 @@
     flake.homeModules.home-shared
     flake.homeModules.vscode
     flake.homeModules.starship
+    flake.homeModules.direnv
   ];
 
   programs.zsh = {
@@ -28,12 +29,6 @@
       bat # `cat` command
     ];
   };
-
-  # # Direnv
-  # programs.direnv = {
-  #   enable = true;
-  #   enableZshIntegration = true;
-  # };
 
   # targets.darwin.copyApps.enableChecks = false;
 }
