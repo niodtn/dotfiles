@@ -3,6 +3,7 @@
 {
   imports = [
     ./vscode
+    ./atuin.nix
     ./direnv.nix
     ./git.nix
     ./jujutsu.nix
@@ -11,6 +12,7 @@
   ];
 
   features = {
+    atuin.enable = true;
     git.enable = true;
     jujutsu.enable = true;
   };
@@ -19,17 +21,6 @@
     ".." = "cd ../";
     "..." = "cd ../../";
     c = "clear";
-  };
-
-  programs.atuin = {
-    enable = true;
-    daemon.enable = true;
-    settings = {
-      auto_sync = true;
-      sync_frequency = "0";
-      style = "auto";
-      invert = true;
-    };
   };
 
   home.stateVersion = "26.05";
