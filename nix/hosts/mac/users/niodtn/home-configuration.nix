@@ -2,11 +2,15 @@
 
 {
   imports = [
-    flake.homeModules.home-shared
-    flake.homeModules.vscode
-    flake.homeModules.starship
-    flake.homeModules.direnv
+    flake.homeModules.default
   ];
+
+  features = {
+    direnv.enable = true;
+    python.enable = true;
+    starship.enable = true;
+    vscode.enable = true;
+  };
 
   programs.zsh = {
     enable = true;

@@ -8,7 +8,6 @@ with lib;
 
   environment.systemPackages = with pkgs; [
     nixfmt-rfc-style # For vscode Nix IDE extension
-    uv # Python version manager
   ];
 
   nix = {

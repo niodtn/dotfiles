@@ -3,7 +3,6 @@
 with pkgs.vscode-extensions;
 [
   esbenp.prettier-vscode
-  github.vscode-pull-request-github
 
   # Themes
   sdras.night-owl # White Theme
@@ -16,16 +15,13 @@ with pkgs.vscode-extensions;
   ms-vscode-remote.remote-ssh
 
   # Copilot
-  github.copilot
-  github.copilot-chat
+  # github.copilot
+  # github.copilot-chat
 
   # Nix
   jnoortheen.nix-ide
 
-  # Python
-  ms-python.python
-  ms-python.vscode-pylance
-  charliermarsh.ruff
+  # Jupyter
   ms-toolsai.jupyter-keymap
   ms-toolsai.jupyter-renderers
   ms-toolsai.vscode-jupyter-cell-tags

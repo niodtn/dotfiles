@@ -1,7 +1,7 @@
 { flake, ... }:
 
 {
-  imports = [ flake.homeModules.home-shared ];
+  imports = [ flake.homeModules.default ];
 
   programs.bash = {
     enable = true;

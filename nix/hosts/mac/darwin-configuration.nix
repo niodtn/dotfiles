@@ -32,7 +32,6 @@ in
 
     # Dev
     "warp"
-    "visual-studio-code"
     # "finch"
   ];
   homebrew.masApps = {

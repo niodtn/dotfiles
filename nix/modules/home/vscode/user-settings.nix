@@ -13,11 +13,6 @@
   "workbench.preferredLightColorTheme" = "Night Owl Light";
   "workbench.preferredDarkColorTheme" = "One Dark Pro Flat";
 
-  # Git
-  "git.autofetch" = true;
-  "git.confirmSync" = false;
-  "git.suggestSmartCommit" = false;
-
   # Save and Formatting
   "files.autoSave" = "off";
   "editor.formatOnSave" = true;
@@ -61,13 +56,4 @@
 
   # Window Management
   "window.restoreWindows" = "none";
-
-  # Python
-  "[python]" = {
-    "editor.codeActionsOnSave" = {
-      "source.organizeImports" = "explicit";
-      "source.fixAll" = "explicit";
-    };
-    "editor.defaultFormatter" = "charliermarsh.ruff";
-  };
 }
