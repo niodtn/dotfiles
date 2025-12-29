@@ -1,10 +1,10 @@
 {
   # Fonts
-  "editor.fontFamily" = "Sarasa Mono K";
-  "terminal.integrated.fontFamily" = "Sarasa Mono K Nerd Font";
+  "editor.fontFamily" = "D2CodingLigature Nerd Font";
+  "terminal.integrated.fontFamily" = "D2CodingLigature Nerd Font";
   "editor.fontSize" = 16;
   "terminal.integrated.fontSize" = 14;
-  "editor.fontLigatures" = false;
+  "editor.fontLigatures" = true;
 
   # Themes
   "workbench.colorTheme" = "Night Owl Light";

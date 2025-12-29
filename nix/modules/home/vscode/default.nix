@@ -15,6 +15,8 @@ in
   };
 
   config = mkIf cfg.enable {
+    home.packages = [ pkgs.nerd-fonts.d2coding ];
+
     programs.vscode = {
       enable = true;
       mutableExtensionsDir = false;

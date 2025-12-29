@@ -13,10 +13,5 @@
     homebrew.onActivation.upgrade = true;
 
     homebrew.brews = [ "mas" ];
-    homebrew.taps = [ "jonz94/sarasa-nerd-fonts" ];
-    homebrew.casks = [
-      "font-sarasa-gothic"
-      "font-jetbrains-mono-nerd-font"
-    ];
   };
 }
