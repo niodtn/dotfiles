@@ -9,7 +9,7 @@ let
 in
 {
   options.features.git = {
-    enable = mkEnableOption "python git";
+    enable = mkEnableOption "git feature";
   };
 
   config = mkIf cfg.enable {

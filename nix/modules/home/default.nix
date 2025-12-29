@@ -5,11 +5,15 @@
     ./vscode
     ./direnv.nix
     ./git.nix
+    ./jujutsu.nix
     ./python.nix
     ./starship.nix
   ];
 
-  features.git.enable = true;
+  features = {
+    git.enable = true;
+    jujutsu.enable = true;
+  };
 
   home.shellAliases = {
     ".." = "cd ../";
