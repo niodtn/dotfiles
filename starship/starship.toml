@@ -9,3 +9,9 @@ success_symbol = "[❯](bold green)"
 
 [git_status]
 disabled = true
+
+[package]
+disabled = true
+
+[python]
+disabled = true
