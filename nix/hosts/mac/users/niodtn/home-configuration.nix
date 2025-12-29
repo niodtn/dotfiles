@@ -10,6 +10,7 @@
     python.enable = true;
     starship.enable = true;
     vscode.enable = true;
+    vscode.markdown.enable = true;
   };
 
   programs.zsh = {

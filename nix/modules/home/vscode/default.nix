@@ -4,28 +4,90 @@ with lib;
 let
   cfg = config.features.vscode;
 
-  extensions = import ./extensions.nix { inherit pkgs; };
-  userSettings = import ./user-settings.nix;
-  keybindings = import ./keybindings.nix { inherit pkgs; };
-
 in
 {
   options.features.vscode = {
     enable = mkEnableOption "vscode feature";
+    jupyter.enable = mkEnableOption "vscode jupyter presets";
+    markdown.enable = mkEnableOption "vscode markdown presets";
   };
 
-  config = mkIf cfg.enable {
-    home.packages = [ pkgs.nerd-fonts.d2coding ];
+  config = mkIf cfg.enable (mkMerge [
+    {
+      programs.vscode = {
+        enable = true;
+        mutableExtensionsDir = false;
 
-    programs.vscode = {
-      enable = true;
-      mutableExtensionsDir = false;
+        profiles.default = {
+          keybindings = import ./keybindings.nix { inherit pkgs; };
+          userSettings = {
+            # Save and Formatting
+            "files.autoSave" = "off";
+            "editor.formatOnSave" = true;
+            "files.trimTrailingWhitespace" = true;
+            "files.insertFinalNewline" = true;
+            "files.trimFinalNewlines" = true;
 
-      profiles.default = {
-        extensions = extensions;
-        userSettings = userSettings;
-        keybindings = keybindings;
+            # Terminal
+            "terminal.integrated.enablePersistentSessions" = false;
+            "terminal.integrated.persistentSessionReviveProcess" = "never";
+
+            # Editor - General
+            "editor.bracketPairColorization.enabled" = true;
+            "editor.minimap.enabled" = false;
+            "editor.lineNumbers" = "interval";
+            "editor.insertSpaces" = true; # Tab to spaces
+            "editor.smoothScrolling" = true;
+            "editor.stickyScroll.enabled" = false;
+            "editor.copyWithSyntaxHighlighting" = false; # 복사 제대로
+            "editor.detectIndentation" = true;
+            "editor.defaultFormatter" = "esbenp.prettier-vscode";
+
+            # Editor - Cursor
+            "editor.cursorBlinking" = "phase";
+            "editor.cursorSmoothCaretAnimation" = "on";
+            "editor.cursorWidth" = 3;
+
+            # File Tree & Explorer
+            "workbench.tree.indent" = 20;
+            "workbench.tree.renderIndentGuides" = "always";
+            "workbench.tree.enableStickyScroll" = false;
+            "workbench.tree.expandMode" = "doubleClick";
+
+            # Workbench - Layout & Navigation
+            "workbench.list.smoothScrolling" = true;
+            "workbench.navigationControl.enabled" = false;
+            "workbench.layoutControl.enabled" = false;
+            "workbench.startupEditor" = "none";
+            "breadcrumbs.enabled" = false;
+            "chat.commandCenter.enabled" = false;
+
+            # Window Management
+            "window.restoreWindows" = "none";
+          };
+          extensions = with pkgs.vscode-extensions; [
+            esbenp.prettier-vscode
+
+            # Nix
+            jnoortheen.nix-ide
+
+            # Remote Development
+            # ms-vscode-remote.remote-containers
+            # ms-vscode-remote.remote-wsl
+            # ms-vscode-remote.remote-ssh
+
+            # Copilot
+            # github.copilot
+            # github.copilot-chat
+
+          ];
+        };
       };
-    };
-  };
+    }
+
+    (import ./themes.nix { inherit pkgs; })
+
+    (mkIf cfg.jupyter.enable (import ./jupyter.nix { inherit pkgs; }))
+    (mkIf cfg.markdown.enable (import ./markdown.nix { inherit pkgs; }))
+  ]);
 }

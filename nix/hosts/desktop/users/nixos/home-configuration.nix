@@ -3,7 +3,6 @@
 {
   imports = [
     flake.homeModules.default
-    # flake.homeModules.vscode
     ./hyprland.nix
   ];
 
