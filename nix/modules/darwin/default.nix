@@ -4,6 +4,7 @@
   imports = [
     inputs.mac-app-util.darwinModules.default
     ./homebrew.nix
+    ./trackpad.nix
     ../common
   ];
 
@@ -46,15 +47,6 @@
         _FXEnableColumnAutoSizing = true;
         _FXSortFoldersFirst = true;
         FXEnableExtensionChangeWarning = false;
-      };
-
-      # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/trackpad.nix
-      trackpad = {
-        Clicking = true;
-        TrackpadThreeFingerDrag = true;
-        ActuationStrength = 0;
-        FirstClickThreshold = 0;
-        SecondClickThreshold = 0;
       };
 
       WindowManager = {

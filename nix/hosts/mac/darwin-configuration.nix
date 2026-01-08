@@ -8,6 +8,8 @@ in
 
   nix.enable = false; # Managed by Determinate
 
+  features.trackpad.enable = true;
+
   security.pam.services.sudo_local.touchIdAuth = true;
 
   environment.systemPackages = [

@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 with lib;
 
 let
@@ -8,9 +13,13 @@ in
 {
   options.features.vscode = {
     enable = mkEnableOption "vscode feature";
-    jupyter.enable = mkEnableOption "vscode jupyter presets";
-    markdown.enable = mkEnableOption "vscode markdown presets";
   };
+
+  imports = [
+    ./features/jupyter.nix
+    ./features/markdown.nix
+    ./features/nix.nix
+  ];
 
   config = mkIf cfg.enable (mkMerge [
     {
@@ -68,9 +77,6 @@ in
           extensions = with pkgs.vscode-extensions; [
             esbenp.prettier-vscode
 
-            # Nix
-            jnoortheen.nix-ide
-
             # Remote Development
             # ms-vscode-remote.remote-containers
             # ms-vscode-remote.remote-wsl
@@ -86,8 +92,5 @@ in
     }
 
     (import ./themes.nix { inherit pkgs; })
-
-    (mkIf cfg.jupyter.enable (import ./jupyter.nix { inherit pkgs; }))
-    (mkIf cfg.markdown.enable (import ./markdown.nix { inherit pkgs; }))
   ]);
 }

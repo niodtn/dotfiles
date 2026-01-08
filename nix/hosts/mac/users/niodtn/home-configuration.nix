@@ -11,6 +11,7 @@
     starship.enable = true;
     vscode.enable = true;
     vscode.markdown.enable = true;
+    vscode.nix.enable = true;
   };
 
   programs.zsh = {

@@ -1,14 +1,15 @@
-{ lib, pkgs, flake, ... }:
+{
+  lib,
+  pkgs,
+  flake,
+  ...
+}:
 with lib;
 
 {
   system.stateVersion = mkDefault "25.05";
 
   time.timeZone = "Asia/Seoul";
-
-  environment.systemPackages = with pkgs; [
-    nixfmt-rfc-style # For vscode Nix IDE extension
-  ];
 
   nix = {
     gc = {
