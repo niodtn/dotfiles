@@ -3,6 +3,7 @@
 {
   imports = [
     inputs.mac-app-util.darwinModules.default
+    ./homebrew.nix
     ../common
   ];
 
@@ -69,7 +70,7 @@
 
         # Menu Bar
         AppleICUForce24HourTime = true;
-        _HIHideMenuBar = true;
+        _HIHideMenuBar = false;
 
         # Keyboard
         "com.apple.keyboard.fnState" = true;

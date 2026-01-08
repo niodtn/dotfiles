@@ -4,10 +4,7 @@ let
   username = "niodtn";
 in
 {
-  imports = [
-    flake.darwinModules.default
-    flake.modules.darwin.homebrew
-  ];
+  imports = [ flake.darwinModules.default ];
 
   nix.enable = false; # Managed by Determinate
 
