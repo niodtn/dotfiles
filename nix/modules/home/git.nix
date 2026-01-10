@@ -1,13 +1,14 @@
-{ lib, config, pkgs, ... }:
-with lib;
-
-let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+with lib; let
   cfg = config.features.git;
 
   vscodeEnabled = config.programs.vscode.enable;
-
-in
-{
+in {
   options.features.git = {
     enable = mkEnableOption "git feature";
   };
@@ -28,13 +29,17 @@ in
     # For VSCode
     programs.vscode.profiles.default = mkIf vscodeEnabled {
       extensions = with pkgs.vscode-extensions; [
-        github.vscode-pull-request-github
+        # github.vscode-pull-request-github
       ];
 
       userSettings = {
         "git.autofetch" = true;
         "git.confirmSync" = false;
         "git.suggestSmartCommit" = false;
+        "git.mergeEditor" = true;
+        "git.inputValidation" = true;
+
+        "diffEditor.ignoreTrimWhitespace" = true;
       };
     };
   };
