@@ -1,9 +1,13 @@
-{ inputs, lib, config, ... }:
-
 {
+  inputs,
+  lib,
+  config,
+  ...
+}: {
   imports = [
     inputs.mac-app-util.darwinModules.default
     ./homebrew.nix
+    ./safari.nix
     ./trackpad.nix
     ../common
   ];
