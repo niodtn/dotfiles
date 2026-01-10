@@ -1,14 +1,16 @@
-{ flake, pkgs, ... }:
-
-let
-  username = "niodtn";
-in
 {
-  imports = [ flake.darwinModules.default ];
+  flake,
+  pkgs,
+  ...
+}: let
+  username = "niodtn";
+in {
+  imports = [flake.darwinModules.default];
 
   nix.enable = false; # Managed by Determinate
 
   features.trackpad.enable = true;
+  features.safari.enable = true;
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
@@ -18,7 +20,7 @@ in
     pkgs.keka
   ];
 
-  homebrew.brews = [ "syncthing" ];
+  homebrew.brews = ["syncthing"];
   homebrew.casks = [
     "guitar-pro"
     "obsidian"
