@@ -12,7 +12,7 @@ in {
   ];
 
   modules = {
-    gaming.enable = false;
+    kde.enable = true;
   };
 
   # environment.systemPackages = [ ];
