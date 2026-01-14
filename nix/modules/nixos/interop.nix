@@ -1,0 +1,6 @@
+{pkgs, ...}: {
+  services.dbus.enable = true;
+  security.polkit.enable = true;
+
+  environment.systemPackages = [xdg-utils];
+}

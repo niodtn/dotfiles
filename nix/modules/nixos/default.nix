@@ -6,6 +6,7 @@
 with lib; {
   imports = [
     ../common
+    ./interop.nix
     ./kde.nix
   ];
 
@@ -56,8 +57,6 @@ with lib; {
 
     services.xserver.enable = false;
     programs.xwayland.enable = true;
-
-    services.dbus.enable = true;
 
     hardware.bluetooth.enable = true;
     hardware.bluetooth.powerOnBoot = true;
