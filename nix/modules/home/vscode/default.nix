@@ -4,18 +4,15 @@
   pkgs,
   ...
 }:
-with lib;
-
-let
+with lib; let
   cfg = config.features.vscode;
-
-in
-{
+in {
   options.features.vscode = {
     enable = mkEnableOption "vscode feature";
   };
 
   imports = [
+    ./features/copilot.nix
     ./features/jupyter.nix
     ./features/markdown.nix
     ./features/nix.nix
@@ -28,7 +25,7 @@ in
         mutableExtensionsDir = false;
 
         profiles.default = {
-          keybindings = import ./keybindings.nix { inherit pkgs; };
+          keybindings = import ./keybindings.nix {inherit pkgs;};
           userSettings = {
             # Save and Formatting
             "files.autoSave" = "off";
@@ -81,16 +78,11 @@ in
             # ms-vscode-remote.remote-containers
             # ms-vscode-remote.remote-wsl
             # ms-vscode-remote.remote-ssh
-
-            # Copilot
-            # github.copilot
-            # github.copilot-chat
-
           ];
         };
       };
     }
 
-    (import ./themes.nix { inherit pkgs; })
+    (import ./themes.nix {inherit pkgs;})
   ]);
 }
