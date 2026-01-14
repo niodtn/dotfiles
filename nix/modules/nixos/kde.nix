@@ -18,6 +18,13 @@ in {
       kdePackages.plasma-workspace
     ];
 
+    # Disable kwallet
+    environment.plasma6.excludePackages = with pkgs.kdePackages; [
+      kwallet
+      kwallet-pam
+      kwalletmanager
+    ];
+
     environment.shellAliases = {
       kde = "dbus-run-session startplasma-wayland";
     };
