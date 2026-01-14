@@ -15,7 +15,9 @@ in {
     kde.enable = true;
   };
 
-  # environment.systemPackages = [ ];
+  environment.systemPackages = [
+    pkgs.google-chrome
+  ];
 
   services.tailscale.enable = true;
   services.tailscale.extraSetFlags = ["--ssh"];
