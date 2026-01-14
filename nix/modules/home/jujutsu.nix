@@ -32,6 +32,10 @@ in {
         if isDarwin
         then [pkgs.vscode-extensions.visualjj.visualjj]
         else [marketplace.jjk.jjk];
+
+      userSettings = mkIf (!isDarwin) {
+        "git.enabled" = false;
+      };
     };
   };
 }
