@@ -20,6 +20,10 @@
     # WSL
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
+    # VSCode Extensions
+    vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
+
     # NixOS Gaming
     nix-gaming.url = "github:fufexan/nix-gaming";
   };

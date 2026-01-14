@@ -1,12 +1,18 @@
-{lib, config, pkgs, ...}:
-with lib;
-
-let
+{
+  lib,
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
+with lib; let
   cfg = config.features.jujutsu;
 
   vscodeEnabled = config.programs.vscode.enable;
-in
-{
+  isDarwin = pkgs.stdenv.isDarwin;
+  system = pkgs.stdenv.hostPlatform.system;
+  marketplace = inputs.vscode-extensions.extensions.${system}.vscode-marketplace;
+in {
   options.features.jujutsu = {
     enable = mkEnableOption "jujutsu feature";
   };
@@ -22,9 +28,10 @@ in
 
     # For VSCode
     programs.vscode.profiles.default = mkIf vscodeEnabled {
-      extensions = with pkgs.vscode-extensions; [
-        visualjj.visualjj
-      ];
+      extensions =
+        if isDarwin
+        then [pkgs.vscode-extensions.visualjj.visualjj]
+        else [marketplace.jjk.jjk];
     };
   };
 }
