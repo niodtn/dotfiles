@@ -1,10 +1,9 @@
 {
   flake,
   pkgs,
+  config,
   ...
-}: let
-  username = "niodtn";
-in {
+}: {
   imports = [
     flake.nixosModules.default
     ./hardware.nix
@@ -22,12 +21,10 @@ in {
   # services.tailscale.enable = true;
   # services.tailscale.extraSetFlags = ["--ssh"];
 
-  services.getty.autologinUser = username;
-
-  networking.hostName = "nixos-desktop";
-  users.users.${username} = {
+  username = "niodtn";
+  users.users.${config.username} = {
     isNormalUser = true;
-    home = "/home/${username}";
+    home = "/home/${config.username}";
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -36,4 +33,8 @@ in {
       "uinput"
     ];
   };
+
+  services.getty.autologinUser = config.username;
+
+  networking.hostName = "nixos-desktop";
 }

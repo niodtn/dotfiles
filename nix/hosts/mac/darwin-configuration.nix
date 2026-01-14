@@ -1,10 +1,9 @@
 {
   flake,
   pkgs,
+  config,
   ...
-}: let
-  username = "niodtn";
-in {
+}: {
   imports = [flake.darwinModules.default];
 
   nix.enable = false; # Managed by Determinate
@@ -41,7 +40,8 @@ in {
     # "Bitwarden" = 1352778147;
   };
 
-  system.primaryUser = username; # nix-darwin
-  nix-homebrew.user = username; # nix-homebrew
-  users.users.${username}.home = "/Users/${username}";
+  username = "niodtn";
+  system.primaryUser = config.username; # nix-darwin
+  nix-homebrew.user = config.username; # nix-homebrew
+  users.users.${config.username}.home = "/Users/${config.username}";
 }

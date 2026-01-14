@@ -1,13 +1,13 @@
-{ flake, ... }:
-
-let
-  username = "nixos";
-in
 {
-  imports = [ flake.nixosModules.wsl ];
+  flake,
+  config,
+  ...
+}: {
+  imports = [flake.nixosModules.wsl];
 
   services.tailscale.enable = true;
 
-  wsl.defaultUser = username; # nixos-wsl
-  users.users.${username}.home = "/home/${username}";
+  username = "nixos";
+  wsl.defaultUser = config.username; # nixos-wsl
+  users.users.${config.username}.home = "/home/${config.username}";
 }
