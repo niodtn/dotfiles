@@ -1,6 +1,8 @@
-{ flake, pkgs, ... }:
-
 {
+  flake,
+  pkgs,
+  ...
+}: {
   imports = [
     flake.homeModules.default
   ];
@@ -14,15 +16,7 @@
     vscode.nix.enable = true;
   };
 
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-  };
-
   home = {
-    shell.enableZshIntegration = true;
     shellAliases = {
       rebuild = "sudo darwin-rebuild switch --flake ~/dotfiles#mac";
       ls = "lsd";

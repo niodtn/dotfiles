@@ -10,6 +10,7 @@
 
   features.trackpad.enable = true;
   features.safari.enable = true;
+  features.zsh.enable = true;
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
