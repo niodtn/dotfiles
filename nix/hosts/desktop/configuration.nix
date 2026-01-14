@@ -1,9 +1,10 @@
-{ flake, pkgs, ... }:
-
-let
-  username = "nixos";
-in
 {
+  flake,
+  pkgs,
+  ...
+}: let
+  username = "nixos";
+in {
   imports = [
     flake.nixosModules.default
     ./hardware.nix
@@ -11,13 +12,13 @@ in
   ];
 
   modules = {
-    gaming.enable = true;
+    gaming.enable = false;
   };
 
   # environment.systemPackages = [ ];
 
   services.tailscale.enable = true;
-  services.tailscale.extraSetFlags = [ "--ssh" ];
+  services.tailscale.extraSetFlags = ["--ssh"];
 
   services.getty.autologinUser = username;
 

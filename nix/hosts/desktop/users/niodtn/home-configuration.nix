@@ -1,9 +1,10 @@
-{ pkgs, flake, ... }:
-
 {
+  pkgs,
+  flake,
+  ...
+}: {
   imports = [
     flake.homeModules.default
-    ./hyprland.nix
   ];
 
   programs.bash = {

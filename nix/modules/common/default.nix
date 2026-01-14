@@ -4,10 +4,8 @@
   flake,
   ...
 }:
-with lib;
-
-{
-  system.stateVersion = mkDefault "25.05";
+with lib; {
+  system.stateVersion = mkDefault "25.11";
 
   time.timeZone = "Asia/Seoul";
 
