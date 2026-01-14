@@ -2,10 +2,13 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }:
 with lib; let
   cfg = config.features.vscode;
+  system = pkgs.stdenv.hostPlatform.system;
+  marketplace = inputs.vscode-extensions.extensions.${system}.vscode-marketplace;
 in {
   options.features.vscode = {
     enable = mkEnableOption "vscode feature";
@@ -16,73 +19,70 @@ in {
     ./features/jupyter.nix
     ./features/markdown.nix
     ./features/nix.nix
+    ./themes.nix
   ];
 
-  config = mkIf cfg.enable (mkMerge [
-    {
-      programs.vscode = {
-        enable = true;
-        mutableExtensionsDir = false;
+  config = mkIf cfg.enable {
+    programs.vscode = {
+      enable = true;
+      mutableExtensionsDir = false;
 
-        profiles.default = {
-          keybindings = import ./keybindings.nix {inherit pkgs;};
-          userSettings = {
-            # Save and Formatting
-            "files.autoSave" = "off";
-            "editor.formatOnSave" = true;
-            "files.trimTrailingWhitespace" = true;
-            "files.insertFinalNewline" = true;
-            "files.trimFinalNewlines" = true;
+      profiles.default = {
+        keybindings = import ./keybindings.nix {inherit pkgs;};
+        userSettings = {
+          # Save and Formatting
+          "files.autoSave" = "off";
+          "editor.formatOnSave" = true;
+          "files.trimTrailingWhitespace" = true;
+          "files.insertFinalNewline" = true;
+          "files.trimFinalNewlines" = true;
 
-            # Terminal
-            "terminal.integrated.enablePersistentSessions" = false;
-            "terminal.integrated.persistentSessionReviveProcess" = "never";
+          # Terminal
+          "terminal.integrated.enablePersistentSessions" = false;
+          "terminal.integrated.persistentSessionReviveProcess" = "never";
 
-            # Editor - General
-            "editor.bracketPairColorization.enabled" = true;
-            "editor.minimap.enabled" = false;
-            "editor.lineNumbers" = "interval";
-            "editor.insertSpaces" = true; # Tab to spaces
-            "editor.smoothScrolling" = true;
-            "editor.stickyScroll.enabled" = false;
-            "editor.copyWithSyntaxHighlighting" = false; # 복사 제대로
-            "editor.detectIndentation" = true;
-            "editor.defaultFormatter" = "esbenp.prettier-vscode";
+          # Editor - General
+          "editor.bracketPairColorization.enabled" = true;
+          "editor.minimap.enabled" = false;
+          "editor.lineNumbers" = "interval";
+          "editor.insertSpaces" = true; # Tab to spaces
+          "editor.smoothScrolling" = true;
+          "editor.stickyScroll.enabled" = false;
+          "editor.copyWithSyntaxHighlighting" = false; # 복사 제대로
+          "editor.detectIndentation" = true;
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
 
-            # Editor - Cursor
-            "editor.cursorBlinking" = "phase";
-            "editor.cursorSmoothCaretAnimation" = "on";
-            "editor.cursorWidth" = 3;
+          # Editor - Cursor
+          "editor.cursorBlinking" = "phase";
+          "editor.cursorSmoothCaretAnimation" = "on";
+          "editor.cursorWidth" = 3;
 
-            # File Tree & Explorer
-            "workbench.tree.indent" = 20;
-            "workbench.tree.renderIndentGuides" = "always";
-            "workbench.tree.enableStickyScroll" = false;
-            "workbench.tree.expandMode" = "doubleClick";
+          # File Tree & Explorer
+          "workbench.tree.indent" = 20;
+          "workbench.tree.renderIndentGuides" = "always";
+          "workbench.tree.enableStickyScroll" = false;
+          "workbench.tree.expandMode" = "doubleClick";
 
-            # Workbench - Layout & Navigation
-            "workbench.list.smoothScrolling" = true;
-            "workbench.navigationControl.enabled" = false;
-            "workbench.layoutControl.enabled" = false;
-            "workbench.startupEditor" = "none";
-            "breadcrumbs.enabled" = false;
-            "chat.commandCenter.enabled" = false;
+          # Workbench - Layout & Navigation
+          "workbench.list.smoothScrolling" = true;
+          "workbench.navigationControl.enabled" = false;
+          "workbench.layoutControl.enabled" = false;
+          "workbench.startupEditor" = "none";
+          "breadcrumbs.enabled" = false;
+          "chat.commandCenter.enabled" = false;
 
-            # Window Management
-            "window.restoreWindows" = "none";
-          };
-          extensions = with pkgs.vscode-extensions; [
-            esbenp.prettier-vscode
-
-            # Remote Development
-            # ms-vscode-remote.remote-containers
-            # ms-vscode-remote.remote-wsl
-            # ms-vscode-remote.remote-ssh
-          ];
+          # Window Management
+          "window.restoreWindows" = "none";
         };
-      };
-    }
+        extensions = with marketplace; [
+          esbenp.prettier-vscode
 
-    (import ./themes.nix {inherit pkgs;})
-  ]);
+          # Remote Development
+          # ms-vscode-remote.remote-containers
+          # ms-vscode-remote.remote-wsl
+          # ms-vscode-remote.remote-ssh
+        ];
+      };
+    };
+  };
 }

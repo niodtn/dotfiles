@@ -1,10 +1,15 @@
-{ pkgs, ... }:
-
 {
-  home.packages = [ pkgs.nerd-fonts.d2coding ];
+  pkgs,
+  inputs,
+  ...
+}: let
+  system = pkgs.stdenv.hostPlatform.system;
+  marketplace = inputs.vscode-extensions.extensions.${system}.vscode-marketplace;
+in {
+  home.packages = [pkgs.nerd-fonts.d2coding];
 
   programs.vscode.profiles.default = {
-    extensions = with pkgs.vscode-extensions; [
+    extensions = with marketplace; [
       sdras.night-owl # White Theme
       zhuangtongfa.material-theme # Dark Theme
       pkief.material-icon-theme # Icon

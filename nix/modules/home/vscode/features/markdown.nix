@@ -2,15 +2,14 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }:
-with lib;
-
-let
+with lib; let
   cfg = config.features.vscode.markdown;
-
-in
-{
+  system = pkgs.stdenv.hostPlatform.system;
+  marketplace = inputs.vscode-extensions.extensions.${system}.vscode-marketplace;
+in {
   options.features.vscode.markdown = {
     enable = mkEnableOption "vscode markdown feature";
   };

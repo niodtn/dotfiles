@@ -1,26 +1,30 @@
-{ lib, config, pkgs, ... }:
-with lib;
-
-let
+{
+  lib,
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+with lib; let
   cfg = config.features.python;
 
   vscodeEnabled = config.programs.vscode.enable;
-
-in
-{
+  system = pkgs.stdenv.hostPlatform.system;
+  marketplace = inputs.vscode-extensions.extensions.${system}.vscode-marketplace;
+in {
   options.features.python = {
     enable = mkEnableOption "python feature";
   };
 
   config = mkIf cfg.enable {
-    home.packages = [ pkgs.uv ];
+    home.packages = [pkgs.uv];
 
     # For VSCode
     programs.vscode.profiles.default = mkIf vscodeEnabled {
-      extensions = with pkgs.vscode-extensions; [
-        ms-python.python
-        ms-python.vscode-pylance
-        charliermarsh.ruff
+      extensions = [
+        marketplace.ms-python.python
+        pkgs.vscode-extensions.ms-python.vscode-pylance
+        marketplace.charliermarsh.ruff
       ];
 
       userSettings = {

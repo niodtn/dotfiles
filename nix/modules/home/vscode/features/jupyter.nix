@@ -2,22 +2,21 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }:
-with lib;
-
-let
+with lib; let
   cfg = config.features.vscode.jupyter;
-
-in
-{
+  system = pkgs.stdenv.hostPlatform.system;
+  marketplace = inputs.vscode-extensions.extensions.${system}.vscode-marketplace;
+in {
   options.features.vscode.jupyter = {
     enable = mkEnableOption "vscode jupyter feature";
   };
 
   config = mkIf cfg.enable {
     programs.vscode.profiles.default = {
-      extensions = with pkgs.vscode-extensions; [
+      extensions = with marketplace; [
         ms-toolsai.jupyter-keymap
         ms-toolsai.jupyter-renderers
         ms-toolsai.vscode-jupyter-cell-tags
