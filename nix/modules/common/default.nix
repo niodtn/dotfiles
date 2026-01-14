@@ -13,7 +13,10 @@ with lib; {
   config = {
     system.stateVersion = mkDefault "26.05";
 
-    time.timeZone = "Asia/Seoul";
+    nixpkgs = {
+      hostPlatform = mkDefault "x86_64-linux";
+      config.allowUnfree = true;
+    };
 
     nix = {
       gc = {
@@ -30,11 +33,9 @@ with lib; {
       };
     };
 
-    nixpkgs = {
-      hostPlatform = mkDefault "x86_64-linux";
-      config.allowUnfree = true;
-    };
+    environment.systemPackages = with pkgs; [comma];
 
+    time.timeZone = "Asia/Seoul";
     home-manager.backupFileExtension = "backup";
   };
 }
