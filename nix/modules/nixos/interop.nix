@@ -2,5 +2,5 @@
   services.dbus.enable = true;
   security.polkit.enable = true;
 
-  environment.systemPackages = [xdg-utils];
+  environment.systemPackages = [pkgs.xdg-utils];
 }
