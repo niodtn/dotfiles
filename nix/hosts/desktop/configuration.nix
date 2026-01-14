@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  username = "nixos";
+  username = "niodtn";
 in {
   imports = [
     flake.nixosModules.default
