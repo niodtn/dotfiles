@@ -8,9 +8,15 @@
 
   nix.enable = false; # Managed by Determinate
 
-  features.trackpad.enable = true;
-  features.safari.enable = true;
-  features.zsh.enable = true;
+  features = {
+    # common
+    zsh.enable = true;
+    tailscale.enable = true;
+
+    # darwin
+    trackpad.enable = true;
+    safari.enable = true;
+  };
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
@@ -27,7 +33,6 @@
     "discord"
     "zen"
 
-    "tailscale-app"
     "linearmouse" # Mouse
     "hammerspoon" # Keyboard
 

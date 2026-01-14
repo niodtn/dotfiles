@@ -5,7 +5,7 @@
 }: {
   imports = [flake.nixosModules.wsl];
 
-  services.tailscale.enable = true;
+  features.tailscale.enable = true;
 
   username = "nixos";
   wsl.defaultUser = config.username; # nixos-wsl

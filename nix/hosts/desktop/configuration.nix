@@ -20,8 +20,7 @@
     pkgs.github-cli
   ];
 
-  # services.tailscale.enable = true;
-  # services.tailscale.extraSetFlags = ["--ssh"];
+  # features.tailscale.enable = true;
 
   username = "niodtn";
   users.users.${config.username} = {

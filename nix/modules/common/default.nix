@@ -6,6 +6,7 @@
 }:
 with lib; {
   imports = [
+    ./tailscale
     ./username.nix
     ./zsh.nix
   ];
