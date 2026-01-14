@@ -35,11 +35,12 @@ in {
       userSettings = {
         "git.autofetch" = true;
         "git.confirmSync" = false;
-        "git.suggestSmartCommit" = false;
+        "git.suggestSmartCommit" = true;
         "git.mergeEditor" = true;
         "git.inputValidation" = true;
 
-        "diffEditor.ignoreTrimWhitespace" = true;
+        "git.allowForcePush" = true;
+        "git.confirmForcePush" = false;
       };
     };
   };

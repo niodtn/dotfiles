@@ -17,6 +17,10 @@ in {
         github.copilot
         github.copilot-chat
       ];
+
+      userSettings = {
+        "github.copilot.nextEditSuggestions.enabled" = false;
+      };
     };
   };
 }

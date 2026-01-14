@@ -40,6 +40,8 @@ in {
           # Terminal
           "terminal.integrated.enablePersistentSessions" = false;
           "terminal.integrated.persistentSessionReviveProcess" = "never";
+          "terminal.integrated.hideOnStartup" = "always";
+          "terminal.integrated.smoothScrolling" = true;
 
           # Editor - General
           "editor.bracketPairColorization.enabled" = true;
@@ -51,6 +53,8 @@ in {
           "editor.copyWithSyntaxHighlighting" = false; # 복사 제대로
           "editor.detectIndentation" = true;
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
+          "diffEditor.codeLens" = true;
+          "diffEditor.ignoreTrimWhitespace" = false;
 
           # Editor - Cursor
           "editor.cursorBlinking" = "phase";
@@ -62,6 +66,7 @@ in {
           "workbench.tree.renderIndentGuides" = "always";
           "workbench.tree.enableStickyScroll" = false;
           "workbench.tree.expandMode" = "doubleClick";
+          "explorer.sortOrder" = "type";
 
           # Workbench - Layout & Navigation
           "workbench.list.smoothScrolling" = true;
