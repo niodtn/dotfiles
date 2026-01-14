@@ -16,14 +16,21 @@ in {
 
     environment.systemPackages = with pkgs; [
       kdePackages.plasma-workspace
+
+      kdePackages.kwalletmanager
+      kdePackages.kwallet-pam
     ];
 
-    # Disable kwallet
-    environment.plasma6.excludePackages = with pkgs.kdePackages; [
-      kwallet
-      kwallet-pam
-      kwalletmanager
-    ];
+    security.pam.services.kwallet = {
+      name = "kwallet";
+      enableKwallet = true;
+    };
+
+    xdg.portal = {
+      enable = true;
+      extraPortals = [pkgs.kdePackages.xdg-desktop-portal-kde];
+      config.common.default = "kde";
+    };
 
     environment.shellAliases = {
       kde = "dbus-run-session startplasma-wayland";
