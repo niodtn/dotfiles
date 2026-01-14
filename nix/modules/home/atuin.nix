@@ -1,13 +1,13 @@
-{lib, config, ... }:
-with lib;
-
-let
+{
+  lib,
+  config,
+  ...
+}:
+with lib; let
   cfg = config.features.atuin;
 
   vscodeEnabled = config.programs.atuin.enable;
-
-in
-{
+in {
   options.features.atuin = {
     enable = mkEnableOption "atuin feature";
   };
@@ -19,6 +19,7 @@ in
       settings = {
         auto_sync = true;
         sync_frequency = "0";
+        sync_address = "https://api.atuin.sh";
         style = "auto";
         invert = true;
       };
