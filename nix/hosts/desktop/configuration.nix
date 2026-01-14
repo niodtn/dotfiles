@@ -11,11 +11,13 @@
   ];
 
   features = {
+    zsh.enable = true;
     kde.enable = true;
   };
 
   environment.systemPackages = [
     pkgs.google-chrome
+    pkgs.github-cli
   ];
 
   # services.tailscale.enable = true;

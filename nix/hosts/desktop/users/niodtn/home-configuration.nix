@@ -8,7 +8,9 @@
   ];
 
   features = {
+    starship.enable = true;
     vscode.enable = true;
+    vscode.nix.enable = true;
   };
 
   programs.bash = {
