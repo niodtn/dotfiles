@@ -19,8 +19,8 @@ in {
     pkgs.google-chrome
   ];
 
-  services.tailscale.enable = true;
-  services.tailscale.extraSetFlags = ["--ssh"];
+  # services.tailscale.enable = true;
+  # services.tailscale.extraSetFlags = ["--ssh"];
 
   services.getty.autologinUser = username;
 
