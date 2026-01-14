@@ -11,7 +11,7 @@ in {
     ./nvidia.nix
   ];
 
-  modules = {
+  features = {
     kde.enable = true;
   };
 
