@@ -31,6 +31,8 @@ in {
       ];
 
       userSettings = {
+        "direnv.restart.automatic" = true;
+
         "terminal.integrated.env.osx" = {
           "DIRENV_LOG_FORMAT" = "-"; # Silent for VSC
         };
