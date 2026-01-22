@@ -6,6 +6,7 @@
 }: {
   imports = [
     inputs.mac-app-util.darwinModules.default
+    ./hammerspoon.nix
     ./homebrew.nix
     ./safari.nix
     ./trackpad.nix

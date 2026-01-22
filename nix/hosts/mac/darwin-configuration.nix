@@ -14,6 +14,7 @@
     tailscale.enable = true;
 
     # darwin
+    hammerspoon.enable = true;
     trackpad.enable = true;
     safari.enable = true;
   };
@@ -34,7 +35,6 @@
     "zen"
 
     "linearmouse" # Mouse
-    "hammerspoon" # Keyboard
 
     # Dev
     "warp"
