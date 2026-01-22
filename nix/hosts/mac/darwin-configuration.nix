@@ -49,5 +49,4 @@
   username = "niodtn";
   system.primaryUser = config.username; # nix-darwin
   nix-homebrew.user = config.username; # nix-homebrew
-  users.users.${config.username}.home = "/Users/${config.username}";
 }

@@ -1,10 +1,14 @@
 {
   lib,
+  config,
   pkgs,
   flake,
   ...
 }:
-with lib; {
+with lib; let
+  username = config.username;
+  isLinux = pkgs.stdenv.hostPlatform.isLinux;
+in {
   imports = [
     ./tailscale
     ./username.nix
@@ -13,6 +17,11 @@ with lib; {
 
   config = {
     system.stateVersion = mkDefault "26.05";
+
+    users.users.${config.username}.home =
+      if isLinux
+      then "/home/${config.username}"
+      else "/Users/${config.username}";
 
     nixpkgs = {
       hostPlatform = mkDefault "x86_64-linux";

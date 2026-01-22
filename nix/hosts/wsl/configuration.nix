@@ -9,5 +9,4 @@
 
   username = "nixos";
   wsl.defaultUser = config.username; # nixos-wsl
-  users.users.${config.username}.home = "/home/${config.username}";
 }

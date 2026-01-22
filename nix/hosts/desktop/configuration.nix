@@ -25,7 +25,6 @@
   username = "niodtn";
   users.users.${config.username} = {
     isNormalUser = true;
-    home = "/home/${config.username}";
     extraGroups = [
       "networkmanager"
       "wheel"
