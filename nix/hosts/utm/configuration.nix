@@ -13,12 +13,6 @@
     zsh.enable = true;
   };
 
-  fileSystems."/home/niodtn/dotfiles" = {
-    device = "share";
-    fsType = "9p";
-    options = ["trans=virtio" "version=9p2000.L" "rw" "user" "dmask=0777,fmask=0777"];
-  };
-
   services.spice-vdagentd.enable = true;
   services.qemuGuest.enable = true;
 
