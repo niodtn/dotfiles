@@ -11,7 +11,9 @@
   ];
 
   features = {
+    # common
     zsh.enable = true;
+    # tailscale.enable = true;
 
     # nixos
     systemd-boot.enable = true;
@@ -27,18 +29,12 @@
     pkgs.github-cli
   ];
 
-  # features.tailscale.enable = true;
-
   username = "niodtn";
-  users.users.${config.username} = {
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "video"
-      "input"
-      "uinput"
-    ];
-  };
-
-  networking.hostName = "nixos-desktop";
+  users.users.${config.username}.extraGroups = [
+    "networkmanager"
+    "wheel"
+    "video"
+    "input"
+    "uinput"
+  ];
 }

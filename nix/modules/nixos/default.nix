@@ -17,10 +17,16 @@ with lib; {
   ];
 
   config = {
+    # For Windows dual-boot
     time.hardwareClockInLocalTime = true;
 
     # Enable networking
     networking.networkmanager.enable = true;
+    # Open ports in the firewall.
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+    # networking.firewall.enable = false;
 
     # Select internationalisation properties.
     i18n.defaultLocale = "en_US.UTF-8";
@@ -48,11 +54,5 @@ with lib; {
     users.users.${config.username} = {
       isNormalUser = mkDefault true;
     };
-
-    # Open ports in the firewall.
-    # networking.firewall.allowedTCPPorts = [ ... ];
-    # networking.firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
-    # networking.firewall.enable = false;
   };
 }

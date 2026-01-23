@@ -11,6 +11,7 @@
   ];
 
   features = {
+    # common
     zsh.enable = true;
     openssh.enable = true;
 
@@ -22,13 +23,10 @@
   services.spice-vdagentd.enable = true;
   services.qemuGuest.enable = true;
 
+  networking.hostName = "utm";
   username = "niodtn";
-  users.users.${config.username} = {
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-  };
-
-  networking.hostName = "nixos-desktop";
+  users.users.${config.username}.extraGroups = [
+    "networkmanager"
+    "wheel"
+  ];
 }
