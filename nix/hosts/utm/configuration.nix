@@ -15,14 +15,12 @@
     openssh.enable = true;
 
     # nixos
+    systemd-boot.enable = true;
     tty-autologin.enable = true;
   };
 
   services.spice-vdagentd.enable = true;
   services.qemuGuest.enable = true;
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   username = "niodtn";
   users.users.${config.username} = {

@@ -14,6 +14,8 @@
     zsh.enable = true;
 
     # nixos
+    systemd-boot.enable = true;
+    plymouth.enable = true;
     tty-autologin.enable = true;
     kde.enable = true;
   };

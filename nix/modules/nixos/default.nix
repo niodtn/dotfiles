@@ -9,23 +9,12 @@ with lib; {
     ../common
     ./interop.nix
     ./kde.nix
+    ./plymouth.nix
+    ./systemd-boot.nix
     ./tty-autologin.nix
   ];
 
   config = {
-    # Bootloader.
-    boot = {
-      loader.systemd-boot.enable = true;
-      loader.systemd-boot.consoleMode = "max";
-      loader.efi.canTouchEfiVariables = true;
-      kernelParams = [
-        "quiet"
-        "splash"
-      ];
-      plymouth.enable = true;
-      plymouth.theme = "spinner";
-    };
-
     time.hardwareClockInLocalTime = true;
 
     # Enable networking
