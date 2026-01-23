@@ -18,7 +18,10 @@
     # nixos
     systemd-boot.enable = true;
     tty-autologin.enable = true;
+    hyprland.enable = true;
   };
+
+  hardware.graphics.enable = true;
 
   services.spice-vdagentd.enable = true;
   services.qemuGuest.enable = true;

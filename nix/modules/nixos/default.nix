@@ -8,6 +8,7 @@ with lib; {
   imports = [
     ../common
     ./bluetooth.nix
+    ./hyprland.nix
     ./interop.nix
     ./kde.nix
     ./plymouth.nix
@@ -47,8 +48,6 @@ with lib; {
       noto-fonts-cjk-sans
     ];
 
-    services.xserver.enable = false;
-    programs.xwayland.enable = true;
     programs.nix-ld.enable = true;
 
     users.users.${config.username} = {
