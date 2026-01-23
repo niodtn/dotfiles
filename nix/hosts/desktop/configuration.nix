@@ -17,6 +17,7 @@
     systemd-boot.enable = true;
     plymouth.enable = true;
     tty-autologin.enable = true;
+    bluetooth.enable = true;
     kde.enable = true;
   };
 

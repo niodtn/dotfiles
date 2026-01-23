@@ -7,6 +7,7 @@
 with lib; {
   imports = [
     ../common
+    ./bluetooth.nix
     ./interop.nix
     ./kde.nix
     ./plymouth.nix
@@ -49,9 +50,6 @@ with lib; {
     services.xserver.enable = false;
     programs.xwayland.enable = true;
     programs.nix-ld.enable = true;
-
-    hardware.bluetooth.enable = true;
-    hardware.bluetooth.powerOnBoot = true;
 
     users.users.${config.username} = {
       isNormalUser = mkDefault true;
