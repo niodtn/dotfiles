@@ -1,11 +1,13 @@
 {
   flake,
+  inputs,
   pkgs,
   config,
   ...
 }: {
   imports = [
     flake.nixosModules.default
+    inputs.vscode-server.nixosModules.default
     ./hardware.nix
   ];
 
@@ -15,6 +17,14 @@
 
   services.spice-vdagentd.enable = true;
   services.qemuGuest.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = true;
+    };
+  };
+  services.vscode-server.enable = true;
 
   boot.initrd.availableKernelModules = [
     "virtio_pci"

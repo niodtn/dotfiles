@@ -24,6 +24,10 @@
     vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
 
+    # VSCode Server
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
+    vscode-server.inputs.nixpkgs.follows = "nixpkgs";
+
     # NixOS Gaming
     nix-gaming.url = "github:fufexan/nix-gaming";
   };
