@@ -11,6 +11,7 @@ with lib; let
 in {
   imports = [
     ./tailscale
+    ./openssh.nix
     ./username.nix
     ./zsh.nix
   ];

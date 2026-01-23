@@ -13,17 +13,11 @@
 
   features = {
     zsh.enable = true;
+    openssh.enable = true;
   };
 
   services.spice-vdagentd.enable = true;
   services.qemuGuest.enable = true;
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "no";
-      PasswordAuthentication = true;
-    };
-  };
   services.vscode-server.enable = true;
 
   boot.initrd.availableKernelModules = [
