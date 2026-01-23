@@ -57,6 +57,7 @@ with lib; {
 
     services.xserver.enable = false;
     programs.xwayland.enable = true;
+    programs.nix-ld.enable = true;
 
     hardware.bluetooth.enable = true;
     hardware.bluetooth.powerOnBoot = true;
