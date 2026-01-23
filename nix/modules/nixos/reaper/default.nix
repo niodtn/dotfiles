@@ -12,6 +12,5 @@ in
       reaper-sws-extension
       reaper-reapack-extension
     ];
-    security.rtkit.enable = true;
   };
 }

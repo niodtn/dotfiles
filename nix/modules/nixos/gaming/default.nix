@@ -36,7 +36,6 @@ in
     };
 
     services.pipewire = {
-      alsa.support32Bit = true;
       lowLatency = {
         enable = true;
         quantum = 64;

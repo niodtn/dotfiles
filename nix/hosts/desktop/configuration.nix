@@ -16,6 +16,7 @@
     # nixos
     systemd-boot.enable = true;
     plymouth.enable = true;
+    sound.enable = true;
     tty-autologin.enable = true;
     bluetooth.enable = true;
     kde.enable = true;

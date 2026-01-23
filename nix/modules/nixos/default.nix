@@ -11,6 +11,7 @@ with lib; {
     ./interop.nix
     ./kde.nix
     ./plymouth.nix
+    ./sound.nix
     ./systemd-boot.nix
     ./tty-autologin.nix
   ];
@@ -39,13 +40,6 @@ with lib; {
     fonts.packages = with pkgs; [
       noto-fonts-cjk-sans
     ];
-
-    security.rtkit.enable = true;
-    services.pipewire = {
-      enable = true;
-      alsa.enable = true;
-      pulse.enable = true;
-    };
 
     services.xserver.enable = false;
     programs.xwayland.enable = true;
