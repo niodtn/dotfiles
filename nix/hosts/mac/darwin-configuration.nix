@@ -47,6 +47,4 @@
   };
 
   username = "niodtn";
-  system.primaryUser = config.username; # nix-darwin
-  nix-homebrew.user = config.username; # nix-homebrew
 }
