@@ -15,11 +15,13 @@ in {
   };
 
   imports = [
+    ./themes.nix
+    # features
     ./features/copilot.nix
     ./features/jupyter.nix
     ./features/markdown.nix
     ./features/nix.nix
-    ./themes.nix
+    ./features/remote.nix
   ];
 
   config = mkIf cfg.enable {
@@ -81,11 +83,6 @@ in {
         };
         extensions = with marketplace; [
           esbenp.prettier-vscode
-
-          # Remote Development
-          # ms-vscode-remote.remote-containers
-          # ms-vscode-remote.remote-wsl
-          # ms-vscode-remote.remote-ssh
         ];
       };
     };
