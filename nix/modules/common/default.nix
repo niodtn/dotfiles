@@ -43,6 +43,7 @@ in {
       };
     };
 
+    programs.nix-ld.enable = true;
     environment.systemPackages = with pkgs; [comma];
 
     time.timeZone = "Asia/Seoul";
