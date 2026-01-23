@@ -23,7 +23,6 @@
 
   username = "niodtn";
   users.users.${config.username} = {
-    isNormalUser = true;
     extraGroups = [
       "networkmanager"
       "wheel"

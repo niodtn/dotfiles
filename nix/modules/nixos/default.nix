@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }:
 with lib; {
@@ -61,6 +62,10 @@ with lib; {
 
     hardware.bluetooth.enable = true;
     hardware.bluetooth.powerOnBoot = true;
+
+    users.users.${config.username} = {
+      isNormalUser = mkDefault true;
+    };
 
     # Open ports in the firewall.
     # networking.firewall.allowedTCPPorts = [ ... ];
