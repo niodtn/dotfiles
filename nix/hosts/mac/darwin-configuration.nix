@@ -19,32 +19,42 @@
     safari.enable = true;
   };
 
-  security.pam.services.sudo_local.touchIdAuth = true;
-
   environment.systemPackages = [
     pkgs.rectangle
     pkgs.betterdisplay
     pkgs.keka
   ];
 
-  homebrew.brews = ["syncthing"];
-  homebrew.casks = [
-    "guitar-pro"
-    "obsidian"
-    "discord"
-    "zen"
+  homebrew = {
+    taps = ["macos-fuse-t/homebrew-cask"];
 
-    "linearmouse" # Mouse
+    brews = [
+      "syncthing"
+    ];
 
-    # Dev
-    "warp"
-    # "finch"
-  ];
-  homebrew.masApps = {
-    # "Folder Hub" = 6473019059;
-    "Amphetamine" = 937984704;
-    # "Bitwarden" = 1352778147;
+    casks = [
+      "guitar-pro"
+      "obsidian"
+      "discord"
+      "zen"
+
+      "linearmouse" # Mouse
+
+      # Dev
+      "warp"
+      "fuse-t"
+      "fuse-t-sshfs"
+      # "finch"
+    ];
+
+    masApps = {
+      # "Folder Hub" = 6473019059;
+      "Amphetamine" = 937984704;
+      # "Bitwarden" = 1352778147;
+    };
   };
+
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   username = "niodtn";
 }
