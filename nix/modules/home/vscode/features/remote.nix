@@ -19,6 +19,11 @@ in {
         # ms-vscode-remote.remote-wsl
         ms-vscode-remote.remote-ssh
       ];
+
+      userSettings = {
+        "remote.SSH.useLocalServer" = false;
+        "remote.SSH.localServerDownload" = "always";
+      };
     };
   };
 }

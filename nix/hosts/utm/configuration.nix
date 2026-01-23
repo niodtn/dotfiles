@@ -7,7 +7,6 @@
 }: {
   imports = [
     flake.nixosModules.default
-    inputs.vscode-server.nixosModules.default
     ./hardware.nix
   ];
 
@@ -18,7 +17,6 @@
 
   services.spice-vdagentd.enable = true;
   services.qemuGuest.enable = true;
-  services.vscode-server.enable = true;
 
   boot.initrd.availableKernelModules = [
     "virtio_pci"

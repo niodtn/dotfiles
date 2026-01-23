@@ -14,7 +14,6 @@
     vscode.enable = true;
     vscode.markdown.enable = true;
     vscode.nix.enable = true;
-    vscode.remote.enable = true;
   };
 
   home = {
