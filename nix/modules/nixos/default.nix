@@ -9,6 +9,7 @@ with lib; {
     ../common
     ./interop.nix
     ./kde.nix
+    ./tty-autologin.nix
   ];
 
   config = {

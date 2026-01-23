@@ -12,6 +12,9 @@
 
   features = {
     zsh.enable = true;
+
+    # nixos
+    tty-autologin.enable = true;
     kde.enable = true;
   };
 
@@ -32,8 +35,6 @@
       "uinput"
     ];
   };
-
-  services.getty.autologinUser = config.username;
 
   networking.hostName = "nixos-desktop";
 }

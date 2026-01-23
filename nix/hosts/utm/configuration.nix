@@ -13,6 +13,9 @@
   features = {
     zsh.enable = true;
     openssh.enable = true;
+
+    # nixos
+    tty-autologin.enable = true;
   };
 
   services.spice-vdagentd.enable = true;
@@ -28,8 +31,6 @@
       "wheel"
     ];
   };
-
-  services.getty.autologinUser = config.username;
 
   networking.hostName = "nixos-desktop";
 }
