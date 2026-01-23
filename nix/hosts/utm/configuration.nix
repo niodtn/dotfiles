@@ -23,6 +23,9 @@
     "virtio_gpu"
   ];
 
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   nixpkgs.hostPlatform = "aarch64-linux";
 
   username = "niodtn";
