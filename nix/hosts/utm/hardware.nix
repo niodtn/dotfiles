@@ -26,6 +26,7 @@
     kernelModules = [];
     extraModulePackages = [];
     kernelPackages = pkgs.linuxPackages_latest;
+    loader.systemd-boot.configurationLimit = 5;
   };
 
   fileSystems = {
