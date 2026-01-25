@@ -1,6 +1,7 @@
 {
   flake,
   pkgs,
+  perSystem,
   config,
   ...
 }: {
@@ -23,6 +24,7 @@
     pkgs.rectangle
     pkgs.betterdisplay
     pkgs.keka
+    perSystem.self.iloader
   ];
 
   homebrew = {
