@@ -1,8 +1,12 @@
 #!bin/sh
 
-sudo parted /dev/vda -- mkpart ESP fat32 1MiB 512MiB
-sudo parted /dev/vda -- set 1 esp on
-sudo parted /dev/vda -- mkpart primary ext4 512MiB 100%
+TARGET_DISK="/dev/vda"
+
+sudo parted "$TARGET_DISK" --script \
+  mklabel gpt \
+  mkpart primary fat32 1MiB 512MiB \
+  set 1 esp on \
+  mkpart primary ext4 512MiB 100%
 
 sudo mkfs.fat -F 32 -n boot /dev/vda1
 sudo mkfs.ext4 -L nixos /dev/vda2
