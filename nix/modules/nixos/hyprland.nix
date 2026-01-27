@@ -38,6 +38,10 @@ in {
             "$mainMod, M, exit,"
             "$mainMod, D, exec, $menu"
           ];
+
+          ecosystem = {
+            no_update_news = true;
+          };
         };
       };
     };
