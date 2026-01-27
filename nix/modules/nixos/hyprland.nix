@@ -26,6 +26,8 @@ in {
 
     # Home Manager Options
     home-manager.users.${username} = {
+      programs.ghostty.enable = true;
+
       wayland.windowManager.hyprland = {
         enable = true;
         settings = {
@@ -41,6 +43,10 @@ in {
 
           ecosystem = {
             no_update_news = true;
+          };
+
+          misc = {
+            vfr = true;
           };
         };
       };
