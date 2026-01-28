@@ -23,7 +23,9 @@ in {
       settings = {
         user.email = "ipegte93@gmail.com";
         user.name = "niodtn";
-        revsets.immutable-heads = "main";
+
+        ui.default-commnad = "log";
+        revset-aliases."immutable_heads()" = "trunk() | tags()";
       };
     };
 
