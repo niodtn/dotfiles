@@ -10,9 +10,9 @@ with lib; let
   isLinux = pkgs.stdenv.hostPlatform.isLinux;
 in {
   imports = [
-    ./tailscale
     ./openssh.nix
     ./sshfs.nix
+    ./tailscale.nix
     ./username.nix
     ./zsh.nix
   ];
