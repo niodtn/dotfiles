@@ -15,6 +15,7 @@ in {
     ./sshfs.nix
     ./tailscale.nix
     ./vesktop.nix
+    ./zen-browser.nix
     ./zsh.nix
   ];
 
