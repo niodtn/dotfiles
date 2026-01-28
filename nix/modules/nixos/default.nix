@@ -7,8 +7,10 @@
 with lib; {
   imports = [
     ../common
+
+    ./hyprland
+
     ./bluetooth.nix
-    ./hyprland.nix
     ./interop.nix
     ./kde.nix
     ./plymouth.nix
