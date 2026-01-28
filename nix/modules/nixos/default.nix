@@ -8,11 +8,10 @@ with lib; {
   imports = [
     ../common
 
-    ./hyprland
+    ./gui
 
     ./bluetooth.nix
     ./interop.nix
-    ./kde.nix
     ./plymouth.nix
     ./sound.nix
     ./systemd-boot.nix

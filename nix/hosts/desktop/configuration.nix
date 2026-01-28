@@ -21,7 +21,10 @@
     sound.enable = true;
     tty-autologin.enable = true;
     bluetooth.enable = true;
-    kde.enable = true;
+    gui = {
+      enable = true;
+      kde.enable = true;
+    };
   };
 
   environment.systemPackages = [

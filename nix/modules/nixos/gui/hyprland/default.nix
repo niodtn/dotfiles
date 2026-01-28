@@ -5,10 +5,11 @@
   ...
 }:
 with lib; let
-  cfg = config.features.hyprland;
+  guiEnabled = config.features.gui.enable;
+  cfg = config.features.gui.hyprland;
   username = config.username;
 in {
-  options.features.hyprland = {
+  options.features.gui.hyprland = {
     enable = mkEnableOption "hyprland feature";
   };
 
@@ -17,10 +18,7 @@ in {
     ./wofi.nix
   ];
 
-  config = mkIf cfg.enable {
-    services.xserver.enable = false;
-    programs.xwayland.enable = true;
-
+  config = mkIf (guiEnabled && cfg.enable) {
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;
