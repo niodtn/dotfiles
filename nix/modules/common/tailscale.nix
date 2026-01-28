@@ -19,5 +19,9 @@ in {
         extraUpFlags = ["--ssh"];
       };
     })
+    # Darwin
+    (optionalAttrs (options ? homebrew) {
+      homebrew.casks = ["tailscale-app"];
+    })
   ]);
 }
