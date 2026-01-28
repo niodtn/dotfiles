@@ -7,21 +7,24 @@
 }:
 with lib; let
   cfg = config.features.openssh;
-  hasSettings = hasAttrByPath ["services" "openssh" "settings"] options;
+  hasHomebrew = hasAttrByPath ["homebrew"] options;
 in {
   options.features.openssh = {
     enable = mkEnableOption "openssh feature";
   };
 
-  config = mkIf (cfg.enable) (
-    mkMerge [
-      {services.openssh.enable = true;}
-      (optionalAttrs hasSettings {
-        services.openssh.settings = {
+  config = mkIf (cfg.enable) (mkMerge [
+    # nixos
+    (optionalAttrs (!hasHomebrew) {
+      services.openssh = {
+        enable = true;
+        settings = {
           PermitRootLogin = "no";
           PasswordAuthentication = true;
         };
-      })
-    ]
-  );
+      };
+    })
+    # darwin
+    (optionalAttrs hasHomebrew {})
+  ]);
 }
