@@ -23,19 +23,15 @@ in {
       settings = {
         user.email = "ipegte93@gmail.com";
         user.name = "niodtn";
+        revsets.immutable-heads = "main";
       };
     };
 
     # For VSCode
     programs.vscode.profiles.default = mkIf vscodeEnabled {
-      extensions =
-        if isDarwin
-        then [pkgs.vscode-extensions.visualjj.visualjj]
-        else [marketplace.jjk.jjk];
-
-      userSettings = mkIf (!isDarwin) {
-        "git.enabled" = false;
-      };
+      extensions = [
+        pkgs.vscode-extensions.visualjj.visualjj
+      ];
     };
   };
 }
