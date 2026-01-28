@@ -26,6 +26,7 @@
     pkgs.betterdisplay
     pkgs.keka
     perSystem.self.iloader
+    # pkgs.vesktop
   ];
 
   homebrew = {
@@ -40,6 +41,7 @@
       "obsidian"
       "discord"
       "zen"
+      "vesktop"
 
       "linearmouse" # Mouse
 
