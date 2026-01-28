@@ -11,6 +11,12 @@ in {
   options.features.hyprland = {
     enable = mkEnableOption "hyprland feature";
   };
+
+  imports = [
+    ./hyprbars.nix
+    ./wofi.nix
+  ];
+
   config = mkIf cfg.enable {
     services.xserver.enable = false;
     programs.xwayland.enable = true;
@@ -21,7 +27,7 @@ in {
     };
 
     environment.systemPackages = [
-      pkgs.wofi
+      pkgs.thunar
     ];
 
     # Home Manager Options
@@ -32,13 +38,13 @@ in {
         enable = true;
         settings = {
           "$mainMod" = "SUPER";
-          "$menu" = "wofi --show drun";
+          "$fileManager" = "thunar";
 
           monitor = [",preferred,auto,1"];
 
           bind = [
             "$mainMod, M, exit,"
-            "$mainMod, D, exec, $menu"
+            "$mainMod, E, exec, $fileManager"
           ];
 
           ecosystem = {
