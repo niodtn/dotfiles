@@ -13,17 +13,20 @@ in {
     ./openssh.nix
     ./sshfs.nix
     ./tailscale.nix
-    ./username.nix
     ./zsh.nix
   ];
+
+  options.username = mkOption {
+    type = types.str;
+  };
 
   config = {
     system.stateVersion = mkDefault "26.05";
 
-    users.users.${config.username}.home =
+    users.users.${username}.home =
       if isLinux
-      then "/home/${config.username}"
-      else "/Users/${config.username}";
+      then "/home/${username}"
+      else "/Users/${username}";
 
     nixpkgs = {
       hostPlatform = mkDefault "x86_64-linux";
