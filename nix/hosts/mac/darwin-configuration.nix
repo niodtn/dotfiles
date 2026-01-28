@@ -15,6 +15,7 @@
     tailscale.enable = true;
     sshfs.enable = true;
     ghostty.enable = true;
+    vesktop.enable = true;
 
     # darwin
     hammerspoon.enable = true;
@@ -37,7 +38,6 @@
     casks = [
       "guitar-pro"
       "obsidian"
-      "discord"
       "zen"
 
       "linearmouse" # Mouse

@@ -14,6 +14,7 @@ in {
     ./openssh.nix
     ./sshfs.nix
     ./tailscale.nix
+    ./vesktop.nix
     ./zsh.nix
   ];
 
