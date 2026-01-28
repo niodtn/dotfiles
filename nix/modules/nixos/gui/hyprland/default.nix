@@ -15,6 +15,7 @@ in {
 
   imports = [
     ./hyprbars.nix
+    ./vscode-minimal.nix
     ./wofi.nix
   ];
 
