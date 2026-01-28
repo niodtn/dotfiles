@@ -13,6 +13,7 @@
     # common
     zsh.enable = true;
     tailscale.enable = true;
+    sshfs.enable = true;
 
     # darwin
     hammerspoon.enable = true;
@@ -44,8 +45,6 @@
 
       # Dev
       "warp"
-      "fuse-t"
-      "fuse-t-sshfs"
       # "finch"
     ];
 

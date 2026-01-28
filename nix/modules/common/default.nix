@@ -12,6 +12,7 @@ in {
   imports = [
     ./tailscale
     ./openssh.nix
+    ./sshfs.nix
     ./username.nix
     ./zsh.nix
   ];
