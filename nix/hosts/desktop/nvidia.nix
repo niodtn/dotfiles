@@ -1,22 +1,29 @@
-{ config, ... }:
-
-let
+{config, ...}: let
   nvidiaPkgs = config.boot.kernelPackages.nvidiaPackages.latest;
-in
-{
-  hardware.nvidia = {
-    package = nvidiaPkgs;
-    open = false; # closed source drivers
-    powerManagement.enable = true;
-    modesetting.enable = true; # boot with nvidia modeset
+in {
+  boot = {
+    extraModulePackages = [nvidiaPkgs];
+    blacklistedKernelModules = ["nouveau"]; # block open source driver
+    kernelParams = ["nvidia-drm.modeset=1" "nvidia-drm.fbdev=1"];
   };
 
-  hardware.graphics.enable = true;
-  hardware.graphics.enable32Bit = true;
+  hardware = {
+    nvidia = {
+      package = nvidiaPkgs;
+      open = false; # closed source drivers
+      powerManagement.enable = true;
+      modesetting.enable = true; # boot with nvidia modeset
+    };
 
-  boot.extraModulePackages = [ nvidiaPkgs ];
-  boot.blacklistedKernelModules = [ "nouveau" ]; # block open source driver
-  boot.kernelParams = [ "nvidia-drm.modeset=1" ];
+    graphics.enable = true;
+    graphics.enable32Bit = true;
+  };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  environment.sessionVariables = {
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    LIBVA_DRIVER_NAME = "nvidia";
+  };
+
+  services.xserver.videoDrivers = ["nvidia"];
 }
