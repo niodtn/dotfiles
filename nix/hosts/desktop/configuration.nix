@@ -13,7 +13,7 @@
   features = {
     # common
     zsh.enable = true;
-    # tailscale.enable = true;
+    tailscale.enable = true;
 
     # nixos
     systemd-boot.enable = true;
@@ -21,7 +21,10 @@
     sound.enable = true;
     tty-autologin.enable = true;
     bluetooth.enable = true;
-    kde.enable = true;
+    gui = {
+      enable = true;
+      hyprland.enable = true;
+    };
   };
 
   environment.systemPackages = [
