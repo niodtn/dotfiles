@@ -26,6 +26,9 @@
 
     # NixOS Gaming
     nix-gaming.url = "github:fufexan/nix-gaming";
+
+    # NixOS Cosmic
+    # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   # https://github.com/numtide/blueprint

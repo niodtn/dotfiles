@@ -12,6 +12,7 @@ in {
   };
 
   imports = [
+    ./cosmic.nix
     ./hyprland
     ./kde.nix
   ];
