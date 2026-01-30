@@ -13,7 +13,7 @@
   features = {
     # common
     zsh.enable = true;
-    # tailscale.enable = true;
+    tailscale.enable = true;
 
     # nixos
     systemd-boot.enable = true;
@@ -23,7 +23,7 @@
     bluetooth.enable = true;
     gui = {
       enable = true;
-      kde.enable = true;
+      hyprland.enable = true;
     };
   };
 
