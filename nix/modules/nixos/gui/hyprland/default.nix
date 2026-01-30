@@ -28,6 +28,8 @@ in {
       pkgs.thunar
     ];
 
+    xdg.portal.config.hyprland.default = ["hyprland" "gtk"];
+
     # Home Manager Options
     home-manager.users.${username} = {
       wayland.windowManager.hyprland = {

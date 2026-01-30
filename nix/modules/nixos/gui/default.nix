@@ -18,15 +18,17 @@ in {
   ];
 
   config = mkIf cfg.enable {
+    environment.systemPackages = [pkgs.xdg-utils];
+
     xdg.portal = {
       enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-gtk];
-      config.common.default = mkDefault "*";
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-hyprland
+        pkgs.kdePackages.xdg-desktop-portal-kde
+      ];
+      config.common.default = ["gtk"];
     };
-
-    environment.systemPackages = [
-      pkgs.xdg-utils
-    ];
 
     services.xserver.enable = false;
     programs.xwayland.enable = true;
