@@ -13,22 +13,22 @@ in {
   };
 
   config = mkIf (guiEnabled && cfg.enable) {
-    services.desktopManager.plasma6.enable = true;
-    # services.displayManager.sddm.wayland.enable = true;
-
-    security.pam.services.login.enableKwallet = true;
+    xdg.portal.config.kde.default = ["kde" "gtk"];
 
     environment.systemPackages = with pkgs; [
       kdePackages.kwalletmanager
     ];
-    security.pam.services.kwallet = {
-      name = "kwallet";
-      enableKwallet = true;
-    };
 
-    xdg.portal.extraPortals = [
-      pkgs.kdePackages.xdg-desktop-portal-kde
-    ];
+    services.desktopManager.plasma6.enable = true;
+    services.displayManager.sddm.wayland.enable = false;
+
+    security.pam.services = {
+      login.enableKwallet = true;
+      kwallet = {
+        name = "kwallet";
+        enableKwallet = true;
+      };
+    };
 
     environment.shellAliases = {
       kde = "dbus-run-session startplasma-wayland";
