@@ -14,6 +14,7 @@
     # common
     zsh.enable = true;
     # tailscale.enable = true;
+    ghostty.enable = true;
 
     # nixos
     systemd-boot.enable = true;
@@ -23,7 +24,7 @@
     bluetooth.enable = true;
     gui = {
       enable = true;
-      kde.enable = true;
+      niri.enable = true;
     };
   };
 

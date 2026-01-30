@@ -15,6 +15,7 @@ in {
     ./cosmic.nix
     ./hyprland
     ./kde.nix
+    ./niri.nix
   ];
 
   config = mkIf cfg.enable {
@@ -25,6 +26,7 @@ in {
       extraPortals = [
         pkgs.xdg-desktop-portal-gtk
         pkgs.xdg-desktop-portal-hyprland
+        pkgs.xdg-desktop-portal-gnome
         pkgs.kdePackages.xdg-desktop-portal-kde
       ];
       config.common.default = ["gtk"];
