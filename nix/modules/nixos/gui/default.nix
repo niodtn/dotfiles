@@ -30,5 +30,7 @@ in {
 
     services.xserver.enable = false;
     programs.xwayland.enable = true;
+
+    users.users.${config.username}.extraGroups = ["video"];
   };
 }

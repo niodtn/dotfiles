@@ -36,8 +36,5 @@
   users.users.${config.username}.extraGroups = [
     "networkmanager"
     "wheel"
-    "video"
-    "input"
-    "uinput"
   ];
 }
