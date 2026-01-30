@@ -14,6 +14,7 @@
     zsh.enable = true;
     tailscale.enable = true;
     sshfs.enable = true;
+    ghostty.enable = true;
 
     # darwin
     hammerspoon.enable = true;
@@ -44,7 +45,6 @@
       "linearmouse" # Mouse
 
       # Dev
-      "warp"
       # "finch"
     ];
 
