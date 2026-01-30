@@ -11,6 +11,7 @@
     starship.enable = true;
     vscode.enable = true;
     vscode.nix.enable = true;
+    vscode.minimal.enable = true;
   };
 
   home = {

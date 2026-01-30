@@ -20,6 +20,7 @@ in {
     ./features/copilot.nix
     ./features/jupyter.nix
     ./features/markdown.nix
+    ./features/minimal.nix
     ./features/nix.nix
     ./features/remote.nix
   ];
