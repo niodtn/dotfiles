@@ -6,7 +6,6 @@
 }:
 with lib; let
   cfg = config.features.sshfs;
-  hasHomebrew = hasAttrByPath ["homebrew"] options;
 in {
   options.features.sshfs = {
     enable = mkEnableOption "sshfs feature";
@@ -17,12 +16,12 @@ in {
     {
       features.openssh.enable = mkForce true;
     }
-    # nixos
-    (optionalAttrs (!hasHomebrew) {
+    # linux
+    (optionalAttrs (options ? boot) {
       environment.systemPackages = [pkgs.sshfs];
     })
     # darwin
-    (optionalAttrs hasHomebrew {
+    (optionalAttrs (options ? homebrew) {
       homebrew.casks = [
         "fuse-t"
         "fuse-t-sshfs"

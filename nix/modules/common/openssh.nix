@@ -1,21 +1,19 @@
 {
   lib,
   config,
-  pkgs,
   options,
   ...
 }:
 with lib; let
   cfg = config.features.openssh;
-  hasHomebrew = hasAttrByPath ["homebrew"] options;
 in {
   options.features.openssh = {
     enable = mkEnableOption "openssh feature";
   };
 
   config = mkIf (cfg.enable) (mkMerge [
-    # nixos
-    (optionalAttrs (!hasHomebrew) {
+    # linux
+    (optionalAttrs (options ? boot) {
       services.openssh = {
         enable = true;
         settings = {
@@ -25,6 +23,6 @@ in {
       };
     })
     # darwin
-    (optionalAttrs hasHomebrew {})
+    (optionalAttrs (options ? homebrew) {})
   ]);
 }
