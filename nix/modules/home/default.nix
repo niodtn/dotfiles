@@ -2,7 +2,6 @@
   imports = [
     ./atuin.nix
     ./direnv.nix
-    ./git.nix
     ./jujutsu.nix
     ./python.nix
     ./starship.nix
@@ -10,7 +9,6 @@
 
   features = {
     atuin.enable = true;
-    git.enable = true;
     jujutsu.enable = true;
   };
 

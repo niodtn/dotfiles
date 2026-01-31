@@ -12,6 +12,7 @@ in {
   imports = [
     ./vscode
     ./ghostty.nix
+    ./git.nix
     ./openssh.nix
     ./sshfs.nix
     ./tailscale.nix
