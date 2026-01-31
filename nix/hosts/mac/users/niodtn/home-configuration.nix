@@ -1,21 +1,4 @@
-{
-  flake,
-  pkgs,
-  ...
-}: {
-  imports = [
-    flake.homeModules.default
-  ];
-
-  features = {
-    direnv.enable = true;
-    python.enable = true;
-    starship.enable = true;
-    vscode.enable = true;
-    vscode.markdown.enable = true;
-    vscode.nix.enable = true;
-  };
-
+{pkgs, ...}: {
   home = {
     shellAliases = {
       rebuild = "sudo darwin-rebuild switch --flake ~/dotfiles#mac";

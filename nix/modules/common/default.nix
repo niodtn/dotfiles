@@ -7,12 +7,18 @@
 }:
 with lib; let
   username = config.username;
-  isLinux = pkgs.stdenv.hostPlatform.isLinux;
 in {
   imports = [
+    ./vscode
+    ./atuin.nix
+    ./direnv.nix
     ./ghostty.nix
+    ./git.nix
+    ./jujutsu.nix
     ./openssh.nix
+    ./python.nix
     ./sshfs.nix
+    ./starship.nix
     ./tailscale.nix
     ./vesktop.nix
     ./zen-browser.nix
@@ -27,7 +33,7 @@ in {
     system.stateVersion = mkDefault "26.05";
 
     users.users.${username}.home =
-      if isLinux
+      if pkgs.stdenv.hostPlatform.isLinux
       then "/home/${username}"
       else "/Users/${username}";
 
@@ -54,6 +60,18 @@ in {
     environment.systemPackages = with pkgs; [comma];
 
     time.timeZone = "Asia/Seoul";
-    home-manager.backupFileExtension = "backup";
+
+    home-manager = {
+      backupFileExtension = "backup";
+      users.${username} = {
+        home.shellAliases = {
+          ".." = "cd ../";
+          "..." = "cd ../../";
+          c = "clear";
+        };
+
+        home.stateVersion = "26.05";
+      };
+    };
   };
 }
