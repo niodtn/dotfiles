@@ -22,6 +22,11 @@ in {
           background-blur-radius = 10;
         };
       };
+
+      features = {
+        zsh.enable = true;
+        git.enable = true;
+      };
     }
     # linux
     (optionalAttrs (options ? boot) {
