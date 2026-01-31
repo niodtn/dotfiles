@@ -10,6 +10,7 @@ with lib; let
   isLinux = pkgs.stdenv.hostPlatform.isLinux;
 in {
   imports = [
+    ./vscode
     ./ghostty.nix
     ./openssh.nix
     ./sshfs.nix

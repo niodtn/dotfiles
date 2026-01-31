@@ -16,6 +16,12 @@
     sshfs.enable = true;
     ghostty.enable = true;
 
+    vscode = {
+      enable = true;
+      nix.enable = true;
+      markdown.enable = true;
+    };
+
     # darwin
     hammerspoon.enable = true;
     trackpad.enable = true;

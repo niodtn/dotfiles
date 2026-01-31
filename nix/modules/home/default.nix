@@ -1,8 +1,5 @@
-{ ... }:
-
-{
+{...}: {
   imports = [
-    ./vscode
     ./atuin.nix
     ./direnv.nix
     ./git.nix
