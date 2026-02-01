@@ -30,8 +30,6 @@
   ];
 
   homebrew = {
-    taps = ["macos-fuse-t/homebrew-cask"];
-
     brews = [
       "syncthing"
     ];

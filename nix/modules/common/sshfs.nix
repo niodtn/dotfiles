@@ -22,10 +22,13 @@ in {
     })
     # darwin
     (optionalAttrs (options ? homebrew) {
-      homebrew.casks = [
-        "fuse-t"
-        "fuse-t-sshfs"
-      ];
+      homebrew = {
+        taps = ["macos-fuse-t/homebrew-cask"];
+        casks = [
+          "fuse-t"
+          "fuse-t-sshfs"
+        ];
+      };
     })
   ]);
 }
