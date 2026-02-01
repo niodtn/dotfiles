@@ -7,7 +7,7 @@
   sha256 = "sha256-OQa5cQx2KIh1op3wMH0I8v9vXOq6PeF00Z0NQRL823s=";
 in
   pkgs.stdenvNoCC.mkDerivation {
-    name = "iloader";
+    pname = "iloader";
     inherit version;
 
     src = pkgs.fetchurl {
