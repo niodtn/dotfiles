@@ -38,7 +38,11 @@ in {
       };
     }
     # linux
-    (optionalAttrs (options ? boot) {})
+    (optionalAttrs (options ? boot) {
+      home-manager.users.${config.username}.programs.vesktop = {
+        vencord.useSystem = true;
+      };
+    })
     # Darwin
     (optionalAttrs (options ? homebrew) {
       home-manager.users.${config.username}.programs.vesktop = {
