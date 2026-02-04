@@ -16,6 +16,7 @@
     sshfs.enable = true;
     ghostty.enable = true;
     vesktop.enable = true;
+    zen-browser.enable = true;
 
     # darwin
     hammerspoon.enable = true;
@@ -38,8 +39,6 @@
     casks = [
       "guitar-pro"
       "obsidian"
-      "zen"
-
       "linearmouse" # Mouse
 
       # Dev
@@ -49,7 +48,6 @@
     masApps = {
       # "Folder Hub" = 6473019059;
       "Amphetamine" = 937984704;
-      # "Bitwarden" = 1352778147;
     };
   };
 

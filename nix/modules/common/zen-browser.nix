@@ -19,7 +19,7 @@ in {
     # common
     {
       home-manager.users.${config.username} = {
-        imports = [inputs.zen-browser.homeModules.twilight];
+        imports = [inputs.zen-browser.homeModules.beta];
         programs.zen-browser = {
           enable = true;
 
@@ -28,9 +28,18 @@ in {
             DontCheckDefaultBrowser = true;
             DisableTelemetry = true;
             NoDefaultBookmarks = true;
+            DisableFirefoxAccounts = true;
+            OfferToSaveLogins = false;
 
             AutofillAddressEnabled = false;
             AutofillCreditCardEnabled = false;
+
+            EnableTrackingProtection = {
+              Value = true;
+              Locked = true;
+              Cryptomining = true;
+              Fingerprinting = true;
+            };
           };
 
           profiles.default = {
@@ -42,6 +51,11 @@ in {
             settings = {
               "zen.welcome-screen.seen" = true;
               "zen.workspaces.natural-scroll" = true;
+              "zen.view.compact.enable-at-startup" = true;
+              "zen.view.compact.hide-tabbar" = true;
+              "zen.view.compact.hide-toolbar" = mkDefault true;
+              "browser.aboutConfig.showWarning" = false;
+              "browser.tabs.warnOnClose" = false;
             };
           };
         };
@@ -60,6 +74,9 @@ in {
       home-manager.users.${config.username} = {
         programs.zen-browser = {
           darwinDefaultsId = "app.zen-browser.zen";
+          profiles.default.settings = {
+            "zen.view.compact.hide-toolbar" = false;
+          };
         };
       };
     })
