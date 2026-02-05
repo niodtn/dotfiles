@@ -1,19 +1,18 @@
 {
   lib,
   config,
-  inputs,
   pkgs,
+  inputs,
   options,
   ...
 }:
 with lib; let
   cfg = config.features.zen-browser;
+  nixSnowflakeIcon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
 in {
   options.features.zen-browser = {
     enable = mkEnableOption "zen-browser feature";
   };
-
-  # imports = [inputs.zen-browser.homeModules.twilight];
 
   config = mkIf cfg.enable (mkMerge [
     # common
@@ -57,6 +56,55 @@ in {
               "browser.aboutConfig.showWarning" = false;
               "browser.tabs.warnOnClose" = false;
             };
+            search = {
+              force = true;
+              default = "google";
+              engines = {
+                "Nix Pkgs" = {
+                  urls = [
+                    {
+                      template = "https://search.nixos.org/packages";
+                      params = [
+                        {
+                          name = "type";
+                          value = "packages";
+                        }
+                        {
+                          name = "channel";
+                          value = "unstable";
+                        }
+                        {
+                          name = "query";
+                          value = "{searchTerms}";
+                        }
+                      ];
+                    }
+                  ];
+                  icon = nixSnowflakeIcon;
+                  definedAliases = ["pkgs"];
+                };
+
+                "Home Manager Options" = {
+                  urls = [
+                    {
+                      template = "https://home-manager-options.extranix.com/";
+                      params = [
+                        {
+                          name = "query";
+                          value = "{searchTerms}";
+                        }
+                        {
+                          name = "release";
+                          value = "master";
+                        }
+                      ];
+                    }
+                  ];
+                  icon = nixSnowflakeIcon;
+                  definedAliases = ["home"];
+                };
+              };
+            };
           };
         };
       };
@@ -66,6 +114,29 @@ in {
       home-manager.users.${config.username} = {
         programs.zen-browser = {
           nativeMessagingHosts = [pkgs.firefoxpwa];
+          profiles.default = {
+            search.engines = {
+              "Nix Options" = {
+                urls = [
+                  {
+                    template = "https://search.nixos.org/options";
+                    params = [
+                      {
+                        name = "channel";
+                        value = "unstable";
+                      }
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
+                icon = nixSnowflakeIcon;
+                definedAliases = ["nix"];
+              };
+            };
+          };
         };
       };
     })
@@ -74,8 +145,27 @@ in {
       home-manager.users.${config.username} = {
         programs.zen-browser = {
           darwinDefaultsId = "app.zen-browser.zen";
-          profiles.default.settings = {
-            "zen.view.compact.hide-toolbar" = false;
+          profiles.default = {
+            settings = {
+              "zen.view.compact.hide-toolbar" = false;
+            };
+            search.engines = {
+              "Nix Darwin Options" = {
+                urls = [
+                  {
+                    template = "https://mynixos.com/search";
+                    params = [
+                      {
+                        name = "q";
+                        value = "nix-darwin%2Foption+{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
+                icon = nixSnowflakeIcon;
+                definedAliases = ["nix"];
+              };
+            };
           };
         };
       };
