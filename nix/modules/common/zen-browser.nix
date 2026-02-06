@@ -56,6 +56,9 @@ in {
               "browser.aboutConfig.showWarning" = false;
               "browser.tabs.warnOnClose" = false;
             };
+            mods = [
+              "72f8f48d-86b9-4487-acea-eb4977b18f21" # Better CtrlTab Panel
+            ];
             search = {
               force = true;
               default = "google";
