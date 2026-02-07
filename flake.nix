@@ -27,6 +27,7 @@
     # NixOS
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nix-gaming.url = "github:fufexan/nix-gaming";
+    niri.url = "github:sodiboo/niri-flake";
 
     # Darwin
     nix-darwin.url = "github:nix-darwin/nix-darwin";

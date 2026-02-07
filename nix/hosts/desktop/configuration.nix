@@ -46,7 +46,6 @@
   };
 
   environment.systemPackages = [
-    pkgs.google-chrome
     pkgs.github-cli
   ];
 

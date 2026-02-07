@@ -12,10 +12,10 @@ in {
   };
 
   imports = [
-    ./cosmic.nix
     ./hyprland
+    ./niri
+    ./cosmic.nix
     ./kde.nix
-    ./niri.nix
   ];
 
   config = mkIf cfg.enable {
