@@ -1,5 +1,0 @@
-binds {
-    "Mod+Q" { close-window; }
-    "Mod+Return" { maximize-column; }
-    "Mod+Space" { spawn "walker"; }
-}
