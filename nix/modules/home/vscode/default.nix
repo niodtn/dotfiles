@@ -76,11 +76,15 @@ in {
           "workbench.navigationControl.enabled" = false;
           "workbench.layoutControl.enabled" = false;
           "workbench.startupEditor" = "none";
-          "breadcrumbs.enabled" = false;
-          "chat.commandCenter.enabled" = false;
 
           # Window Management
           "window.restoreWindows" = "none";
+          "window.commandCenter" = false;
+
+          # etc
+          "breadcrumbs.enabled" = false;
+          "chat.commandCenter.enabled" = false;
+          "chat.agentsControl.enabled" = false;
         };
         extensions = with marketplace; [
           esbenp.prettier-vscode
