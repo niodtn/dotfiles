@@ -28,6 +28,7 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nix-gaming.url = "github:fufexan/nix-gaming";
     niri.url = "github:sodiboo/niri-flake";
+    awww.url = "git+https://codeberg.org/LGFae/awww";
 
     # Darwin
     nix-darwin.url = "github:nix-darwin/nix-darwin";
