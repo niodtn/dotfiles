@@ -43,10 +43,12 @@ in {
 
           profiles.default = {
             id = 0;
+
             extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
               ublock-origin
               bitwarden
             ];
+
             settings = {
               "zen.welcome-screen.seen" = true;
               "zen.workspaces.natural-scroll" = true;
@@ -55,10 +57,13 @@ in {
               "zen.view.compact.hide-toolbar" = mkDefault true;
               "browser.aboutConfig.showWarning" = false;
               "browser.tabs.warnOnClose" = false;
+              "browser.ctrlTab.sortByRecentlyUsed" = true;
             };
+
             mods = [
               "72f8f48d-86b9-4487-acea-eb4977b18f21" # Better CtrlTab Panel
             ];
+
             search = {
               force = true;
               default = "google";
