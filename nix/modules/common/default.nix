@@ -11,6 +11,7 @@ in {
   imports = [
     ./vscode
     ./atuin.nix
+    ./comma.nix
     ./direnv.nix
     ./ghostty.nix
     ./git.nix
@@ -56,8 +57,6 @@ in {
         extra-trusted-public-keys = flake.lib.caches.trustedPublicKeys;
       };
     };
-
-    environment.systemPackages = with pkgs; [comma];
 
     time.timeZone = "Asia/Seoul";
 
