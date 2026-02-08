@@ -29,6 +29,7 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
     niri.url = "github:sodiboo/niri-flake";
     awww.url = "git+https://codeberg.org/LGFae/awww";
+    matugen.url = "github:/InioX/Matugen";
 
     # Darwin
     nix-darwin.url = "github:nix-darwin/nix-darwin";
