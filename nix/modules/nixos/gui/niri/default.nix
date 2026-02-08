@@ -42,8 +42,11 @@ in {
 
           binds = {
             "Mod+Q".action.close-window = [];
-            "Mod+Return".action.maximize-column = [];
             "Mod+W".action.toggle-column-tabbed-display = [];
+
+            "Mod+Return".action.maximize-column = [];
+            "Mod+Shift+Return".action.fullscreen-window = [];
+            "Mod+R".action.reset-window-instance-size = [];
 
             "Mod+Left".action.focus-column-left = [];
             "Mod+Right".action.focus-column-right = [];
