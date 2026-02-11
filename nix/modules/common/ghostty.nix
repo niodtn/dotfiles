@@ -39,7 +39,7 @@ in {
           window-padding-x = 25;
           window-padding-balance = true;
           macos-titlebar-style = "tabs";
-          macos-icon = "blueprint";
+          # macos-icon = "blueprint";
           macos-secure-input-indication = false;
         };
       };
