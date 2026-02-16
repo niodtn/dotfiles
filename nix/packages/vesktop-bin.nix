@@ -3,8 +3,8 @@
   perSystem,
   ...
 }: let
-  version = "1.6.4";
-  sha256 = "sha256-p40KvOz7HGFbe9Pr4EKLSun4pvb/pt0oi71C9ppEDfo=";
+  version = "1.6.5";
+  sha256 = "sha256-VhWrPn7i1XEs5ZLPSouPcNCvWubQGOcop5HmgCpcUDQ=";
 in
   pkgs.stdenvNoCC.mkDerivation {
     pname = "vesktop-bin";
