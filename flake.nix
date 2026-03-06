@@ -24,6 +24,8 @@
     vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
 
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
     # NixOS
     apple-silicon-support.url = "github:nix-community/nixos-apple-silicon";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
