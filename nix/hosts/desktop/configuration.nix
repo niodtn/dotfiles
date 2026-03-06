@@ -45,10 +45,6 @@
     };
   };
 
-  environment.systemPackages = [
-    pkgs.github-cli
-  ];
-
   username = "niodtn";
   users.users.${config.username}.extraGroups = [
     "networkmanager"

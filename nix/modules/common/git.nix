@@ -13,6 +13,10 @@ in {
   };
 
   config = mkIf cfg.enable {
+    environment.systemPackages = [
+      pkgs.github-cli
+    ];
+
     home-manager.users.${config.username} = {
       programs.git = {
         enable = true;
