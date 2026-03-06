@@ -26,6 +26,7 @@
     ghostty.enable = true;
     zen-browser.enable = true;
     vscode.enable = true;
+    spicetify.enable = true;
   };
 
   boot.loader.systemd-boot.enable = true;

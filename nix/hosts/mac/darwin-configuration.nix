@@ -32,6 +32,7 @@
       nix.enable = true;
       markdown.enable = true;
     };
+    spicetify.enable = true;
 
     # darwin
     hammerspoon.enable = true;

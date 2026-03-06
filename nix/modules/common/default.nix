@@ -18,6 +18,7 @@ in {
     ./jujutsu.nix
     ./openssh.nix
     ./python.nix
+    ./spicetify.nix
     ./sshfs.nix
     ./starship.nix
     ./tailscale.nix
