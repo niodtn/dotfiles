@@ -12,9 +12,9 @@ in {
   };
 
   imports = [
-    ./hyprland
-    ./niri
-    ./cosmic.nix
+    #./hyprland
+    #./niri
+    #./cosmic.nix
     ./kde.nix
   ];
 
