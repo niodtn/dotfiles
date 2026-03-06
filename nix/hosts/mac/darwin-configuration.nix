@@ -20,7 +20,7 @@
     git.enable = true;
     jujutsu.enable = true;
     python.enable = true;
-    sshfs.enable = true;
+    # sshfs.enable = true;
     starship.enable = true;
 
     ## gui
