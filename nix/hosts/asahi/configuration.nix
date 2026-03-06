@@ -22,17 +22,29 @@
 
     # nixos
     tty-autologin.enable = true;
+    gui = {
+      enable = true;
+      kde.enable = true;
+    };
 
+    # gui
     ghostty.enable = true;
     zen-browser.enable = true;
-    vscode.enable = true;
-    spicetify.enable = true;
+    vscode = {
+      enable = true;
+      nix.enable = true;
+    };
+    # spicetify.enable = true;
   };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = false;
-
+  # asahi
   hardware.asahi.peripheralFirmwareDirectory = /boot/asahi;
+  boot.loader = {
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 5;
+    };
+  };
 
   # wifi
   # networking.wireless.iwd = {
@@ -40,10 +52,12 @@
   #   settings.General.EnableNetworkConfiguration = true;
   # };
 
-  # plasma6
-  services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  # bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings.General.Experimental = true;
+  };
 
   username = "niodtn";
   users.users.${config.username}.extraGroups = [
