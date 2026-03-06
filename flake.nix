@@ -25,6 +25,7 @@
     vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
 
     # NixOS
+    apple-silicon-support.url = "github:nix-community/nixos-apple-silicon";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nix-gaming.url = "github:fufexan/nix-gaming";
     niri.url = "github:sodiboo/niri-flake";
