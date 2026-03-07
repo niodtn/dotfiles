@@ -12,6 +12,7 @@
 
   features = {
     zsh.enable = true;
+    tailscale.enable = true;
 
     # shell
     comma.enable = true;
@@ -32,6 +33,7 @@
     zen-browser.enable = true;
     vscode = {
       enable = true;
+      minimal.enable = true;
       nix.enable = true;
     };
     # spicetify.enable = true;
@@ -39,11 +41,10 @@
 
   # asahi
   hardware.asahi.peripheralFirmwareDirectory = /boot/asahi;
-  boot.loader = {
-    systemd-boot = {
-      enable = true;
-      configurationLimit = 5;
-    };
+  boot.loader.grub.enable = false;
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 5;
   };
 
   # wifi
