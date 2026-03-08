@@ -11,6 +11,7 @@ with lib; {
     ./gui
 
     ./bluetooth.nix
+    ./i18n.nix
     ./interop.nix
     ./plymouth.nix
     ./sound.nix
