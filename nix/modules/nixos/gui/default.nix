@@ -15,7 +15,8 @@ in {
     #./hyprland
     #./niri
     #./cosmic.nix
-    ./kde.nix
+    # ./kde.nix
+    ./labwc.nix
   ];
 
   config = mkIf cfg.enable {

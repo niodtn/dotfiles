@@ -1,6 +1,7 @@
 {
   inputs,
   flake,
+  lib,
   config,
   ...
 }: {
@@ -25,7 +26,8 @@
     tty-autologin.enable = true;
     gui = {
       enable = true;
-      kde.enable = true;
+      # kde.enable = true;
+      labwc.enable = true;
     };
 
     # gui
@@ -41,7 +43,7 @@
 
   # asahi
   hardware.asahi.peripheralFirmwareDirectory = /boot/asahi;
-  boot.loader.grub.enable = false;
+  boot.loader.grub.enable = lib.mkForce false;
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 5;
