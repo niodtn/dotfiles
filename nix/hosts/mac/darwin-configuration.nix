@@ -7,8 +7,6 @@
 }: {
   imports = [flake.darwinModules.default];
 
-  nix.enable = false; # Managed by Determinate
-
   features = {
     zsh.enable = true;
     tailscale.enable = true;
@@ -20,7 +18,6 @@
     git.enable = true;
     jujutsu.enable = true;
     python.enable = true;
-    # sshfs.enable = true;
     starship.enable = true;
 
     ## gui
@@ -32,19 +29,16 @@
       nix.enable = true;
       markdown.enable = true;
     };
-    spicetify.enable = true;
 
     # darwin
     hammerspoon.enable = true;
     trackpad.enable = true;
-    safari.enable = true;
+    #safari.enable = true;
   };
 
   environment.systemPackages = [
     pkgs.rectangle
     pkgs.betterdisplay
-    pkgs.keka
-    perSystem.self.iloader
   ];
 
   homebrew = {
@@ -53,16 +47,16 @@
     ];
 
     casks = [
-      "guitar-pro"
       "obsidian"
       "linearmouse" # Mouse
+      "prismlauncher"
 
       # Dev
       # "finch"
     ];
 
     masApps = {
-      # "Folder Hub" = 6473019059;
+      "Folder Hub" = 6473019059;
       "Amphetamine" = 937984704;
     };
   };
