@@ -54,7 +54,7 @@ in {
               "zen.workspaces.natural-scroll" = true;
               "zen.view.compact.enable-at-startup" = true;
               "zen.view.compact.hide-tabbar" = true;
-              "zen.view.compact.hide-toolbar" = mkDefault true;
+              "zen.view.compact.hide-toolbar" = false;
               "browser.aboutConfig.showWarning" = false;
               "browser.tabs.warnOnClose" = false;
               "browser.ctrlTab.sortByRecentlyUsed" = true;
