@@ -50,6 +50,7 @@
       "obsidian"
       "linearmouse" # Mouse
       "prismlauncher"
+      "spotify"
 
       # Dev
       # "finch"
