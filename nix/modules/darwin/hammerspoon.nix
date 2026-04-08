@@ -18,7 +18,6 @@ in {
     # Home Manager Options
     home-manager.users.${username}.home.file.".hammerspoon" = {
       source = "${flake}/hammerspoon";
-      recursive = true;
     };
   };
 }
