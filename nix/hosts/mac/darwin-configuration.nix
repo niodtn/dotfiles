@@ -38,7 +38,7 @@
 
   environment.systemPackages = [
     pkgs.rectangle
-    pkgs.betterdisplay
+    pkgs.betterdisplay # License key is in Bitwarden
   ];
 
   homebrew = {
@@ -51,6 +51,7 @@
       "linearmouse" # Mouse
       "prismlauncher"
       "spotify"
+      "soundsource" # License key is in Bitwarden
 
       # Dev
       # "finch"
