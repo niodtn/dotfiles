@@ -3,6 +3,7 @@
   perSystem,
   ...
 }: let
+  # https://github.com/nab138/iloader/releases
   version = "1.1.6";
   sha256 = "sha256-OQa5cQx2KIh1op3wMH0I8v9vXOq6PeF00Z0NQRL823s=";
 in

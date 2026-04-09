@@ -3,6 +3,7 @@
   perSystem,
   ...
 }: let
+  # https://github.com/Vencord/Vesktop/releases
   version = "1.6.5";
   sha256 = "sha256-VhWrPn7i1XEs5ZLPSouPcNCvWubQGOcop5HmgCpcUDQ=";
 in
