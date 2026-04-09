@@ -28,20 +28,16 @@
     plymouth.enable = true;
     sound.enable = true;
     tty-autologin.enable = true;
-    gui = {
-      enable = true;
-      niri.enable = true;
-    };
 
     # gui apps
-    ghostty.enable = true;
-    vesktop.enable = true;
-    zen-browser.enable = true;
-    vscode = {
-      enable = true;
-      nix.enable = true;
-      minimal.enable = true;
-    };
+    # ghostty.enable = true;
+    # vesktop.enable = true;
+    # zen-browser.enable = true;
+    # vscode = {
+    #   enable = true;
+    #   nix.enable = true;
+    #   minimal.enable = true;
+    # };
   };
 
   # for utm
@@ -49,6 +45,7 @@
   services.qemuGuest.enable = true;
   environment.systemPackages = [pkgs.virglrenderer];
   hardware.graphics.extraPackages = [pkgs.mesa];
+  powerManagement.cpuFreqGovernor = "performance";
 
   networking.hostName = "utm";
   username = "niodtn";
