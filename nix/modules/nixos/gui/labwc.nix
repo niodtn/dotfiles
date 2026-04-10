@@ -34,6 +34,13 @@ in {
             default = true;
             keybind = [
               {
+                "@key" = "W-Space";
+                action = {
+                  "@name" = "Execute";
+                  "@command" = "walker";
+                };
+              }
+              {
                 "@key" = "W-Return";
                 action = {
                   "@name" = "Execute";
@@ -64,6 +71,14 @@ in {
         package = pkgs.bibata-cursors;
         name = "Bibata-Modern-Ice";
         size = 20;
+      };
+
+      services.walker = {
+        enable = true;
+        settings = {
+          close_when_open = false;
+          click_to_close = true;
+        };
       };
     };
   };
