@@ -42,6 +42,19 @@ in {
               }
             ];
           };
+          mouse = {
+            default = true;
+            context = [
+              {
+                "@name" = "Edge";
+                action = [
+                  {
+                    "@name" = "EdgeSnap";
+                  }
+                ];
+              }
+            ];
+          };
         };
       };
 
