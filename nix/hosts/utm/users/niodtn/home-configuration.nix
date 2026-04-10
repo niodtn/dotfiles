@@ -4,10 +4,12 @@
   flake,
   ...
 }: {
-  home = {
-    shellAliases = {
-      rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles#utm";
-      ll = "ls -al";
-    };
+  home.shellAliases = {
+    rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles#utm";
+    ll = "ls -al";
+  };
+
+  home.sessionVariables = {
+    WLR_NO_HARDWARE_CURSORS = "1"; # for cursor bug
   };
 }

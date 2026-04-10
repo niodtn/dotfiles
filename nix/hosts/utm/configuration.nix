@@ -29,8 +29,12 @@
     sound.enable = true;
     tty-autologin.enable = true;
 
+    gui = {
+      enable = true;
+      labwc.enable = true;
+    };
+
     # gui apps
-    # ghostty.enable = true;
     # vesktop.enable = true;
     # zen-browser.enable = true;
     # vscode = {
@@ -41,9 +45,18 @@
   };
 
   # for utm
-  services.spice-vdagentd.enable = true;
-  services.qemuGuest.enable = true;
-  environment.systemPackages = [pkgs.virglrenderer];
+  environment = {
+    variables = {
+      GS_GL_RENDERER = "gl";
+    };
+    systemPackages = [pkgs.virglrenderer];
+  };
+
+  services = {
+    spice-vdagentd.enable = true;
+    qemuGuest.enable = true;
+  };
+
   hardware.graphics.extraPackages = [pkgs.mesa];
   powerManagement.cpuFreqGovernor = "performance";
 
