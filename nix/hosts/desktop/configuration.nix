@@ -31,7 +31,7 @@
     bluetooth.enable = true;
     gui = {
       enable = true;
-      niri.enable = true;
+      # niri.enable = true;
     };
 
     # gui
