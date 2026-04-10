@@ -12,6 +12,8 @@ in {
   };
 
   config = mkIf cfg.enable {
+    environment.systemPackages = [pkgs.comma];
+
     home-manager.users.${config.username} = {
       imports = [inputs.nix-index-database.homeModules.default];
       programs.nix-index.enable = true;
