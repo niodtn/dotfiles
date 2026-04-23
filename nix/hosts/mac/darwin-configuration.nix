@@ -36,6 +36,7 @@
   };
 
   environment.systemPackages = [
+    pkgs.nix-output-monitor
     pkgs.rectangle
     pkgs.betterdisplay # License key is in Bitwarden
     perSystem.self.finetune
