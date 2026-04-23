@@ -1,107 +1,106 @@
 {
-  lib,
-  config,
+  self,
   inputs,
   ...
-}:
-with lib; let
-  username = config.username;
-in {
-  imports = [
-    inputs.mac-app-util.darwinModules.default
-    inputs.nix-homebrew.darwinModules.nix-homebrew
-    ../common
-    ./hammerspoon.nix
-    ./macbook.nix
-    ./safari.nix
-  ];
+}: {
+  flake.darwinModules.default = {
+    config,
+    lib,
+    ...
+  }: let
+    username = config.username;
+  in {
+    imports = [
+      self.commonModules.default
 
-  # https://daiderd.com/nix-darwin/manual/index.html
-  config = {
-    nixpkgs.hostPlatform = "aarch64-darwin";
+      inputs.home-manager.darwinModules.home-manager
+      inputs.mac-app-util.darwinModules.default
+      inputs.nix-homebrew.darwinModules.nix-homebrew
+    ];
 
-    # networking.computerName = lib.mkDefault "mac";
+    config = {
+      system = {
+        primaryUser = username;
+        stateVersion = 6; # $ darwin-rebuild changelog
 
-    system = {
-      primaryUser = config.username;
-      stateVersion = 6; # https://github.com/LnL7/nix-darwin/blob/master/modules/examples/flake/flake.nix
+        defaults = {
+          # https://github.com/nix-darwin/nix-darwin/blob/master/modules/system/defaults/dock.nix
+          dock = {
+            autohide = true;
+            minimize-to-application = true;
+            mru-spaces = false;
+            scroll-to-open = true;
+            show-recents = false;
+            # static-only = true;
+            mineffect = "scale";
 
-      defaults = {
-        # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/dock.nix
-        dock = {
-          autohide = true;
-          minimize-to-application = true;
-          mru-spaces = false;
-          scroll-to-open = true;
-          show-recents = false;
-          # static-only = true;
-          mineffect = "scale";
+            # corners
+            wvous-bl-corner = 1;
+            wvous-br-corner = 1;
+            wvous-tl-corner = 1;
+            wvous-tr-corner = 1;
+          };
 
-          # corners
-          wvous-bl-corner = 1;
-          wvous-br-corner = 1;
-          wvous-tl-corner = 1;
-          wvous-tr-corner = 1;
-        };
+          # https://github.com/nix-darwin/nix-darwin/blob/master/modules/system/defaults/finder.nix
+          finder = {
+            ShowStatusBar = true;
+            ShowPathbar = true;
+            FXRemoveOldTrashItems = true;
+            AppleShowAllExtensions = true;
+            _FXEnableColumnAutoSizing = true;
+            _FXSortFoldersFirst = true;
+            FXEnableExtensionChangeWarning = false;
+          };
 
-        # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/finder.nix
-        finder = {
-          ShowStatusBar = true;
-          ShowPathbar = true;
-          FXRemoveOldTrashItems = true;
-          AppleShowAllExtensions = true;
-          _FXEnableColumnAutoSizing = true;
-          _FXSortFoldersFirst = true;
-          FXEnableExtensionChangeWarning = false;
-        };
+          WindowManager = {
+            EnableTiledWindowMargins = false;
+            EnableStandardClickToShowDesktop = false;
+          };
 
-        WindowManager = {
-          EnableTiledWindowMargins = false;
-          EnableStandardClickToShowDesktop = false;
-        };
+          # https://github.com/nix-darwin/nix-darwin/blob/master/modules/system/defaults/NSGlobalDomain.nix
+          NSGlobalDomain = {
+            AppleShowScrollBars = "WhenScrolling";
+            NSDocumentSaveNewDocumentsToCloud = false;
+            NSNavPanelExpandedStateForSaveMode = true;
 
-        # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/NSGlobalDomain.nix
-        NSGlobalDomain = {
-          AppleShowScrollBars = "WhenScrolling";
-          NSDocumentSaveNewDocumentsToCloud = false;
-          NSNavPanelExpandedStateForSaveMode = true;
+            # Menu Bar
+            AppleICUForce24HourTime = true;
+            _HIHideMenuBar = false;
 
-          # Menu Bar
-          AppleICUForce24HourTime = true;
-          _HIHideMenuBar = false;
-
-          # Keyboard
-          "com.apple.keyboard.fnState" = true;
-          ApplePressAndHoldEnabled = false;
-          InitialKeyRepeat = 10;
-          KeyRepeat = 1;
-          NSAutomaticCapitalizationEnabled = false;
-          NSAutomaticInlinePredictionEnabled = false;
-          NSAutomaticDashSubstitutionEnabled = false;
-          NSAutomaticPeriodSubstitutionEnabled = false;
-          NSAutomaticQuoteSubstitutionEnabled = false;
-          NSAutomaticSpellingCorrectionEnabled = false;
+            # Keyboard
+            "com.apple.keyboard.fnState" = true;
+            ApplePressAndHoldEnabled = false;
+            InitialKeyRepeat = 10;
+            KeyRepeat = 1;
+            NSAutomaticCapitalizationEnabled = false;
+            NSAutomaticInlinePredictionEnabled = false;
+            NSAutomaticDashSubstitutionEnabled = false;
+            NSAutomaticPeriodSubstitutionEnabled = false;
+            NSAutomaticQuoteSubstitutionEnabled = false;
+            NSAutomaticSpellingCorrectionEnabled = false;
+          };
         };
       };
-    };
 
-    nix = {
-      enable = lib.mkDefault true;
-      gc.automatic = config.nix.enable;
-    };
+      nix = {
+        enable = lib.mkDefault true;
+        gc.automatic = config.nix.enable;
+      };
 
-    homebrew = {
-      enable = true;
-      onActivation.cleanup = "zap";
-      onActivation.upgrade = true;
-      brews = ["mas"];
-    };
+      # Homebrew
+      homebrew = {
+        enable = true;
+        onActivation.cleanup = "zap";
+        onActivation.upgrade = true;
+        brews = ["mas"];
+      };
 
-    nix-homebrew = {
-      enable = true;
-      user = config.username;
-      enableRosetta = true;
-      autoMigrate = true;
+      nix-homebrew = {
+        enable = true;
+        user = config.username;
+        enableRosetta = true;
+        autoMigrate = true;
+      };
     };
   };
 }
