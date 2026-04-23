@@ -1,6 +1,4 @@
 {
-  description = "Niodtn's flake";
-
   inputs = {
     # All
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
