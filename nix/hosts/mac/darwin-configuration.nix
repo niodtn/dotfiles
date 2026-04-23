@@ -32,7 +32,6 @@
 
     # darwin
     hammerspoon.enable = true;
-    trackpad.enable = true;
     #safari.enable = true;
   };
 

@@ -12,8 +12,8 @@ in {
     inputs.nix-homebrew.darwinModules.nix-homebrew
     ../common
     ./hammerspoon.nix
+    ./macbook.nix
     ./safari.nix
-    ./trackpad.nix
   ];
 
   # https://daiderd.com/nix-darwin/manual/index.html
@@ -27,8 +27,6 @@ in {
       stateVersion = 6; # https://github.com/LnL7/nix-darwin/blob/master/modules/examples/flake/flake.nix
 
       defaults = {
-        controlcenter.BatteryShowPercentage = true;
-
         # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/dock.nix
         dock = {
           autohide = true;
