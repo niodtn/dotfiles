@@ -2,6 +2,7 @@
   home = {
     shellAliases = {
       rebuild = "sudo darwin-rebuild switch --flake ~/dotfiles#mac";
+      drb = "sudo darwin-rebuild build --flake ~/dotfiles#mac";
       ls = "lsd";
       ll = "lsd -al";
       cat = "bat";
