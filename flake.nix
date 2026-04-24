@@ -5,8 +5,8 @@
     # All
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    blueprint.url = "github:numtide/blueprint";
-    blueprint.inputs.nixpkgs.follows = "nixpkgs";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -39,10 +39,7 @@
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
-  # https://github.com/numtide/blueprint
   outputs = inputs:
-    inputs.blueprint {
-      inherit inputs;
-      prefix = "nix/";
-    };
+    inputs.flake-parts.lib.mkFlake {inherit inputs;}
+    (inputs.import-tree ./nix);
 }
