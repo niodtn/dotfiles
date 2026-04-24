@@ -1,27 +1,25 @@
 {
-  lib,
-  config,
-  options,
+  self,
+  inputs,
   ...
-}:
-with lib; let
-  cfg = config.features.tailscale;
-in {
-  options.features.tailscale = {
-    enable = mkEnableOption "tailscale feature";
+}: {
+  flake.commonModules.tailscale = {
+    lib,
+    options,
+    ...
+  }: {
+    config = lib.mkMerge [
+      # linux
+      (lib.optionalAttrs (options ? boot) {
+        services.tailscale = {
+          enable = true;
+          extraUpFlags = ["--ssh"];
+        };
+      })
+      # Darwin
+      (lib.optionalAttrs (options ? homebrew) {
+        homebrew.casks = ["tailscale-app"];
+      })
+    ];
   };
-
-  config = mkIf cfg.enable (mkMerge [
-    # linux
-    (optionalAttrs (options ? boot) {
-      services.tailscale = {
-        enable = true;
-        extraUpFlags = ["--ssh"];
-      };
-    })
-    # Darwin
-    (optionalAttrs (options ? homebrew) {
-      homebrew.casks = ["tailscale-app"];
-    })
-  ]);
 }

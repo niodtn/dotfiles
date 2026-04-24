@@ -1,36 +1,35 @@
 {
-  lib,
-  config,
-  pkgs,
+  self,
+  inputs,
   ...
-}:
-with lib; let
-  cfg = config.features.zsh;
-  username = config.username;
-in {
-  options.features.zsh = {
-    enable = mkEnableOption "zsh feature";
-  };
+}: {
+  flake.commonModules.zsh = {
+    config,
+    lib,
+    pkgs,
+    options,
+    ...
+  }: {
+    config = lib.mkMerge [
+      # common
+      {
+        programs.zsh.enable = true;
+        users.users.${config.username}.shell = pkgs.zsh;
 
-  config = mkIf cfg.enable (mkMerge [
-    # common
-    {
-      programs.zsh.enable = true;
-      users.users.${username}.shell = pkgs.zsh;
-
-      # Home Manager Options
-      home-manager.users.${username} = {
-        programs.zsh = {
-          enable = true;
-          enableCompletion = true;
-          autosuggestion.enable = true;
-          syntaxHighlighting.enable = true;
+        # Home Manager Options
+        home-manager.users.${config.username} = {
+          programs.zsh = {
+            enable = true;
+            enableCompletion = true;
+            autosuggestion.enable = true;
+            syntaxHighlighting.enable = true;
+          };
         };
-      };
-    }
-    # darwin
-    (optionalAttrs (options ? homebrew) {
-      homebrew.enableZshIntegration = true;
-    })
-  ]);
+      }
+      # darwin
+      (lib.optionalAttrs (options ? homebrew) {
+        homebrew.enableZshIntegration = true;
+      })
+    ];
+  };
 }

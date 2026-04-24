@@ -1,39 +1,29 @@
 {
-  lib,
-  config,
+  self,
+  inputs,
   ...
-}:
-with lib; let
-  cfg = config.features.atuin;
-in {
-  options.features.atuin = {
-    enable = mkEnableOption "atuin feature";
-    sync.enable = mkEnableOption "atuin sync feature";
-  };
+}: {
+  flake.commonModules = {
+    atuin = {config, ...}: {
+      imports = [self.commonModules.atuin-default];
+    };
 
-  config = mkIf cfg.enable (mkMerge [
-    {
-      home-manager.users.${config.username} = {
-        programs.atuin = {
-          enable = true;
-          settings = {
-            style = "auto";
-            invert = true;
-          };
+    atuin-default = {config, ...}: {
+      config.home-manager.users.${config.username}.programs.atuin = {
+        enable = true;
+        settings = {
+          style = "auto";
+          invert = true;
         };
       };
-    }
-    (mkIf cfg.sync.enable {
-      home-manager.users.${config.username} = {
-        programs.atuin = {
-          daemon.enable = true;
-          settings = {
-            auto_sync = true;
-            sync_frequency = "0";
-            sync_address = "https://api.atuin.sh";
-          };
-        };
+    };
+
+    atuin-sync = {config, ...}: {
+      imports = [self.commonModules.atuin-default];
+      config.home-manager.users.${config.username}.programs.atuin = {
+        daemon.enable = true;
+        settings = {auto_sync = true;};
       };
-    })
-  ]);
+    };
+  };
 }
