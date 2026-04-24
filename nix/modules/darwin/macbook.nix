@@ -1,15 +1,16 @@
 {
-  system.defaults = {
-    # Battery
-    controlcenter.BatteryShowPercentage = true;
+  # TouchID
+  security.pam.services.sudo_local.touchIdAuth = true;
 
-    # Trackpad
-    trackpad = {
-      Clicking = true;
-      TrackpadThreeFingerDrag = true;
-      ActuationStrength = 0;
-      FirstClickThreshold = 0;
-      SecondClickThreshold = 0;
-    };
+  # Battery
+  system.defaults.controlcenter.BatteryShowPercentage = true;
+
+  # Trackpad
+  system.defaults.trackpad = {
+    Clicking = true;
+    TrackpadThreeFingerDrag = true;
+    ActuationStrength = 0;
+    FirstClickThreshold = 0;
+    SecondClickThreshold = 0;
   };
 }
