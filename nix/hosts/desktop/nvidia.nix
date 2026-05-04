@@ -1,8 +1,5 @@
-{config, ...}: let
-  nvidiaPkgs = config.boot.kernelPackages.nvidiaPackages.stable;
-in {
+{config, ...}: {
   boot = {
-    extraModulePackages = [nvidiaPkgs];
     blacklistedKernelModules = ["nouveau"]; # block open source driver
     kernelParams = ["nvidia-drm.modeset=1" "nvidia-drm.fbdev=1"];
     initrd.kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
@@ -10,15 +7,17 @@ in {
 
   hardware = {
     nvidia = {
-      package = nvidiaPkgs;
+      package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
       open = false; # closed source drivers
       powerManagement.enable = false;
       modesetting.enable = true; # boot with nvidia modeset
       # nvidiaSettings = true;
     };
 
-    graphics.enable = true;
-    graphics.enable32Bit = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
   };
 
   environment.sessionVariables = {
