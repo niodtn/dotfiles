@@ -29,22 +29,24 @@
     plymouth.enable = true;
     sound.enable = true;
     tty-autologin.enable = true;
-    bluetooth.enable = true;
-    gui = {
-      enable = true;
-      # niri.enable = true;
-    };
+    # bluetooth.enable = true;
+    # gui = {
+    #   enable = true;
+    #   # niri.enable = true;
+    # };
 
     # gui
-    ghostty.enable = true;
-    vesktop.enable = true;
-    zen-browser.enable = true;
-    vscode = {
-      enable = true;
-      nix.enable = true;
-      minimal.enable = true;
-    };
+    # ghostty.enable = true;
+    # vesktop.enable = true;
+    # zen-browser.enable = true;
+    # vscode = {
+    #   enable = true;
+    #   nix.enable = true;
+    #   minimal.enable = true;
+    # };
   };
+
+  # hardware.fancontrol.enable = true;
 
   username = "niodtn";
   users.users.${config.username}.extraGroups = [
