@@ -1,5 +1,5 @@
-{...}:
-
-{
-  caches = import ./caches.nix;
+{...}: {
+  flake = {
+    caches = import ./caches.nix;
+  };
 }
