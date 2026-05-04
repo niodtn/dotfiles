@@ -8,6 +8,7 @@
     flake.nixosModules.default
     ./hardware.nix
     ./nvidia.nix
+    ./it8613e.nix
   ];
 
   features = {
