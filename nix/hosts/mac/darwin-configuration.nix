@@ -5,7 +5,10 @@
   config,
   ...
 }: {
-  imports = [flake.darwinModules.default];
+  imports = [
+    flake.darwinModules.default
+    ./macbook.nix
+  ];
 
   features = {
     zsh.enable = true;
