@@ -11,11 +11,14 @@ in {
     specialArgs = {inherit inputs self;};
 
     modules = [
+      inputs.apple-silicon-support.nixosModules.apple-silicon-support
       (self.paths.profiles "nixos")
 
       ({config, ...}: {
         # Nix
         system.stateVersion = stateVersion;
+
+        hardware.asahi.peripheralFirmwareDirectory = /boot/asahi;
 
         # Home Manager
         home-manager.users.${config.username}.home.stateVersion = stateVersion;

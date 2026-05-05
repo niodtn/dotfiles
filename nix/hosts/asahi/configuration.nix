@@ -7,7 +7,6 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    inputs.apple-silicon-support.nixosModules.apple-silicon-support
     flake.nixosModules.default
   ];
 
@@ -43,7 +42,6 @@
   };
 
   # asahi
-  hardware.asahi.peripheralFirmwareDirectory = /boot/asahi;
   boot.loader.grub.enable = lib.mkForce false;
   boot.loader.systemd-boot = {
     enable = true;
