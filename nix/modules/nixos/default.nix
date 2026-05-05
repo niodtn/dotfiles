@@ -35,8 +35,6 @@ with lib; {
       noto-fonts-cjk-sans
     ];
 
-    programs.nix-ld.enable = true;
-
     users.users.${config.username} = {
       isNormalUser = mkDefault true;
     };
