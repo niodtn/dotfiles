@@ -24,6 +24,7 @@
 
     # nixos
     tty-autologin.enable = true;
+    bluetooth.enable = true;
     gui = {
       enable = true;
       # kde.enable = true;
@@ -54,13 +55,6 @@
   #   enable = true;
   #   settings.General.EnableNetworkConfiguration = true;
   # };
-
-  # bluetooth
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-    settings.General.Experimental = true;
-  };
 
   username = "niodtn";
   users.users.${config.username}.extraGroups = [
