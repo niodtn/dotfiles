@@ -1,6 +1,7 @@
 {self, ...}: {
   imports = [
     ./lib
+    ./packages
   ];
 
   config = {

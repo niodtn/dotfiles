@@ -1,17 +1,17 @@
 {
-  pkgs,
-  perSystem,
+  stdenvNoCC,
+  fetchurl,
   ...
 }: let
   # https://github.com/nab138/iloader/releases
   version = "1.1.6";
   sha256 = "sha256-OQa5cQx2KIh1op3wMH0I8v9vXOq6PeF00Z0NQRL823s=";
 in
-  pkgs.stdenvNoCC.mkDerivation {
+  stdenvNoCC.mkDerivation {
     pname = "iloader";
     inherit version;
 
-    src = pkgs.fetchurl {
+    src = fetchurl {
       url = "https://github.com/nab138/iloader/releases/download/v${version}/iloader-darwin-universal.app.tar.gz";
       inherit sha256;
     };
