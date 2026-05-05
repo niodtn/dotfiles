@@ -46,7 +46,6 @@
     };
   };
 
-  username = "niodtn";
   users.users.${config.username}.extraGroups = [
     "networkmanager"
     "wheel"

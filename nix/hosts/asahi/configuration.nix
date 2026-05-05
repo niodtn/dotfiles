@@ -56,7 +56,6 @@
   #   settings.General.EnableNetworkConfiguration = true;
   # };
 
-  username = "niodtn";
   users.users.${config.username}.extraGroups = [
     "networkmanager"
     "wheel"

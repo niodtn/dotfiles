@@ -61,7 +61,6 @@
   powerManagement.cpuFreqGovernor = "performance";
 
   networking.hostName = "utm";
-  username = "niodtn";
   users.users.${config.username}.extraGroups = [
     "networkmanager"
     "wheel"

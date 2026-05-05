@@ -64,6 +64,4 @@
       "Amphetamine" = 937984704;
     };
   };
-
-  username = "niodtn";
 }

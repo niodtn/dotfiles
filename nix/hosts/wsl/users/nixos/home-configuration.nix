@@ -1,7 +1,5 @@
-{ flake, ... }:
-
-{
-  imports = [ flake.homeModules.default ];
+{flake, ...}: {
+  imports = [flake.homeModules.default];
 
   programs.bash = {
     enable = true;
@@ -12,7 +10,6 @@
     shell.enableBashIntegration = true;
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles#wsl";
-      ll = "ls -al";
     };
   };
 

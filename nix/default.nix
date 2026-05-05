@@ -1,5 +1,6 @@
 {self, ...}: {
   imports = [
+    ./hosts
     ./lib
     ./packages
   ];

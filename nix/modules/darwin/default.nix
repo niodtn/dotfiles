@@ -17,13 +17,10 @@ in {
 
   # https://daiderd.com/nix-darwin/manual/index.html
   config = {
-    nixpkgs.hostPlatform = "aarch64-darwin";
-
     # networking.computerName = lib.mkDefault "mac";
 
     system = {
       primaryUser = config.username;
-      stateVersion = 6; # https://github.com/LnL7/nix-darwin/blob/master/modules/examples/flake/flake.nix
 
       defaults = {
         # https://github.com/LnL7/nix-darwin/blob/master/modules/system/defaults/dock.nix
