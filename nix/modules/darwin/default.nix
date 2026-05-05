@@ -12,7 +12,6 @@ in {
     inputs.nix-homebrew.darwinModules.nix-homebrew
     ../common
     ./hammerspoon.nix
-    ./macbook.nix
     ./safari.nix
   ];
 
