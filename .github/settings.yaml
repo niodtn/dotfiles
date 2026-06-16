@@ -1,0 +1,7 @@
+repository:
+  name: dotfiles
+  private: false
+  default_branch: main
+
+  has_projects: false
+  has_wiki: false
