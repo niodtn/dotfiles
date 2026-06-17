@@ -30,7 +30,7 @@
     };
 
     config = {
-      nixpkgs.hostPlatform = config.host;
+      nixpkgs.hostPlatform = lib.mkDefault config.host;
     };
   };
 }
