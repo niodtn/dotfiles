@@ -5,6 +5,7 @@
 }: {
   imports = [
     inputs.flake-file.flakeModules.default
+    ../inputs
   ];
 
   systems = inputs.nixpkgs.lib.systems.flakeExposed;
