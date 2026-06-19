@@ -1,7 +1,11 @@
-{inputs, ...}: let
+{
+  inputs,
+  self,
+  ...
+}: let
   hostName = builtins.baseNameOf ./.;
 in {
-  flake.systemConfigs.${hostName} = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.${hostName} = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       self.commonModules.hostOptions
 
