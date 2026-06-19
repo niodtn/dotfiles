@@ -6,5 +6,7 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
   ];
 
   # Inputs
-  inputs.disko = true;
+  inputs = {
+    disko = true;
+  };
 }

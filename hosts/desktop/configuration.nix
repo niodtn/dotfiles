@@ -49,6 +49,12 @@ in {
         self.nixosModules.commonConfig
         ./hardware
 
+        # CachyOS Kernel
+        ({pkgs, ...}: {
+          nixpkgs.overlays = [inputs.cachyos-kernel.overlays.pinned];
+          boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+        })
+
         ({config, ...}: {
           boot.loader.systemd-boot.enable = true;
 
