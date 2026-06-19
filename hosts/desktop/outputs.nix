@@ -4,4 +4,7 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
     ../default.nix
     ./configuration.nix
   ];
+
+  # Inputs
+  inputs.disko = true;
 }
