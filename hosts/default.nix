@@ -2,13 +2,18 @@
   inputs,
   lib,
   ...
-}: {
+}: let
+  systems = [
+    "x86_64-linux"
+    "aarch64-darwin"
+  ];
+in {
   imports = [
     inputs.flake-file.flakeModules.default
     ../inputs
   ];
 
-  systems = inputs.nixpkgs.lib.systems.flakeExposed;
+  inherit systems;
 
   flake-file = {
     inputs = {
@@ -26,7 +31,7 @@
   flake.commonModules.hostOptions = {config, ...}: {
     options.host = {
       system = lib.mkOption {
-        type = lib.types.enum inputs.nixpkgs.lib.systems.flakeExposed;
+        type = lib.types.enum systems;
       };
       name = lib.mkOption {
         type = lib.types.str;
