@@ -10,7 +10,7 @@ in {
     nixosModules.commonConfig = {
       imports = [
         inputs.disko.nixosModules.disko
-        self.commonModules.hostOptions
+        self.commonModules.core
         ./hardware/disko.nix
       ];
 

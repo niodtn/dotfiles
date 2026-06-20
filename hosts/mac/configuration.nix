@@ -10,7 +10,7 @@ in {
     inherit system;
 
     modules = [
-      self.commonModules.hostOptions
+      self.commonModules.core
 
       # Host Specific
       {
