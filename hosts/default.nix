@@ -28,10 +28,14 @@
       system = lib.mkOption {
         type = lib.types.enum inputs.nixpkgs.lib.systems.flakeExposed;
       };
+      name = lib.mkOption {
+        type = lib.types.str;
+      };
     };
 
     config = {
       nixpkgs.hostPlatform = config.host.system;
+      networking.hostName = config.host.name;
     };
   };
 }

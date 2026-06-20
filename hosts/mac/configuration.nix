@@ -14,8 +14,12 @@ in {
 
       # Host Specific
       {
-        host.system = system;
         system.stateVersion = 7;
+
+        host = {
+          inherit system;
+          name = hostName;
+        };
       }
     ];
   };

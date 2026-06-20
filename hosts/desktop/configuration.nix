@@ -15,8 +15,12 @@ in {
       ];
 
       config = {
-        host.system = system;
         system.stateVersion = "26.11";
+
+        host = {
+          inherit system;
+          name = hostName;
+        };
       };
     };
 
