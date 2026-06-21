@@ -32,6 +32,11 @@ in {
 
         {
           boot.loader.systemd-boot.enable = true;
+          users.users.root = {
+            password = null;
+            extraGroups = ["wheel"];
+          };
+          services.getty.autologinUser = "root";
         }
       ];
     };
@@ -42,6 +47,15 @@ in {
 
       modules = [
         self.nixosModules.commonConfig
+        ./hardware
+
+        ({config, ...}: {
+          boot.loader.systemd-boot.enable = true;
+
+          users.users.${config.host.userName} = {
+            hashedPassword = "$y$j9T$FiIoFpdVFv30Viq0WYsDS1$5VGzz7Itx1PEVGmnwOJJIN12YAfFQ3JoaaE6dBiyYd9";
+          };
+        })
       ];
     };
   };
