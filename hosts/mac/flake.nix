@@ -4,6 +4,7 @@
   outputs = inputs: import ./outputs.nix inputs;
 
   nixConfig = {
+    abort-on-warn = false;
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://nix-darwin.cachix.org"

@@ -6,4 +6,8 @@
       (i: i ./configs)
     )
   ];
+
+  flake-file.nixConfig = {
+    abort-on-warn = false;
+  };
 }
