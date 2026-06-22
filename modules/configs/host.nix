@@ -11,6 +11,10 @@
       hostName = lib.mkOption {
         type = lib.types.str;
       };
+      userName = lib.mkOption {
+        type = lib.types.str;
+        default = "niodtn";
+      };
     };
 
     config = {
@@ -23,8 +27,25 @@ in {
 
   flake.aspects = {
     host = {
-      nixos = common;
-      darwin = common;
+      nixos = lib.mkMerge [
+        common
+        ({config, ...}: {
+          users.users.${config.userName} = {
+            isNormalUser = true;
+            extraGroups = ["wheel"];
+          };
+        })
+      ];
+      darwin = lib.mkMerge [
+        common
+        ({config, ...}: {
+          networking.computerName = config.host.hostName;
+          networking.localHostName = config.host.hostName;
+
+          system.primaryUser = config.userName;
+          users.users.${config.userName}.home = "/Users/${config.userName}";
+        })
+      ];
     };
   };
 }
