@@ -10,7 +10,7 @@ in {
     nixosModules.commonConfig = {
       imports = [
         inputs.disko.nixosModules.disko
-        self.commonModules.core
+        inputs.self.modules.nixos.core
         ./hardware/disko.nix
       ];
 
@@ -18,8 +18,7 @@ in {
         system.stateVersion = "26.11";
 
         host = {
-          inherit system;
-          name = hostName;
+          inherit system hostName;
         };
       };
     };

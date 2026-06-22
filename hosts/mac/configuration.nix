@@ -10,15 +10,14 @@ in {
     inherit system;
 
     modules = [
-      self.commonModules.core
+      inputs.self.modules.darwin.core
 
       # Host Specific
       {
         system.stateVersion = 7;
 
         host = {
-          inherit system;
-          name = hostName;
+          inherit system hostName;
         };
       }
     ];
