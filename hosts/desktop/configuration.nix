@@ -49,18 +49,29 @@ in {
         self.nixosModules.commonConfig
         ./hardware
 
-        # CachyOS Kernel
-        ({pkgs, ...}: {
-          nixpkgs.overlays = [inputs.cachyos-kernel.overlays.pinned];
-          boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
-        })
-
-        ({config, ...}: {
-          boot.loader.systemd-boot.enable = true;
+        ({
+          config,
+          pkgs,
+          ...
+        }: {
+          boot = {
+            loader.systemd-boot.enable = true;
+            initrd.systemd.enable = true;
+          };
 
           users.users.${config.host.userName} = {
             hashedPassword = "$y$j9T$FiIoFpdVFv30Viq0WYsDS1$5VGzz7Itx1PEVGmnwOJJIN12YAfFQ3JoaaE6dBiyYd9";
           };
+
+          environment.systemPackages = with pkgs; [
+            git
+          ];
+        })
+
+        # CachyOS Kernel
+        ({pkgs, ...}: {
+          nixpkgs.overlays = [inputs.cachyos-kernel.overlays.pinned];
+          boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
         })
       ];
     };
