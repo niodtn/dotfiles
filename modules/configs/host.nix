@@ -30,7 +30,7 @@ in {
       nixos = lib.mkMerge [
         common
         ({config, ...}: {
-          users.users.${config.userName} = {
+          users.users.${config.host.userName} = {
             isNormalUser = true;
             extraGroups = ["wheel"];
           };
@@ -42,8 +42,8 @@ in {
           networking.computerName = config.host.hostName;
           networking.localHostName = config.host.hostName;
 
-          system.primaryUser = config.userName;
-          users.users.${config.userName}.home = "/Users/${config.userName}";
+          system.primaryUser = config.host.userName;
+          users.users.${config.host.userName}.home = "/Users/${config.host.userName}";
         })
       ];
     };
