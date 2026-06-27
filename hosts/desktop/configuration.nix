@@ -7,7 +7,7 @@
   hostName = builtins.baseNameOf ./.;
 in {
   flake = {
-    nixosModules.commonConfig = {
+    nixosModules.commonConfig = {pkgs, ...}: {
       imports = [
         inputs.disko.nixosModules.disko
         inputs.self.modules.nixos.core
@@ -16,6 +16,11 @@ in {
 
       config = {
         system.stateVersion = "26.11";
+        documentation.nixos.enable = false;
+
+        environment.systemPackages = with pkgs; [
+          git
+        ];
 
         host = {
           inherit system hostName;
@@ -49,11 +54,7 @@ in {
         self.nixosModules.commonConfig
         ./hardware
 
-        ({
-          config,
-          pkgs,
-          ...
-        }: {
+        ({config, ...}: {
           boot = {
             loader.systemd-boot.enable = true;
             initrd.systemd.enable = true;
@@ -62,10 +63,6 @@ in {
           users.users.${config.host.userName} = {
             hashedPassword = "$y$j9T$FiIoFpdVFv30Viq0WYsDS1$5VGzz7Itx1PEVGmnwOJJIN12YAfFQ3JoaaE6dBiyYd9";
           };
-
-          environment.systemPackages = with pkgs; [
-            git
-          ];
         })
 
         # CachyOS Kernel
