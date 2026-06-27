@@ -53,6 +53,7 @@ in {
       modules = [
         self.nixosModules.commonConfig
         ./hardware
+        ./gui
 
         ({config, ...}: {
           boot = {
