@@ -27,6 +27,7 @@
     flake-file.url = "github:vic/flake-file";
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:denful/import-tree";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 }

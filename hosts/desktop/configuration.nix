@@ -71,6 +71,15 @@ in {
           nixpkgs.overlays = [inputs.cachyos-kernel.overlays.pinned];
           boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
         })
+
+        # flatpak
+        inputs.nix-flatpak.nixosModules.nix-flatpak
+        {
+          services.flatpak = {
+            enable = true;
+            uninstallUnmanaged = false;
+          };
+        }
       ];
     };
   };
