@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ./gnome.nix
+    ./gnome
   ];
 
   services = {
