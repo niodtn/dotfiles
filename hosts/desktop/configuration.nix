@@ -9,7 +9,6 @@ in {
   flake = {
     nixosModules.commonConfig = {pkgs, ...}: {
       imports = [
-        inputs.disko.nixosModules.disko
         inputs.self.modules.nixos.core
         ./hardware/disko.nix
       ];
@@ -55,8 +54,13 @@ in {
         ./hardware
         ./gui
 
-        ({config, ...}: {
+        ({
+          pkgs,
+          config,
+          ...
+        }: {
           boot = {
+            kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
             loader.systemd-boot.enable = true;
             initrd.systemd.enable = true;
           };
@@ -66,14 +70,7 @@ in {
           };
         })
 
-        # CachyOS Kernel
-        ({pkgs, ...}: {
-          nixpkgs.overlays = [inputs.cachyos-kernel.overlays.pinned];
-          boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
-        })
-
         # flatpak
-        inputs.nix-flatpak.nixosModules.nix-flatpak
         {
           services.flatpak = {
             enable = true;

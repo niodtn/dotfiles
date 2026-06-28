@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  inputs,
   ...
 }: {
   options = {
@@ -13,6 +14,10 @@
   config = lib.mkIf config.inputs.nix-flatpak {
     flake-file.inputs = {
       nix-flatpak.url = "github:gmodena/nix-flatpak/";
+    };
+
+    flake.aspects.core.nixos = {
+      imports = [inputs.nix-flatpak.nixosModules.nix-flatpak];
     };
   };
 }
