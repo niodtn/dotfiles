@@ -1,9 +1,12 @@
-{config, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   common = {
     nix = {
       gc = {
         automatic = true;
-        dates = "weekly";
         options = "--delete-older-than 14d --max-freed 10G";
       };
       settings = {
@@ -19,7 +22,10 @@ in {
   flake.aspects = {aspects, ...}: {
     core = {
       includes = with aspects; [host];
-      nixos = common;
+      nixos = lib.mkMerge [
+        common
+        {nix.gc.dates = "weekly";}
+      ];
       darwin = common;
     };
   };
