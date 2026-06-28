@@ -1,6 +1,7 @@
 {config, ...}: {
   imports = [
     ./dconf.nix
+    ./dash-to-dock.nix
   ];
 
   services = {

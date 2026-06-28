@@ -1,8 +1,7 @@
 # https://wiki.nixos.org/wiki/GNOME#dconf
 {lib, ...}: let
   mkLocked = path: key: value: {
-    # locks = ["${path}/${key}"]; # TODO: `locks` doesn't works
-    lockAll = true;
+    locks = ["${path}/${key}"]; # TODO: `locks` doesn't works
     settings = {
       "${path}" = {
         "${key}" = value;
@@ -15,19 +14,33 @@ in {
   programs.dconf = {
     enable = true;
     profiles = lib.mkMerge [
+      # === Settings ===
       # Power -> Power Saving
-      ## -> Automatic Screen Blank = false
-      (applyTo ["user"] (mkLocked "org/gnome/desktop/session" "idle-delay" (lib.gvariant.mkUint32 0)))
-      ## -> Automatic Suspend = false
-      (applyTo ["gdm" "user"] (mkLocked "org/gnome/settings-daemon/plugins/power" "sleep-inactive-ac-type" "nothing"))
+      (applyTo ["user"] (mkLocked "org/gnome/desktop/session" "idle-delay" (lib.gvariant.mkUint32 0))) # -> Automatic Screen Blank = false
+      (applyTo ["gdm" "user"] (mkLocked "org/gnome/settings-daemon/plugins/power" "sleep-inactive-ac-type" "nothing")) # -> Automatic Suspend = false
 
       # Multitasking -> Screen Edges
-      ## -> Hot Corner = false
-      (applyTo ["user"] (mkLocked "org/gnome/desktop/interface" "enable-hot-corners" false))
+      (applyTo ["user"] (mkLocked "org/gnome/desktop/interface" "enable-hot-corners" false)) # -> Hot Corner = false
 
       # Mouse & Touchpad -> Mouse
-      ## -> Mouse Acceleration = false
-      (applyTo ["gdm" "user"] (mkLocked "org/gnome/desktop/peripherals/mouse" "accel-profile" "flat"))
+      (applyTo ["gdm" "user"] (mkLocked "org/gnome/desktop/peripherals/mouse" "accel-profile" "flat")) # -> Mouse Acceleration = false
+
+      # === Extensions ===
+      (applyTo ["user"] {
+        settings = {
+          "org/gnome/shell" = {
+            enabled-extensions = ["dash-to-dock@micxgx.gmail.com"];
+          };
+
+          "org/gnome/shell/extensions/dash-to-dock" = {
+            dock-fixed = false;
+            require-pressure-to-show = false;
+            animation-time = 0.05;
+            hide-delay = 0.05;
+            show-delay = 0.05;
+          };
+        };
+      })
     ];
   };
 }
