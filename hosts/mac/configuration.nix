@@ -11,8 +11,8 @@ in {
 
     modules = [
       inputs.self.modules.darwin.core
+      ./darwin
 
-      # Host Specific
       {
         system.stateVersion = 7;
 
