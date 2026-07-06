@@ -1,4 +1,9 @@
 {lib, ...}: {
+  imports = [
+    ./kanata.nix
+    ./scroll-reverser.nix
+  ];
+
   config = lib.mkMerge [
     # Dock
     {
