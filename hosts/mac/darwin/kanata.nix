@@ -1,17 +1,17 @@
 {pkgs, ...}: let
-  kanataConfig = pkgs.writeText "kanata.cfg" ''
+  kanataDir = "/Library/Application Support/org.nixos.kanata";
+  kanataBin = "${kanataDir}/kanata";
+
+  kanataConfig = pkgs.writeText "kanata.kbd" ''
+    (defcfg process-unmapped-keys yes)
     (defsrc rmet)
     (defvar tap-time 200 hold-time 200)
     (defalias rmet-mod (tap-hold $tap-time $hold-time f18 rmet))
     (deflayer default @rmet-mod)
   '';
 in {
-  environment.systemPackages = [
-    pkgs.kanata
-    pkgs.karabiner-dk
-  ];
+  environment.systemPackages = [pkgs.kanata];
 
-  # TODO: fix
   system.defaults.CustomUserPreferences = {
     "com.apple.symbolichotkeys".AppleSymbolicHotKeys = {
       # 60: Select the previous input source
@@ -20,54 +20,52 @@ in {
         value = {
           parameters = [
             65535
-            119 # KeyCode: F18
+            79 # F18 KeyCode
             0
           ];
           type = "standard";
         };
       };
+      # 61: Select next source in Input menu
+      "61" = {
+        enabled = false;
+      };
     };
   };
 
-  launchd = {
-    daemons = {
-      kanata = {
-        serviceConfig = {
-          ProgramArguments = [
-            "${pkgs.kanata}/bin/kanata"
-            "--cfg"
-            "${kanataConfig}"
-          ];
-          KeepAlive = true;
-          RunAtLoad = true;
-          StandardOutPath = "/var/log/kanata.out.log";
-          StandardErrorPath = "/var/log/kanata.err.log";
-        };
-      };
+  system.activationScripts.postActivation.text = ''
+    mkdir -p "${kanataDir}"
 
-      karabiner-daemon = {
-        serviceConfig = {
-          ProgramArguments = [
-            "${pkgs.karabiner-dk}/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon"
-          ];
-          KeepAlive = true;
-          RunAtLoad = true;
-          StandardOutPath = "/var/log/karabiner-daemon.out.log";
-          StandardErrorPath = "/var/log/karabiner-daemon.err.log";
-        };
-      };
-    };
+    old_hash=""
+    if [ -f "${kanataBin}" ]; then
+      old_hash=$(shasum -a 256 "${kanataBin}" | cut -d' ' -f1)
+    fi
 
-    user.agents.activate-karabiner-driver = {
-      serviceConfig = {
-        ProgramArguments = [
-          "${pkgs.karabiner-dk}/Applications/.Karabiner-VirtualHIDDevice-Manager.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Manager"
-          "activate"
-        ];
-        RunAtLoad = true;
-        StandardOutPath = "/var/log/karabiner-activate.out.log";
-        StandardErrorPath = "/var/log/karabiner-activate.err.log";
-      };
+    cp -f "${pkgs.kanata}/bin/kanata" "${kanataBin}"
+    chmod +x "${kanataBin}"
+
+    new_hash=$(shasum -a 256 "${kanataBin}" | cut -d' ' -f1)
+    if [ "$old_hash" != "$new_hash" ]; then
+      tccutil reset Accessibility "${kanataBin}" 2>/dev/null || true
+      sudo launchctl kickstart -k system/org.nixos.kanata 2>/dev/null || true
+    fi
+  '';
+
+  launchd.daemons.kanata = {
+    serviceConfig = {
+      Program = kanataBin;
+      ProgramArguments = [
+        kanataBin
+        "--no-wait"
+        "--cfg"
+        "${kanataConfig}"
+      ];
+      Label = "org.nixos.kanata";
+      ProcessType = "Interactive";
+      KeepAlive = true;
+      RunAtLoad = true;
+      StandardOutPath = "/var/log/kanata.log";
+      StandardErrorPath = "/var/log/kanata.log";
     };
   };
 }

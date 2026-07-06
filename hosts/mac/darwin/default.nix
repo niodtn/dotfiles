@@ -1,6 +1,7 @@
 {lib, ...}: {
   imports = [
     ./kanata.nix
+    ./karabiner-dk.nix
     ./scroll-reverser.nix
   ];
 
