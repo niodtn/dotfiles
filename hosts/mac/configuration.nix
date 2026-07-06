@@ -5,8 +5,9 @@ in {
   flake.darwinConfigurations.${hostName} = inputs.nix-darwin.lib.darwinSystem {
     inherit system;
 
-    modules = [
-      inputs.self.modules.darwin.core
+    modules = with inputs.self.modules.darwin; [
+      core
+      vcs
       ./darwin
       ./home
 

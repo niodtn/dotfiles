@@ -5,43 +5,31 @@
 }: let
   system = "x86_64-linux";
   hostName = builtins.baseNameOf ./.;
+
+  common = {
+    imports = with inputs.self.modules.nixos; [core ./hardware/disko.nix];
+    system.stateVersion = "26.11";
+    host = {inherit system hostName;};
+    documentation.nixos.enable = false;
+  };
 in {
   flake = {
-    nixosModules.commonConfig = {pkgs, ...}: {
-      imports = [
-        inputs.self.modules.nixos.core
-        ./hardware/disko.nix
-      ];
-
-      config = {
-        system.stateVersion = "26.11";
-        documentation.nixos.enable = false;
-
-        environment.systemPackages = with pkgs; [
-          git
-        ];
-
-        host = {
-          inherit system hostName;
-        };
-      };
-    };
-
     # === Minimal set for first-time installation ===
     nixosConfigurations.minimal = inputs.nixpkgs.lib.nixosSystem {
       inherit system;
 
       modules = [
-        self.nixosModules.commonConfig
+        common
 
-        {
+        ({pkgs, ...}: {
           boot.loader.systemd-boot.enable = true;
+          environment.systemPackages = with pkgs; [git];
           users.users.root = {
             password = null;
             extraGroups = ["wheel"];
           };
           services.getty.autologinUser = "root";
-        }
+        })
       ];
     };
 
@@ -49,10 +37,12 @@ in {
     nixosConfigurations.${hostName} = inputs.nixpkgs.lib.nixosSystem {
       inherit system;
 
-      modules = [
-        self.nixosModules.commonConfig
+      modules = with inputs.self.modules.nixos; [
+        common
+        vcs
         ./hardware
         ./gui
+        ./home
 
         ({
           pkgs,
