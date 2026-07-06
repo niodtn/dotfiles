@@ -82,6 +82,7 @@
           AppleShowScrollBars = "WhenScrolling";
           NSDocumentSaveNewDocumentsToCloud = false;
           NSNavPanelExpandedStateForSaveMode = true;
+          "com.apple.mouse.linear" = true; # Disable pointer acceleration
 
           # Menu Bar
           AppleICUForce24HourTime = true;
