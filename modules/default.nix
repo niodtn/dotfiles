@@ -3,7 +3,7 @@
     inputs.flake-aspects.flakeModule
     (
       inputs.import-tree
-      (i: i ./configs)
+      (i: i ./core)
     )
   ];
 

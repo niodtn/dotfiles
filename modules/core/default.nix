@@ -19,14 +19,11 @@
     nixpkgs.config.allowUnfree = true;
   };
 in {
-  flake.aspects = {aspects, ...}: {
-    core = {
-      includes = with aspects; [host];
-      nixos = lib.mkMerge [
-        common
-        {nix.gc.dates = "weekly";}
-      ];
-      darwin = common;
-    };
+  flake.aspects.core = {
+    nixos = lib.mkMerge [
+      common
+      {nix.gc.dates = "weekly";}
+    ];
+    darwin = common;
   };
 }
