@@ -73,6 +73,8 @@
     # etc
     {
       system.defaults = {
+        CustomUserPreferences.NSGlobalDomain."com.apple.mouse.linear" = true; # Disable pointer acceleration
+
         WindowManager = {
           EnableTiledWindowMargins = false;
           EnableStandardClickToShowDesktop = false;
@@ -82,7 +84,6 @@
           AppleShowScrollBars = "WhenScrolling";
           NSDocumentSaveNewDocumentsToCloud = false;
           NSNavPanelExpandedStateForSaveMode = true;
-          "com.apple.mouse.linear" = true; # Disable pointer acceleration
 
           # Menu Bar
           AppleICUForce24HourTime = true;
