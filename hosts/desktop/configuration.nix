@@ -39,6 +39,7 @@ in {
         ./gui
         ./home
 
+        syncthing
         zed-editor
 
         ({

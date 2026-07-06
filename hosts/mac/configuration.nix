@@ -10,6 +10,7 @@ in {
       ./darwin
       ./home
 
+      syncthing
       zed-editor
 
       {

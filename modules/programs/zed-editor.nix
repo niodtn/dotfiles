@@ -17,6 +17,13 @@ let
 
         userSettings = {
           disable_ai = true;
+          git.inline_blame.enabled = false;
+
+          title_bar = {
+            show_sign_in = false;
+            show_user_picture = false;
+            show_onboarding_banner = false;
+          };
 
           lsp.nil.settings = {
             formatting.command = ["alejandra"];
