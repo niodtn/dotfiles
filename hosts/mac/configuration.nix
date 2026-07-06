@@ -1,8 +1,4 @@
-{
-  inputs,
-  self,
-  ...
-}: let
+{inputs, ...}: let
   system = "aarch64-darwin";
   hostName = builtins.baseNameOf ./.;
 in {
@@ -12,6 +8,7 @@ in {
     modules = [
       inputs.self.modules.darwin.core
       ./darwin
+      ./home
 
       {
         system.stateVersion = 7;

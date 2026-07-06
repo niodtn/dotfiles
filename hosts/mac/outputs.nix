@@ -5,6 +5,10 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
     ./configuration.nix
   ];
 
+  inputs = {
+    home-manager = true;
+  };
+
   flake-file = {
     inputs = {
       nix-darwin.url = "github:nix-darwin/nix-darwin";

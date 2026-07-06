@@ -42,7 +42,6 @@ in {
         networking.localHostName = config.host.hostName;
 
         system.primaryUser = config.host.userName;
-        users.users.${config.host.userName}.home = "/Users/${config.host.userName}";
       })
     ];
   };
