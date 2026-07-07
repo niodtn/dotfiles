@@ -17,14 +17,28 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flake.aspects.core = {
-      nixos = {
-        imports = [inputs.home-manager.nixosModules.home-manager];
+    flake.aspects.core = let
+      common = {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          backupFileExtension = "backup";
+        };
       };
-      darwin = {config, ...}: {
-        imports = [inputs.home-manager.darwinModules.home-manager];
-        users.users.${config.host.userName}.home = "/Users/${config.host.userName}";
-      };
+    in {
+      nixos = lib.mkMerge [
+        common
+        {
+          imports = [inputs.home-manager.nixosModules.home-manager];
+        }
+      ];
+      darwin = lib.mkMerge [
+        common
+        ({config, ...}: {
+          imports = [inputs.home-manager.darwinModules.home-manager];
+          users.users.${config.host.userName}.home = "/Users/${config.host.userName}";
+        })
+      ];
     };
   };
 }
