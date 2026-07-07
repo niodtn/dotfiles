@@ -1,8 +1,4 @@
-{
-  inputs,
-  self,
-  ...
-}: let
+{inputs, ...}: let
   system = "x86_64-linux";
   hostName = builtins.baseNameOf ./.;
 
@@ -39,10 +35,11 @@ in {
 
       modules = with inputs.self.modules.nixos; [
         common
-        vcs
         ./hardware
         ./gui
         ./home
+
+        zed-editor
 
         ({
           pkgs,

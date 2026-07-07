@@ -7,15 +7,21 @@ in {
 
     modules = with inputs.self.modules.darwin; [
       core
-      vcs
       ./darwin
       ./home
+
+      zed-editor
 
       {
         system.stateVersion = 7;
 
         host = {
           inherit system hostName;
+        };
+
+        programs = {
+          _1password.enable = true;
+          _1password-gui.enable = true;
         };
       }
     ];
