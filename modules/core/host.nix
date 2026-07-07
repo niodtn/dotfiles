@@ -20,7 +20,7 @@
     config = {
       nixpkgs.hostPlatform = config.host.system;
       networking.hostName = config.host.hostName;
-      nix.settings.trusted-users = ["root" config.host.userName];
+      nix.settings.trusted-users = [config.host.userName];
     };
   };
 in {
