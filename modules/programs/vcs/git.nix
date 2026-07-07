@@ -1,11 +1,5 @@
 let
-  common = {
-    pkgs,
-    config,
-    ...
-  }: {
-    environment.systemPackages = [pkgs.gh];
-
+  common = {config, ...}: {
     home-manager.users.${config.host.userName}.programs = {
       git = {
         enable = true;
@@ -13,8 +7,11 @@ let
     };
   };
 in {
-  flake.aspects.git = {
-    nixos = common;
-    darwin = common;
+  flake.aspects = {aspects, ...}: {
+    git = {
+      includes = with aspects; [gh];
+      nixos = common;
+      darwin = common;
+    };
   };
 }
