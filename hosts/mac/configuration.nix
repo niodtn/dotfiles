@@ -1,6 +1,6 @@
 {inputs, ...}: let
   system = "aarch64-darwin";
-  hostName = builtins.baseNameOf ./.;
+  hostName = baseNameOf ./.;
 in {
   flake.darwinConfigurations.${hostName} = inputs.nix-darwin.lib.darwinSystem {
     inherit system;

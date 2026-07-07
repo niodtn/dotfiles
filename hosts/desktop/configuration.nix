@@ -1,6 +1,6 @@
 {inputs, ...}: let
   system = "x86_64-linux";
-  hostName = builtins.baseNameOf ./.;
+  hostName = baseNameOf ./.;
 
   common = {
     imports = with inputs.self.modules.nixos; [core ./hardware/disko.nix];
