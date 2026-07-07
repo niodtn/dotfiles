@@ -8,33 +8,51 @@
     ./gnome
   ];
 
-  services = {
-    dbus.enable = true;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
-  };
+  config = lib.mkMerge [
+    # Network
+    {
+      networking = {
+        networkmanager.enable = true;
+        firewall.enable = true;
+      };
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
-    config.common.default = lib.mkDefault ["gtk"];
-  };
+      users.users.${config.host.userName}.extraGroups = ["networkmanager"];
+    }
 
-  environment = {
-    systemPackages = [pkgs.xdg-utils];
-    variables = {NIXOS_OZONE_WL = "1";};
-  };
+    # Sound
+    {
+      services.pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+      };
+      security.rtkit.enable = true;
+    }
 
-  security = {
-    polkit.enable = true;
-    rtkit.enable = true;
-  };
+    # XDG Portal
+    {
+      services.dbus.enable = true;
+      environment.systemPackages = [pkgs.xdg-utils];
 
-  fonts.packages = [pkgs.noto-fonts-cjk-sans];
-  programs.xwayland.enable = true;
-  users.users.${config.host.userName}.extraGroups = ["video"];
+      xdg.portal = {
+        enable = true;
+        extraPortals = [pkgs.xdg-desktop-portal-gtk];
+        config.common.default = lib.mkDefault ["gtk"];
+      };
+    }
+
+    # Wayland
+    {
+      environment.variables = {NIXOS_OZONE_WL = "1";};
+      programs.xwayland.enable = true;
+      users.users.${config.host.userName}.extraGroups = ["video"];
+    }
+
+    # etc
+    {
+      security.polkit.enable = true;
+      fonts.packages = [pkgs.noto-fonts-cjk-sans];
+    }
+  ];
 }

@@ -3,7 +3,7 @@
   hostName = baseNameOf ./.;
 
   common = {
-    imports = with inputs.self.modules.nixos; [core ./hardware/disko.nix];
+    imports = with inputs.self.modules.nixos; [core ./nixos/hardware/disko.nix];
     system.stateVersion = "26.11";
     host = {inherit system hostName;};
     documentation.nixos.enable = false;
@@ -35,8 +35,7 @@ in {
 
       modules = with inputs.self.modules.nixos; [
         common
-        ./hardware
-        ./gui
+        ./nixos
         ./home
 
         syncthing
