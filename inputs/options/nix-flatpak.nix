@@ -18,6 +18,11 @@
 
     flake.aspects.core.nixos = {
       imports = [inputs.nix-flatpak.nixosModules.nix-flatpak];
+
+      services.flatpak = {
+        enable = true;
+        uninstallUnmanaged = false;
+      };
     };
   };
 }

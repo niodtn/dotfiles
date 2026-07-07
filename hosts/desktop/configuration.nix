@@ -59,14 +59,6 @@ in {
             hashedPassword = "$y$j9T$FiIoFpdVFv30Viq0WYsDS1$5VGzz7Itx1PEVGmnwOJJIN12YAfFQ3JoaaE6dBiyYd9";
           };
         })
-
-        # flatpak
-        {
-          services.flatpak = {
-            enable = true;
-            uninstallUnmanaged = false;
-          };
-        }
       ];
     };
   };
