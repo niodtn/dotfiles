@@ -1,5 +1,5 @@
 {inputs, ...}: {
   imports = [
-    (inputs.import-tree ./overlays)
+    (inputs.import-tree ./overrides)
   ];
 }
