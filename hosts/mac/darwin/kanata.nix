@@ -4,10 +4,31 @@
 
   kanataConfig = pkgs.writeText "kanata.kbd" ''
     (defcfg process-unmapped-keys yes)
-    (defsrc rmet)
+
+    (defsrc
+      rmet
+      fn
+      f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12
+    )
+
     (defvar tap-time 200 hold-time 200)
-    (defalias rmet-mod (tap-hold $tap-time $hold-time f18 rmet))
-    (deflayer default @rmet-mod)
+
+    (defalias
+      rmet-mod (tap-hold $tap-time $hold-time f18 rmet)
+      fn-layer (layer-toggle media-layer)
+    )
+
+    (deflayer default
+      @rmet-mod
+      @fn-layer
+      f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12
+    )
+
+    (deflayer media-layer
+      -
+      -
+      brdn brup XX XX XX XX XX XX XX mute vold volu
+    )
   '';
 in {
   environment.systemPackages = [pkgs.kanata];
