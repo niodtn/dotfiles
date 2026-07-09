@@ -11,6 +11,7 @@ in {
       ./home
 
       syncthing
+      cryptomator
       zed-editor
 
       {
