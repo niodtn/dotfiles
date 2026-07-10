@@ -2,6 +2,7 @@
   imports = [
     ./kanata.nix
     ./karabiner-dk.nix
+    ./rectangle.nix
     ./scroll-reverser.nix
   ];
 
