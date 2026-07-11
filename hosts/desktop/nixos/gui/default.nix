@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ./gnome
+    ./plasma
   ];
 
   config = lib.mkMerge [
@@ -39,8 +39,23 @@
       users.users.${config.host.userName}.extraGroups = ["video"];
     }
 
+    # Mouse
+    {
+      services.libinput = {
+        enable = true;
+        mouse = {
+          accelProfile = "flat";
+          accelSpeed = "0";
+        };
+      };
+    }
+
     # etc
     {
+      services.displayManager.autoLogin = {
+        enable = true;
+        user = config.host.userName;
+      };
       security.polkit.enable = true;
     }
   ];
