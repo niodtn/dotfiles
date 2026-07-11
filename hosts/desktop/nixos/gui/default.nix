@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./plasma
+    ./fonts.nix
   ];
 
   config = lib.mkMerge [
