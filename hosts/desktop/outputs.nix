@@ -11,5 +11,6 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
     cachyos-kernel = true;
     nix-flatpak = true;
     home-manager = true;
+    plasma-manager = true;
   };
 }
