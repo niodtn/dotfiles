@@ -40,7 +40,9 @@ in {
         ./home
 
         syncthing
+
         zed-editor
+        obsidian
 
         ({
           pkgs,

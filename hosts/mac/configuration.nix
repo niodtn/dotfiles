@@ -12,7 +12,9 @@ in {
 
       syncthing
       cryptomator
+
       zed-editor
+      obsidian
 
       {
         system.stateVersion = 7;
