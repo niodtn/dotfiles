@@ -4,6 +4,10 @@
   config,
   ...
 }: {
+  imports = [
+    ./fcitx5.nix
+  ];
+
   config = lib.mkMerge [
     # Base
     {
