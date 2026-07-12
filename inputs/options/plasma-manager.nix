@@ -1,5 +1,6 @@
 {
   lib,
+  config,
   inputs,
   ...
 }: {
@@ -10,7 +11,7 @@
     };
   };
 
-  config = {
+  config = lib.mkIf config.inputs.plasma-manager {
     flake-file.inputs.plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
