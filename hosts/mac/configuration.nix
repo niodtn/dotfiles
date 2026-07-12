@@ -14,6 +14,7 @@ in {
       syncthing
       cryptomator
 
+      zen-browser
       zed-editor
       obsidian
 

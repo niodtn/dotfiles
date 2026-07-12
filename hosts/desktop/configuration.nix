@@ -41,6 +41,7 @@ in {
         onePassword
         syncthing
 
+        zen-browser
         zed-editor
         obsidian
 
