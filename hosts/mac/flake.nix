@@ -29,5 +29,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    opnix.url = "github:brizzbuzz/opnix";
   };
 }

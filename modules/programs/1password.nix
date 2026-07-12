@@ -4,6 +4,11 @@
       _1password.enable = true;
       _1password-gui.enable = true;
     };
+
+    # services.onepassword-secrets = {
+    #   enable = true;
+    #   tokenFile = "/etc/opnix-token";
+    # };
   };
 in {
   flake.aspects.onePassword = {

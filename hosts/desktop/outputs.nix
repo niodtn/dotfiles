@@ -9,7 +9,10 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
   inputs = {
     disko = true;
     cachyos-kernel = true;
+    opnix = true;
+
     nix-flatpak = true;
+
     home-manager = true;
     plasma-manager = true;
   };

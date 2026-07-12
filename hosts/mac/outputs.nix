@@ -7,6 +7,8 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
 
   inputs = {
     nix-darwin = true;
+    opnix = true;
+
     home-manager = true;
   };
 }
