@@ -10,6 +10,7 @@ in {
       ./darwin
       ./home
 
+      onePassword
       syncthing
       cryptomator
 
@@ -21,11 +22,6 @@ in {
 
         host = {
           inherit system hostName;
-        };
-
-        programs = {
-          _1password.enable = true;
-          _1password-gui.enable = true;
         };
       }
     ];

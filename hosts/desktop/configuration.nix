@@ -38,6 +38,7 @@ in {
         ./nixos
         ./home
 
+        onePassword
         syncthing
 
         zed-editor
