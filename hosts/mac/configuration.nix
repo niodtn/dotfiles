@@ -10,6 +10,8 @@ in {
       ./darwin
       ./home
 
+      direnv
+
       onePassword
       syncthing
       cryptomator
