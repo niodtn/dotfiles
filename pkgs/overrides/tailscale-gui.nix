@@ -1,6 +1,6 @@
 let
-  version = "1.98.8";
-  hash = "sha256-FACQrLyZEZZ7/ylFcmVvOzZ8OVvoXoQn7iJJ1BInmGQ=";
+  version = "1.98.9";
+  hash = "sha256-n+behR4E/RbUdLmlZmIuDMxkD9Cjw7BHUWFn9ELaew4=";
 
   overlay = self: super: {
     tailscale-gui =
