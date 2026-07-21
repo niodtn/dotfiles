@@ -20,13 +20,17 @@ in {
       zed-editor
       obsidian
 
-      {
+      ({pkgs, ...}: {
         system.stateVersion = 7;
 
         host = {
           inherit system hostName;
         };
-      }
+
+        environment.systemPackages = with pkgs; [
+          spotify
+        ];
+      })
     ];
   };
 }
