@@ -1,4 +1,9 @@
-{
+{config, ...}: {
+  systemd.tmpfiles.rules = [
+    "d /mnt/hdd1 0755 ${config.host.userName} users -"
+    "d /mnt/hdd2 0755 ${config.host.userName} users -"
+  ];
+
   disko.devices.disk = {
     main = {
       device = "/dev/disk/by-id/ata-QNIX_256GB_2021004000487";
