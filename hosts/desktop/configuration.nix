@@ -38,6 +38,8 @@ in {
         ./nixos
         ./home
 
+        direnv
+
         onePassword
         syncthing
 
