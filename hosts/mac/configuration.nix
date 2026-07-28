@@ -11,6 +11,7 @@ in {
       ./home
 
       fish
+      starship
       direnv
 
       onePassword
