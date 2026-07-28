@@ -102,13 +102,6 @@ in {
         pkgs,
         ...
       }: {
-        environment.etc = {
-          "1password/custom_allowed_browsers" = {
-            text = ".zen-wrapped";
-            mode = "0755";
-          };
-        };
-
         home-manager.users.${config.host.userName} = {
           programs.zen-browser = {
             nativeMessagingHosts = [
