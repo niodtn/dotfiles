@@ -1,8 +1,5 @@
 {inputs, ...}: {
-  imports = [
-    inputs.flake-file.flakeModules.default
-    (inputs.import-tree ./options)
-  ];
+  imports = [inputs.flake-file.flakeModules.default];
 
   flake-file = {
     inputs = {

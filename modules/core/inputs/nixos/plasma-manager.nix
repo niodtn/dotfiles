@@ -12,6 +12,8 @@
   };
 
   config = lib.mkIf config.inputs.plasma-manager {
+    inputs.home-manager = true;
+
     flake-file.inputs.plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";

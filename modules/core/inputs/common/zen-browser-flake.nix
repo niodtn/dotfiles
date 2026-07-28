@@ -12,6 +12,8 @@
   };
 
   config = lib.mkIf config.inputs.zen-browser-flake {
+    inputs.home-manager = true;
+
     flake-file.inputs.zen-browser-flake = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {

@@ -1,6 +1,5 @@
 {
   imports = [
-    ../inputs
     ../modules
     ../pkgs
   ];
