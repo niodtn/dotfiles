@@ -38,6 +38,7 @@ in {
         ./nixos
         ./home
 
+        fish
         direnv
 
         onePassword

@@ -10,6 +10,7 @@ in {
       ./darwin
       ./home
 
+      fish
       direnv
 
       onePassword
