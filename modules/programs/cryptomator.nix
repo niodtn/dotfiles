@@ -1,6 +1,16 @@
 {
   flake.aspects.cryptomator = {
-    nixos = {};
+    nixos = {
+      config,
+      pkgs,
+      ...
+    }: {
+      programs.fuse.userAllowOther = true;
+
+      home-manager.users.${config.host.userName} = {
+        home.packages = [pkgs.cryptomator];
+      };
+    };
     darwin = {
       config,
       pkgs,
