@@ -6,6 +6,17 @@
   system = "x86_64-linux";
   hostName = baseNameOf ./.;
 
+  configurations = {
+    system = {
+      host = {inherit system hostName;};
+      system.stateVersion = "26.11";
+    };
+
+    home = {
+      home.stateVersion = "26.11";
+    };
+  };
+
   common = {
     imports = with self.modules.nixos; [core ./modules/_hardware/disko.nix];
     system.stateVersion = "26.11";
@@ -41,7 +52,6 @@ in {
         common
         services
         host-desktop
-        ./home
 
         fish
         starship
@@ -52,6 +62,11 @@ in {
         zen-browser
         zed-editor
         obsidian
+
+        ({config, ...}: {
+          imports = [configurations.system];
+          home-manager.users.${config.host.userName}.imports = [configurations.home];
+        })
 
         ({
           pkgs,
