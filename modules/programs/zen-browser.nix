@@ -20,6 +20,8 @@
         "browser.aboutConfig.showWarning" = mkLocked false;
         "browser.tabs.warnOnClose" = mkLocked false;
         "browser.warnOnQuitShortcut" = mkLocked false;
+
+        "browser.ctrlTab.sortByRecentlyUsed" = mkLocked true;
       };
     }
 
