@@ -35,6 +35,7 @@ in {
 
       modules = with inputs.self.modules.nixos; [
         common
+        services
         ./nixos
         ./home
 
@@ -43,7 +44,6 @@ in {
         direnv
 
         onePassword
-        syncthing
 
         zen-browser
         zed-editor

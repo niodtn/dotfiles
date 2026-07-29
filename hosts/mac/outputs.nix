@@ -11,4 +11,9 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
     home-manager = true;
     zen-browser-flake = true;
   };
+
+  services = {
+    tailscale = true;
+    syncthing = true;
+  };
 }

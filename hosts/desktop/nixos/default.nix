@@ -14,7 +14,10 @@
     {
       networking = {
         networkmanager.enable = true;
-        firewall.enable = true;
+        firewall = {
+          enable = true;
+          trustedInterfaces = ["tailscale0"];
+        };
       };
 
       users.users.${config.host.userName}.extraGroups = ["networkmanager"];

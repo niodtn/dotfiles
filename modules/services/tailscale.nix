@@ -1,17 +1,19 @@
 {
-  flake.aspects.tailscale = {
-    nixos = {
-      services.tailscale.enable = true;
-
-      networking.firewall = {
-        enable = true;
-        trustedInterfaces = ["tailscale0"];
-      };
+  lib,
+  config,
+  ...
+}: {
+  options = {
+    services.tailscale = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
     };
-    darwin = {pkgs, ...}: {
-      environment.systemPackages = [
-        pkgs.tailscale-gui
-      ];
+  };
+
+  config = lib.mkIf config.services.tailscale {
+    flake.aspects.services = {
+      nixos = {services.tailscale.enable = true;};
+      darwin = {pkgs, ...}: {environment.systemPackages = [pkgs.tailscale-gui];};
     };
   };
 }

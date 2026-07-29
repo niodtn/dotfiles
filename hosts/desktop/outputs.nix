@@ -5,7 +5,6 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
     ./configuration.nix
   ];
 
-  # Inputs
   inputs = {
     disko = true;
     cachyos-kernel = true;
@@ -14,5 +13,10 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
     home-manager = true;
     plasma-manager = true;
     zen-browser-flake = true;
+  };
+
+  services = {
+    tailscale = true;
+    syncthing = true;
   };
 }

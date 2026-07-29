@@ -7,6 +7,7 @@ in {
 
     modules = with inputs.self.modules.darwin; [
       core
+      services
       ./darwin
       ./home
 
@@ -15,7 +16,6 @@ in {
       direnv
 
       onePassword
-      syncthing
       cryptomator
 
       zen-browser
