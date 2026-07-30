@@ -1,17 +1,19 @@
 {
   lib,
   config,
-  pkgs,
   ...
-}: {
-  imports = [
-    ./gui
-    ./hardware
-  ];
+}: let
+  cfg = config.etc.network;
+in {
+  options = {
+    etc.network = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+    };
+  };
 
-  config = lib.mkMerge [
-    # Network
-    {
+  config = lib.mkIf cfg {
+    flake.aspects.host-desktop.nixos = {config, ...}: {
       networking = {
         networkmanager.enable = true;
         firewall = {
@@ -21,11 +23,6 @@
       };
 
       users.users.${config.host.userName}.extraGroups = ["networkmanager"];
-    }
-
-    # etc
-    {
-      fonts.packages = [pkgs.noto-fonts-cjk-sans];
-    }
-  ];
+    };
+  };
 }

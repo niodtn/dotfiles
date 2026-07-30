@@ -1,0 +1,89 @@
+{
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.wm.gnome;
+in {
+  options = {
+    wm.gnome = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+    };
+  };
+
+  config = lib.mkIf cfg {
+    wm.wayland = true;
+
+    etc = {
+      fonts = true;
+      network = true;
+      sound = true;
+    };
+
+    flake.aspects.host-desktop.nixos = lib.mkMerge [
+      # Gnome
+      {
+        services = {
+          displayManager.gdm.enable = true;
+          desktopManager.gnome.enable = true;
+        };
+      }
+
+      # Dash to Dock
+      ({pkgs, ...}: {
+        environment.systemPackages = with pkgs.gnomeExtensions; [
+          dash-to-dock
+        ];
+      })
+
+      # Dconf
+      # https://wiki.nixos.org/wiki/GNOME#dconf
+      ({lib, ...}: let
+        mkLocked = path: key: value: {
+          locks = ["${path}/${key}"]; # TODO: `locks` doesn't works
+          settings = {
+            "${path}" = {
+              "${key}" = value;
+            };
+          };
+        };
+        applyTo = targets: setting:
+          lib.genAttrs targets (target: {databases = [setting];});
+      in {
+        programs.dconf = {
+          enable = true;
+          profiles = lib.mkMerge [
+            # === Settings ===
+            # Power -> Power Saving
+            (applyTo ["user"] (mkLocked "org/gnome/desktop/session" "idle-delay" (lib.gvariant.mkUint32 0))) # -> Automatic Screen Blank = false
+            (applyTo ["gdm" "user"] (mkLocked "org/gnome/settings-daemon/plugins/power" "sleep-inactive-ac-type" "nothing")) # -> Automatic Suspend = false
+
+            # Multitasking -> Screen Edges
+            (applyTo ["user"] (mkLocked "org/gnome/desktop/interface" "enable-hot-corners" false)) # -> Hot Corner = false
+
+            # Mouse & Touchpad -> Mouse
+            (applyTo ["gdm" "user"] (mkLocked "org/gnome/desktop/peripherals/mouse" "accel-profile" "flat")) # -> Mouse Acceleration = false
+
+            # === Extensions ===
+            (applyTo ["user"] {
+              settings = {
+                "org/gnome/shell" = {
+                  enabled-extensions = ["dash-to-dock@micxgx.gmail.com"];
+                };
+
+                "org/gnome/shell/extensions/dash-to-dock" = {
+                  dock-fixed = false;
+                  require-pressure-to-show = false;
+                  animation-time = 0.05;
+                  hide-delay = 0.05;
+                  show-delay = 0.05;
+                };
+              };
+            })
+          ];
+        };
+      })
+    ];
+  };
+}
