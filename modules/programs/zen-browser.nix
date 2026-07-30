@@ -1,8 +1,4 @@
-{
-  lib,
-  inputs,
-  ...
-}: let
+{lib, ...}: let
   mkLocked = value: {
     Value = value;
     Status = "locked";
@@ -120,32 +116,6 @@ in {
           programs.zen-browser = {
             darwinDefaultsId = "app.zen-browser.zen";
           };
-        };
-      })
-
-      # https://github.com/0xc000022070/zen-browser-flake/pull/212
-      ({config, ...} @ sys: {
-        home-manager.users.${sys.config.host.userName} = {
-          pkgs,
-          config,
-          ...
-        } @ hm: {
-          targets.darwin.defaults = lib.mkIf hm.pkgs.stdenv.isDarwin {
-            "app.zen-browser.zen" =
-              {EnterprisePoliciesEnabled = true;}
-              // hm.config.programs.zen-browser.policies;
-          };
-
-          programs.zen-browser.package = lib.mkIf hm.pkgs.stdenv.isDarwin (
-            hm.pkgs.lib.makeOverridable
-            (
-              _:
-                inputs.zen-browser-flake.packages.${hm.pkgs.stdenv.hostPlatform.system}.beta-unwrapped.overrideAttrs (old: {
-                  installPhase = builtins.replaceStrings ["/usr/bin/codesign"] [": "] old.installPhase;
-                  dontFixup = true;
-                })
-            ) {}
-          );
         };
       })
     ];
