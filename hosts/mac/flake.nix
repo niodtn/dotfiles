@@ -7,10 +7,12 @@
     abort-on-warn = false;
     extra-substituters = [
       "https://nix-darwin.cachix.org"
+      "https://cache.nixos.org"
       "https://nix-community.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-darwin.cachix.org-1:LxMyKzQk7Uqkc1Pfq5uhm9GSn07xkERpy+7cpwc006A="
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
