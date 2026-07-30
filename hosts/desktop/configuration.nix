@@ -1,9 +1,13 @@
-{inputs, ...}: let
+{
+  self,
+  inputs,
+  ...
+}: let
   system = "x86_64-linux";
   hostName = baseNameOf ./.;
 
   common = {
-    imports = with inputs.self.modules.nixos; [core ./modules/_hardware/disko.nix];
+    imports = with self.modules.nixos; [core ./modules/_hardware/disko.nix];
     system.stateVersion = "26.11";
     host = {inherit system hostName;};
     documentation.nixos.enable = false;
@@ -33,7 +37,7 @@ in {
     nixosConfigurations.${hostName} = inputs.nixpkgs.lib.nixosSystem {
       inherit system;
 
-      modules = with inputs.self.modules.nixos; [
+      modules = with self.modules.nixos; [
         common
         services
         host-desktop
