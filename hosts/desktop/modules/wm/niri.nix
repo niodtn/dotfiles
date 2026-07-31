@@ -55,6 +55,8 @@
               prefer-no-csd = {};
               hotkey-overlay.skip-at-startup = {};
 
+              input.mouse.accel-profile = "flat";
+
               _children = [
                 {spawn-at-startup._args = ["systemctl" "--user" "import-environment"];}
                 {spawn-at-startup._args = ["xwayland-satellite"];}

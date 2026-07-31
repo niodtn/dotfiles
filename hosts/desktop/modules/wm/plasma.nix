@@ -22,7 +22,6 @@ in {
       fcitx5 = true;
       network = true;
       sound = true;
-      mouse = true;
     };
 
     flake.aspects.host-desktop.nixos = lib.mkMerge [
@@ -48,6 +47,17 @@ in {
       {
         environment.sessionVariables = {
           KWIN_IM_MODULE = "fcitx5";
+        };
+      }
+
+      # Mouse
+      {
+        services.libinput = {
+          enable = true;
+          mouse = {
+            accelProfile = "flat";
+            accelSpeed = "0";
+          };
         };
       }
 
