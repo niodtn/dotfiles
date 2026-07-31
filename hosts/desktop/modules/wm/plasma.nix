@@ -50,6 +50,14 @@ in {
           KWIN_IM_MODULE = "fcitx5";
         };
       }
+
+      # AutoLogin
+      ({config, ...}: {
+        services.displayManager.autoLogin = {
+          enable = true;
+          user = config.host.userName;
+        };
+      })
     ];
   };
 }
