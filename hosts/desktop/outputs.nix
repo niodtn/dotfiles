@@ -21,4 +21,6 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
 
   wm.plasma = true;
   etc.autoLogin = true;
+
+  etc.steam = true;
 }
