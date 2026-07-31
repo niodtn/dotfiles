@@ -14,13 +14,7 @@
     inputs.home-manager = true;
 
     wm.wayland = true;
-
-    etc = {
-      fonts = true;
-      fcitx5 = true;
-      network = true;
-      sound = true;
-    };
+    etc.fcitx5 = true;
 
     flake.aspects.host-desktop.nixos = lib.mkMerge [
       # Wayland
