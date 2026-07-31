@@ -14,6 +14,12 @@ in {
 
   config = lib.mkIf cfg {
     flake.aspects.host-desktop.nixos = {pkgs, ...}: {
+      environment.variables = {
+        GTK_IM_MODULE = "fcitx";
+        QT_IM_MODULE = "fcitx";
+        XMODIFIERS = "@im=fcitx";
+      };
+
       i18n.inputMethod = {
         enable = true;
         type = "fcitx5";
@@ -21,6 +27,7 @@ in {
           waylandFrontend = true;
           addons = with pkgs; [
             fcitx5-hangul
+            fcitx5-gtk
           ];
           settings = {
             inputMethod = {
