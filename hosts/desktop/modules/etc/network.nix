@@ -13,6 +13,8 @@ in {
   };
 
   config = lib.mkIf cfg {
+    services.tailscale = true;
+
     flake.aspects.host-desktop.nixos = {config, ...}: {
       networking = {
         networkmanager.enable = true;
