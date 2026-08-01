@@ -6,12 +6,14 @@
   nixConfig = {
     abort-on-warn = false;
     extra-substituters = [
+      "https://noctalia.cachix.org"
       "https://attic.xuyh0120.win/lantian"
       "https://cache.garnix.io"
       "https://cache.nixos.org"
       "https://nix-community.cachix.org"
     ];
     extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
       "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -34,12 +36,13 @@
     };
     import-tree.url = "github:denful/import-tree";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs = {
-        home-manager.follows = "home-manager";
-        nixpkgs.follows = "nixpkgs";
-      };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser-flake = {
       url = "github:0xc000022070/zen-browser-flake";

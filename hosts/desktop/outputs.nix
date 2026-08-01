@@ -19,8 +19,8 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
     syncthing = true;
   };
 
-  wm.plasma = true;
-  etc.autoLogin = true;
+  wm.niri = true;
+  etc.noctalia = true;
 
   etc.steam = true;
 }
