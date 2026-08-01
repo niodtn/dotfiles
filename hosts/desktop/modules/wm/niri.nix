@@ -48,8 +48,17 @@
             settings = {
               prefer-no-csd = {};
               hotkey-overlay.skip-at-startup = {};
+              gestures.hot-corners.off = {};
 
               input.mouse.accel-profile = "flat";
+
+              binds = {
+                "Mod+Return".maximize-column = {};
+                "Mod+Shift+Return".fullscreen-window = {};
+
+                "Mod+Q".close-window = {};
+                "Mod+O".toggle-overview = {};
+              };
 
               _children = [
                 {spawn-at-startup._args = ["systemctl" "--user" "import-environment"];}
