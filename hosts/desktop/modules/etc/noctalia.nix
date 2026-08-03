@@ -17,6 +17,16 @@
     };
 
     flake.aspects.host-desktop.nixos = lib.mkMerge [
+      # Greeter
+      {
+        # programs.noctalia-greeter = {
+        #   enable = true;
+        #   greeter-args = "Niri";
+        # };
+
+        # users.users.greeter.extraGroups = ["video" "render" "input"];
+      }
+
       # Noctalia
       ({config, ...}: {
         programs.noctalia = {
@@ -33,6 +43,32 @@
 
       # Niri
       (lib.mkIf config.wm.niri ({config, ...}: {
+        # programs.noctalia-greeter.settings = {
+        #   session.default = "Niri";
+
+        #   appearance = {
+        #     scheme = "Synced";
+        #     password_style = "default";
+        #     palette = {
+        #       primary = "#fff59b";
+        #       on_primary = "#0e0e43";
+        #       surface = "#1a1a1a";
+        #       on_surface = "#ffffff";
+        #       surface_container = "#2a2a2a";
+        #       error = "#ff5555";
+        #     };
+        #   };
+
+        #   cursor = {
+        #     theme = "Adwaita";
+        #     size = 24;
+        #   };
+
+        #   keyboard = {
+        #     layout = "us";
+        #   };
+        # };
+
         home-manager.users.${config.host.userName} = {
           wayland.windowManager.niri = {
             settings = lib.mkMerge [
