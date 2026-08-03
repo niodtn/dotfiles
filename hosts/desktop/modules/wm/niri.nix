@@ -45,35 +45,75 @@
           wayland.windowManager.niri = {
             enable = true;
 
-            settings = {
-              prefer-no-csd = {};
-              hotkey-overlay.skip-at-startup = {};
-              gestures.hot-corners.off = {};
+            settings = lib.mkMerge [
+              # Startup
+              {
+                _children = [
+                  {spawn-at-startup._args = ["systemctl" "--user" "import-environment"];}
+                  {spawn-at-startup._args = ["xwayland-satellite"];}
+                  {spawn-at-startup._args = ["fcitx5" "-d"];}
+                ];
 
-              input.mouse.accel-profile = "flat";
+                prefer-no-csd = {};
+                hotkey-overlay.skip-at-startup = {};
+                gestures.hot-corners.off = {};
+              }
 
-              binds = {
-                "Mod+Return".maximize-column = {};
-                "Mod+Shift+Return".fullscreen-window = {};
+              # Input & Binds
+              {
+                input.mouse.accel-profile = "flat";
 
-                "Mod+Q".close-window = {};
-                "Mod+O".toggle-overview = {};
-              };
+                binds = {
+                  # Window Action
+                  "Mod+Return".maximize-column = {};
+                  "Mod+Shift+Return".fullscreen-window = {};
+                  "Mod+Q".close-window = {};
+                  "Mod+R".switch-preset-column-width = {};
 
-              _children = [
-                {spawn-at-startup._args = ["systemctl" "--user" "import-environment"];}
-                {spawn-at-startup._args = ["xwayland-satellite"];}
-                {spawn-at-startup._args = ["fcitx5" "-d"];}
+                  "Mod+Tab".toggle-overview = {};
+                };
+              }
 
-                # Suppress maximize events for all windows
-                {
-                  window-rule._children = [
-                    {open-maximized = false;}
-                    {open-fullscreen = false;}
-                  ];
-                }
-              ];
-            };
+              {
+                overview = {
+                  zoom = 0.75;
+                  workspace-shadow.off = {};
+                };
+
+                layout = {
+                  gaps = 6;
+                  shadow.on = {};
+                  focus-ring.off = {};
+
+                  border = {
+                    width = 3;
+                    active-color = "#ffffff30";
+                    inactive-color = "#ffffff10";
+                  };
+
+                  # Positioning
+                  center-focused-column = "on-overflow";
+                  always-center-single-column = {};
+                };
+
+                _children = [
+                  {
+                    window-rule._children = [
+                      {geometry-corner-radius = 15;}
+                      {clip-to-geometry = true;}
+                    ];
+                  }
+
+                  # Suppress maximize events for all windows
+                  {
+                    window-rule._children = [
+                      {open-maximized = false;}
+                      {open-fullscreen = false;}
+                    ];
+                  }
+                ];
+              }
+            ];
           };
         };
       })
