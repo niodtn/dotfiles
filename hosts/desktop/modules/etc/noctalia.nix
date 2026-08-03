@@ -35,45 +35,55 @@
       (lib.mkIf config.wm.niri ({config, ...}: {
         home-manager.users.${config.host.userName} = {
           wayland.windowManager.niri = {
-            settings = {
-              binds = {
-                "Mod+Space".spawn-sh = "noctalia msg panel-toggle launcher";
-              };
+            settings = lib.mkMerge [
+              # Startup
+              {
+                _children = [{spawn-at-startup._args = ["noctalia"];}];
 
-              layout.background-color = "transparent";
-              overview.workspace-shadow.off = {};
+                # Allows notification actions and window activation from Noctalia
+                debug.honor-xdg-activation-with-invalid-serial = {};
+              }
 
-              _children = [
-                {spawn-at-startup._args = ["noctalia"];}
+              # Binds
+              {
+                binds = {
+                  "Mod+Space".spawn-sh = "noctalia msg panel-toggle launcher";
+                };
+              }
 
-                {
-                  window-rule._children = [
-                    {geometry-corner-radius = 20;}
-                    {clip-to-geometry = true;}
-                  ];
-                }
+              {
+                _children = [
+                  {
+                    window-rule._children = [
+                      {match._props = {app-id = "dev.noctalia.Noctalia";};}
+                      {open-floating = true;}
+                      {default-column-width.fixed = 1080;}
+                      {default-window-height.fixed = 920;}
+                    ];
+                  }
 
-                {
-                  window-rule._children = [
-                    {match._props = {app-id = "dev.noctalia.Noctalia";};}
-                    {open-floating = true;}
-                    {default-column-width.fixed = 1080;}
-                    {default-window-height.fixed = 920;}
-                  ];
-                }
+                  {
+                    layer-rule._children = [
+                      {match._props = {namespace = "^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$";};}
+                      {background-effect.xray = false;}
+                    ];
+                  }
+                ];
+              }
 
-                {
-                  layer-rule._children = [
-                    {match._props = {namespace = "^noctalia-wallpaper";};}
-                    {place-within-backdrop = true;}
-                  ];
-                }
-              ];
+              {
+                layout.background-color = "transparent";
 
-              debug = {
-                honor-xdg-activation-with-invalid-serial = {};
-              };
-            };
+                _children = [
+                  {
+                    layer-rule._children = [
+                      {match._props = {namespace = "^noctalia-wallpaper";};}
+                      {place-within-backdrop = true;}
+                    ];
+                  }
+                ];
+              }
+            ];
           };
         };
       }))
