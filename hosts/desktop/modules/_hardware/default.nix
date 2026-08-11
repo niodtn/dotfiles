@@ -7,5 +7,12 @@
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
   boot.kernelModules = ["kvm-amd"];
-  hardware.cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
+  hardware = {
+    cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      settings.General.Experimental = true;
+    };
+  };
 }
