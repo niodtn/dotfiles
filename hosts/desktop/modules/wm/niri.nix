@@ -17,10 +17,25 @@
     etc.fcitx5 = true;
 
     flake.aspects.host-desktop.nixos = lib.mkMerge [
-      # Wayland
+      # XDG & Wayland
       ({pkgs, ...}: {
+        xdg.portal = {
+          enable = true;
+          extraPortals = with pkgs; [
+            xdg-desktop-portal-gtk
+            xdg-desktop-portal-gnome
+          ];
+          config.niri = {
+            default = ["gnome" "gtk"];
+            "org.freedesktop.impl.portal.FileChooser" = "gtk";
+          };
+        };
+
         environment = {
-          variables.XDG_SESSION_TYPE = "wayland";
+          sessionVariables = {
+            XDG_SESSION_TYPE = "wayland";
+            XDG_CURRENT_DESKTOP = "niri";
+          };
           pathsToLink = ["/share/wayland-sessions"];
           systemPackages = with pkgs; [xwayland-satellite];
         };
@@ -41,6 +56,11 @@
 
       # Niri
       ({config, ...}: {
+        programs.niri = {
+          enable = true;
+          useNautilus = false;
+        };
+
         home-manager.users.${config.host.userName} = {
           wayland.windowManager.niri = {
             enable = true;
@@ -49,6 +69,7 @@
               # Startup
               {
                 _children = [
+                  {spawn-at-startup._args = ["dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"];}
                   {spawn-at-startup._args = ["systemctl" "--user" "import-environment"];}
                   {spawn-at-startup._args = ["xwayland-satellite"];}
                   {spawn-at-startup._args = ["fcitx5" "-d"];}
