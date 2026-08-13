@@ -18,6 +18,8 @@
         enableAllFirmware = true;
         cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
       };
+
+      zramSwap.enable = true;
     }
 
     # Bluetooth
