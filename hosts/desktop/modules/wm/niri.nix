@@ -85,13 +85,16 @@
                 input.mouse.accel-profile = "flat";
 
                 binds = {
-                  # Window Action
                   "Mod+Return".maximize-column = {};
                   "Mod+Shift+Return".fullscreen-window = {};
                   "Mod+Q".close-window = {};
                   "Mod+R".switch-preset-column-width = {};
-
                   "Mod+Tab".toggle-overview = {};
+
+                  "Mod+WheelScrollUp".focus-workspace-up = {};
+                  "Mod+WheelScrollDown".focus-workspace-down = {};
+                  "Mod+Shift+WheelScrollUp".focus-column-left = {};
+                  "Mod+Shift+WheelScrollDown".focus-column-right = {};
                 };
               }
 
