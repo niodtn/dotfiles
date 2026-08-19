@@ -68,6 +68,14 @@ in {
             hashedPassword = "$y$j9T$FiIoFpdVFv30Viq0WYsDS1$5VGzz7Itx1PEVGmnwOJJIN12YAfFQ3JoaaE6dBiyYd9";
           };
         })
+
+        ({config, ...}: {
+          home-manager.users.${config.host.userName} = {pkgs, ...}: {
+            home.packages = with pkgs; [
+              prismlauncher
+            ];
+          };
+        })
       ];
     };
   };
