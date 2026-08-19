@@ -4,44 +4,39 @@
   ...
 }: let
   system = "x86_64-linux";
-  hostName = baseNameOf ./.;
-
-  common = {
-    imports = with self.modules.nixos; [core ./modules/_hardware/disko.nix];
-    system.stateVersion = "26.11";
-    host = {inherit system hostName;};
-    documentation.nixos.enable = false;
-  };
 in {
-  flake = {
+  flake.nixosConfigurations = {
     # === Minimal set for first-time installation ===
-    nixosConfigurations.minimal = inputs.nixpkgs.lib.nixosSystem {
+    minimal = inputs.nixpkgs.lib.nixosSystem {
       inherit system;
 
-      modules = [
-        common
+      modules = with self.modules.nixos; [
+        core
 
-        ({pkgs, ...}: {
+        ({
+          pkgs,
+          config,
+          ...
+        }: {
+          host = {inherit system;};
+
+          documentation.nixos.enable = false;
           boot.loader.systemd-boot.enable = true;
           environment.systemPackages = with pkgs; [git];
-          users.users.root = {
-            password = null;
-            extraGroups = ["wheel"];
-          };
-          services.getty.autologinUser = "root";
+
+          services.getty.autologinUser = config.host.userName;
         })
       ];
     };
 
     # === Full configuration ===
-    nixosConfigurations.${hostName} = inputs.nixpkgs.lib.nixosSystem {
+    ${baseNameOf ./.} = inputs.nixpkgs.lib.nixosSystem {
       inherit system;
 
       modules = with self.modules.nixos; [
-        common
+        core
         services
         host-desktop
-        ./home
 
         fish
         starship
@@ -53,19 +48,13 @@ in {
         zed-editor
         obsidian
 
-        ({
-          pkgs,
-          config,
-          ...
-        }: {
+        ({pkgs, ...}: {
+          host = {inherit system;};
+
           boot = {
             kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
             loader.systemd-boot.enable = true;
             initrd.systemd.enable = true;
-          };
-
-          users.users.${config.host.userName} = {
-            hashedPassword = "$y$j9T$FiIoFpdVFv30Viq0WYsDS1$5VGzz7Itx1PEVGmnwOJJIN12YAfFQ3JoaaE6dBiyYd9";
           };
         })
 
