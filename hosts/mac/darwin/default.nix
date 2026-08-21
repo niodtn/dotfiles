@@ -76,6 +76,7 @@
     {
       system.defaults = {
         CustomUserPreferences.NSGlobalDomain."com.apple.mouse.linear" = true; # Disable pointer acceleration
+        loginwindow.HideUserAvatarAndName = true;
 
         WindowManager = {
           EnableTiledWindowMargins = false;
