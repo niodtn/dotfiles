@@ -29,6 +29,9 @@ in {
             enable = true;
             gamescopeSession.enable = true;
             extraCompatPackages = [pkgs.proton-ge-bin];
+
+            remotePlay.openFirewall = true;
+            dedicatedServer.openFirewall = true;
           };
 
           gamemode.enable = true;
@@ -56,11 +59,12 @@ in {
       })
 
       # etc
-      (lib.mkIf config.wm.plasma ({pkgs, ...}: {
-        environment.systemPackages = [
-          pkgs.adwsteamgtk
+      ({pkgs, ...}: {
+        environment.systemPackages = with pkgs; [
+          adwsteamgtk
+          vulkan-tools
         ];
-      }))
+      })
     ];
   };
 }
