@@ -1,9 +1,5 @@
 {inputs, ...}: {
   imports = [
-    (inputs.import-tree [./etc ./wm])
+    (inputs.import-tree [./etc ./hardware ./wm])
   ];
-
-  flake.aspects.host-desktop.nixos = {
-    imports = [./_hardware];
-  };
 }
