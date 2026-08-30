@@ -13,7 +13,7 @@ in {
   };
 
   config = lib.mkIf cfg {
-    flake.aspects.host-desktop.nixos = {config, ...}: {
+    flake.aspects.desktop.nixos = {config, ...}: {
       home-manager.users.${config.host.userName} = {pkgs, ...}: {
         home.packages = with pkgs; [
           prismlauncher

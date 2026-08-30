@@ -16,7 +16,7 @@
       noctalia = true;
     };
 
-    flake.aspects.host-desktop.nixos = lib.mkMerge [
+    flake.aspects.desktop.nixos = lib.mkMerge [
       # Noctalia
       ({config, ...}: {
         programs.noctalia = {

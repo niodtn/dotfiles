@@ -13,7 +13,7 @@ in {
   };
 
   config = lib.mkIf cfg {
-    flake.aspects.host-desktop.nixos = {pkgs, ...}: {
+    flake.aspects.desktop.nixos = {pkgs, ...}: {
       environment.variables = {
         GTK_IM_MODULE = "fcitx";
         QT_IM_MODULE = "fcitx";

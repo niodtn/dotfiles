@@ -18,7 +18,7 @@ in {
       gamescope = true;
     };
 
-    flake.aspects.host-desktop.nixos = lib.mkMerge [
+    flake.aspects.desktop.nixos = lib.mkMerge [
       # Steam
       {
         programs = {
