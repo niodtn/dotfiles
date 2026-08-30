@@ -39,7 +39,12 @@ in {
 
       # etc
       ({config, ...}: {
-        users.users.${config.host.userName}.extraGroups = ["video"];
+        users.users.${config.host.userName}.extraGroups = [
+          "audio"
+          "realtime"
+          "video"
+          "render"
+        ];
 
         services.dbus.enable = true;
 
