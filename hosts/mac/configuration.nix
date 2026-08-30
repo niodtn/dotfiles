@@ -10,6 +10,7 @@ in {
 
     modules = with self.modules.darwin; [
       core
+      programs
       services
       ./darwin
 
@@ -24,9 +25,13 @@ in {
       zed-editor
       obsidian
 
-      {
+      ({config, ...}: {
         host = {inherit system;};
-      }
+
+        home-manager.users.${config.host.userName} = {
+          imports = [self.modules.homeManager.programs];
+        };
+      })
 
       ({config, ...}: {
         home-manager.users.${config.host.userName} = {pkgs, ...}: {
