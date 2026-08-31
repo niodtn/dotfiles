@@ -26,10 +26,13 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
     syncthing = true;
   };
 
+  gaming = {
+    steam = true;
+    minecraft = true;
+  };
+
   wm.niri = true;
   etc.noctalia = true;
-
-  etc.steam = true;
 
   flake.aspects.core.nixos = {config, ...}: {
     host.hostName = baseNameOf ./.;

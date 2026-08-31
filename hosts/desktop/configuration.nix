@@ -57,14 +57,6 @@ in {
             initrd.systemd.enable = true;
           };
         })
-
-        ({config, ...}: {
-          home-manager.users.${config.host.userName} = {pkgs, ...}: {
-            home.packages = with pkgs; [
-              prismlauncher
-            ];
-          };
-        })
       ];
     };
   };
