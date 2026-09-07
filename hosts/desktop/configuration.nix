@@ -34,6 +34,7 @@ in {
 
       modules = with self.modules.nixos; [
         core
+        programs
         services
         desktop
 
@@ -54,6 +55,12 @@ in {
             kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
             loader.systemd-boot.enable = true;
             initrd.systemd.enable = true;
+          };
+        })
+
+        ({config, ...}: {
+          home-manager.users.${config.host.userName} = {
+            imports = [self.modules.homeManager.programs];
           };
         })
       ];

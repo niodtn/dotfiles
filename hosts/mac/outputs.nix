@@ -12,6 +12,10 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
     zen-browser-flake = true;
   };
 
+  programs = {
+    ghostty = true;
+  };
+
   services = {
     tailscale = true;
     syncthing = true;

@@ -26,6 +26,10 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
     syncthing = true;
   };
 
+  programs = {
+    ghostty = true;
+  };
+
   gaming = {
     steam = true;
     minecraft = true;
