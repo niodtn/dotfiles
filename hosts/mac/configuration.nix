@@ -4,20 +4,8 @@
   ...
 }: let
   system = "aarch64-darwin";
-  hostName = baseNameOf ./.;
-
-  configurations = {
-    system = {
-      host = {inherit system hostName;};
-      system.stateVersion = 7;
-    };
-
-    home = {
-      home.stateVersion = "26.11";
-    };
-  };
 in {
-  flake.darwinConfigurations.${hostName} = inputs.nix-darwin.lib.darwinSystem {
+  flake.darwinConfigurations.${baseNameOf ./.} = inputs.nix-darwin.lib.darwinSystem {
     inherit system;
 
     modules = with self.modules.darwin; [
@@ -36,10 +24,9 @@ in {
       zed-editor
       obsidian
 
-      ({config, ...}: {
-        imports = [configurations.system];
-        home-manager.users.${config.host.userName}.imports = [configurations.home];
-      })
+      {
+        host = {inherit system;};
+      }
 
       ({config, ...}: {
         home-manager.users.${config.host.userName} = {pkgs, ...}: {
