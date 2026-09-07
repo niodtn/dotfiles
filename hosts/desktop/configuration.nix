@@ -20,7 +20,6 @@ in {
         }: {
           host = {inherit system;};
 
-          documentation.nixos.enable = false;
           boot.loader.systemd-boot.enable = true;
           environment.systemPackages = with pkgs; [git];
 
