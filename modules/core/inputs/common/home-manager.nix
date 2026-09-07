@@ -18,11 +18,15 @@
     };
 
     flake.aspects.core = let
-      common = {
+      common = {config, ...}: {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
           backupFileExtension = "backup";
+
+          users.${config.host.userName} = {
+            programs.man.enable = false;
+          };
         };
       };
     in {
