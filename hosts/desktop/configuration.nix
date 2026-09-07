@@ -38,7 +38,6 @@ in {
         services
         desktop
 
-        fish
         starship
         direnv
 

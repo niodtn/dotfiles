@@ -14,7 +14,6 @@ in {
       services
       ./darwin
 
-      fish
       starship
       direnv
 
