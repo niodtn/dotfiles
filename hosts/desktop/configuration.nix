@@ -48,21 +48,20 @@ in {
         zed-editor
         obsidian
 
-        ({pkgs, ...}: {
+        ({config, ...}: {
           host = {inherit system;};
 
-          boot = {
-            kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
-            loader.systemd-boot.enable = true;
-            initrd.systemd.enable = true;
-          };
-        })
-
-        ({config, ...}: {
           home-manager.users.${config.host.userName} = {
             imports = [self.modules.homeManager.programs];
           };
         })
+
+        {
+          boot = {
+            loader.systemd-boot.enable = true;
+            initrd.systemd.enable = true;
+          };
+        }
       ];
     };
   };
