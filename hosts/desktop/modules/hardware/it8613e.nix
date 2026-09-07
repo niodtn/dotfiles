@@ -13,7 +13,7 @@ in {
   };
 
   config = lib.mkIf cfg {
-    flake.aspects.host-desktop.nixos = {config, ...}: {
+    flake.aspects.desktop.nixos = {config, ...}: {
       boot = {
         kernelParams = ["acpi_enforce_resources=lax"];
 

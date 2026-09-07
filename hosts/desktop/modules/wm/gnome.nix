@@ -15,7 +15,7 @@ in {
   config = lib.mkIf cfg {
     wm.wayland = true;
 
-    flake.aspects.host-desktop.nixos = lib.mkMerge [
+    flake.aspects.desktop.nixos = lib.mkMerge [
       # Gnome
       {
         services = {

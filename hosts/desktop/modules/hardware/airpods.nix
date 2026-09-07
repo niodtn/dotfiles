@@ -15,7 +15,7 @@ in {
   config = lib.mkIf cfg {
     hardware.bluetooth = true;
 
-    flake.aspects.host-desktop.nixos = {config, ...}: {
+    flake.aspects.desktop.nixos = {config, ...}: {
       services.pipewire.wireplumber.enable = true;
 
       programs.librepods.enable = true;

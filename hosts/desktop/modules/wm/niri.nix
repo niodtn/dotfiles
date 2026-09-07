@@ -16,7 +16,7 @@
     wm.wayland = true;
     etc.fcitx5 = true;
 
-    flake.aspects.host-desktop.nixos = lib.mkMerge [
+    flake.aspects.desktop.nixos = lib.mkMerge [
       # XDG & Wayland
       ({pkgs, ...}: {
         xdg.portal = {

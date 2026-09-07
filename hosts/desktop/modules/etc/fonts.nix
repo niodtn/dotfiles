@@ -13,7 +13,7 @@ in {
   };
 
   config = lib.mkIf cfg {
-    flake.aspects.host-desktop.nixos = {pkgs, ...}: {
+    flake.aspects.desktop.nixos = {pkgs, ...}: {
       fonts = {
         packages = with pkgs; [
           pretendard

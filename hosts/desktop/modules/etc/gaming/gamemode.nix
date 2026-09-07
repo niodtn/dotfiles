@@ -13,7 +13,7 @@ in {
   };
 
   config = lib.mkIf cfg {
-    flake.aspects.host-desktop.nixos = {config, ...}: {
+    flake.aspects.desktop.nixos = {config, ...}: {
       programs.gamemode.enable = true;
       users.users.${config.host.userName}.extraGroups = ["gamemode"];
     };

@@ -13,7 +13,7 @@ in {
   };
 
   config = lib.mkIf cfg {
-    flake.aspects.host-desktop.nixos = {
+    flake.aspects.desktop.nixos = {
       hardware.bluetooth = {
         enable = true;
         powerOnBoot = true;

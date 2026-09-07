@@ -6,7 +6,7 @@
   cfg = config.hardware.disko;
 in {
   config = lib.mkIf cfg {
-    flake.aspects.host-desktop.nixos = {config, ...}: {
+    flake.aspects.desktop.nixos = {config, ...}: {
       systemd.tmpfiles.rules = ["d /mnt/hdd1 0755 ${config.host.userName} users -"];
 
       disko.devices.disk = {

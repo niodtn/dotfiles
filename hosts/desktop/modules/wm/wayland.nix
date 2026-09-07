@@ -19,7 +19,7 @@ in {
       sound = true;
     };
 
-    flake.aspects.host-desktop.nixos = lib.mkMerge [
+    flake.aspects.desktop.nixos = lib.mkMerge [
       # XDG Portal
       ({pkgs, ...}: {
         environment.systemPackages = [pkgs.xdg-utils];

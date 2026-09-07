@@ -15,7 +15,7 @@ in {
   config = lib.mkIf cfg {
     services.tailscale = true;
 
-    flake.aspects.host-desktop.nixos = {config, ...}: {
+    flake.aspects.desktop.nixos = {config, ...}: {
       networking = {
         networkmanager.enable = true;
         firewall = {

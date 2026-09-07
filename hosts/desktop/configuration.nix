@@ -35,7 +35,7 @@ in {
       modules = with self.modules.nixos; [
         core
         services
-        host-desktop
+        desktop
 
         fish
         starship
