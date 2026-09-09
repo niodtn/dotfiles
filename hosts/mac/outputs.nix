@@ -7,6 +7,7 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
 
   inputs = {
     nix-darwin = true;
+    nix-homebrew = true;
 
     home-manager = true;
     zen-browser-flake = true;
