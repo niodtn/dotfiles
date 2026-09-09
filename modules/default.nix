@@ -5,7 +5,14 @@
 
     (
       inputs.import-tree
-      (i: i [./core ./programs ./services])
+      (i:
+        i [
+          ./core
+          ./darwin
+          ./nixos
+          ./programs
+          ./services
+        ])
     )
   ];
 
