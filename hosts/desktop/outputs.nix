@@ -34,6 +34,9 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
   gaming = {
     steam = true;
     minecraft = true;
+    games = {
+      roblox = true;
+    };
   };
 
   wm.niri = true;
