@@ -39,8 +39,8 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
     };
   };
 
-  wm.niri = true;
-  etc.noctalia = true;
+  wm.plasma = true;
+  # etc.noctalia = true;
 
   flake.aspects.core.nixos = {config, ...}: {
     host.hostName = baseNameOf ./.;

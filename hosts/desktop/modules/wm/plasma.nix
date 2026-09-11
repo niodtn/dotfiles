@@ -27,16 +27,6 @@ in {
         };
       })
 
-      # KDE Plasma
-      ({config, ...}: {
-        services = {
-          displayManager.sddm.enable = true;
-          desktopManager.plasma6.enable = true;
-        };
-
-        home-manager.users.${config.host.userName}.programs.plasma.enable = true;
-      })
-
       # Fcitx5
       {
         environment.sessionVariables = {
@@ -45,7 +35,7 @@ in {
       }
 
       # Mouse
-      {
+      ({config, ...}: {
         services.libinput = {
           enable = true;
           mouse = {
@@ -53,13 +43,74 @@ in {
             accelSpeed = "0";
           };
         };
-      }
+
+        home-manager.users.${config.host.userName}.
+              programs.plasma.configFile.
+              "kcminputrc"."Mouse"."AccelerationProfile" = "flat";
+      })
 
       # AutoLogin
       ({config, ...}: {
         services.displayManager.autoLogin = {
           enable = true;
           user = config.host.userName;
+        };
+      })
+
+      # Plasma
+      ({
+        config,
+        pkgs,
+        ...
+      }: {
+        services = {
+          displayManager.sddm.enable = true;
+          desktopManager.plasma6.enable = true;
+        };
+
+        home-manager.users.${config.host.userName} = {
+          home.packages = with pkgs; [
+            papirus-icon-theme
+          ];
+
+          programs.plasma = {
+            enable = true;
+
+            workspace = {
+              wallpaper = "/home/niodtn/Pictures/Wallpapers/Palette 08.jpg";
+            };
+
+            kwin = {
+              edgeBarrier = 0;
+              cornerBarrier = false;
+            };
+
+            panels = [
+              {
+                location = "top";
+                height = 36;
+                widgets = [
+                  {
+                    kickoff = {
+                      sortAlphabetically = true;
+                      icon = "nix-snowflake-white";
+                    };
+                  }
+                  "org.kde.plasma.panelspacer"
+
+                  "org.kde.plasma.icontasks"
+                  "org.kde.plasma.panelspacer"
+
+                  "org.kde.plasma.systemtray"
+                  "org.kde.plasma.digitalclock"
+                ];
+              }
+            ];
+
+            configFile = {
+              "kwinrc"."Effect-overview"."BorderActivate" = "9"; # Hot Corner Off
+            };
+          };
         };
       })
     ];
