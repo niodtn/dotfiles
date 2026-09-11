@@ -84,8 +84,10 @@ in {
 
           programs.plasma = {
             enable = true;
+            overrideConfig = true;
 
             workspace = {
+              iconTheme = "Papirus-Dark";
               wallpaper = "/home/niodtn/Pictures/Wallpapers/Palette 08.jpg";
             };
 
