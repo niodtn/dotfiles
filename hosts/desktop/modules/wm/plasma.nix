@@ -44,9 +44,18 @@ in {
           };
         };
 
-        home-manager.users.${config.host.userName}.
-              programs.plasma.configFile.
-              "kcminputrc"."Mouse"."AccelerationProfile" = "flat";
+        home-manager.users.${config.host.userName}.programs.plasma = {
+          input.mice = [
+            {
+              accelerationProfile = "none";
+
+              # /proc/bus/input/devices
+              vendorId = "3554";
+              productId = "f503";
+              name = "Compx VGN Mouse 2.4G Receiver";
+            }
+          ];
+        };
       })
 
       # AutoLogin
