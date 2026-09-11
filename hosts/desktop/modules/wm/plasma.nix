@@ -113,7 +113,12 @@ in {
                   "org.kde.plasma.panelspacer"
 
                   "org.kde.plasma.systemtray"
-                  "org.kde.plasma.digitalclock"
+                  {
+                    digitalClock = {
+                      date.format = "isoDate";
+                      time.format = "24h";
+                    };
+                  }
                 ];
               }
             ];
