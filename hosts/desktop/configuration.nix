@@ -36,6 +36,7 @@ in {
         core
         programs
         services
+        wayland
         desktop
 
         starship

@@ -1,12 +1,12 @@
 {
-  lib,
   config,
+  lib,
   ...
 }: let
-  cfg = config.wm.plasma;
+  cfg = config.nixos.wayland.plasma;
 in {
   options = {
-    wm.plasma = lib.mkOption {
+    nixos.wayland.plasma = lib.mkOption {
       type = lib.types.bool;
       default = false;
     };
@@ -15,10 +15,12 @@ in {
   config = lib.mkIf cfg {
     inputs.plasma-manager = true;
 
-    wm.wayland = true;
-    etc.fcitx5 = true;
+    nixos.wayland = {
+      enable = true;
+      fcitx5 = true;
+    };
 
-    flake.aspects.desktop.nixos = lib.mkMerge [
+    flake.aspects.wayland.nixos = lib.mkMerge [
       # XDG Portal
       ({pkgs, ...}: {
         xdg.portal = {
@@ -35,7 +37,7 @@ in {
       }
 
       # Mouse
-      ({config, ...}: {
+      {
         services.libinput = {
           enable = true;
           mouse = {
@@ -43,20 +45,7 @@ in {
             accelSpeed = "0";
           };
         };
-
-        home-manager.users.${config.host.userName}.programs.plasma = {
-          input.mice = [
-            {
-              accelerationProfile = "none";
-
-              # /proc/bus/input/devices
-              vendorId = "3554";
-              productId = "f503";
-              name = "Compx VGN Mouse 2.4G Receiver";
-            }
-          ];
-        };
-      })
+      }
 
       # AutoLogin
       ({config, ...}: {
@@ -88,7 +77,6 @@ in {
 
             workspace = {
               iconTheme = "Papirus-Dark";
-              wallpaper = "/home/niodtn/Pictures/Wallpapers/Palette 08.jpg";
             };
 
             kwin = {

@@ -1,21 +1,21 @@
 {
-  lib,
   config,
+  lib,
   ...
 }: let
-  cfg = config.wm.gnome;
+  cfg = config.nixos.wayland.gnome;
 in {
   options = {
-    wm.gnome = lib.mkOption {
+    nixos.wayland.gnome = lib.mkOption {
       type = lib.types.bool;
       default = false;
     };
   };
 
   config = lib.mkIf cfg {
-    wm.wayland = true;
+    nixos.wayland.enable = true;
 
-    flake.aspects.desktop.nixos = lib.mkMerge [
+    flake.aspects.wayland.nixos = lib.mkMerge [
       # Gnome
       {
         services = {

@@ -3,17 +3,17 @@
   lib,
   ...
 }: let
-  cfg = config.etc.fcitx5;
+  cfg = config.nixos.wayland.fcitx5;
 in {
   options = {
-    etc.fcitx5 = lib.mkOption {
+    nixos.wayland.fcitx5 = lib.mkOption {
       type = lib.types.bool;
       default = false;
     };
   };
 
   config = lib.mkIf cfg {
-    flake.aspects.desktop.nixos = lib.mkMerge [
+    flake.aspects.wayland.nixos = lib.mkMerge [
       {
         environment.variables = {
           # GTK_IM_MODULE = "fcitx";

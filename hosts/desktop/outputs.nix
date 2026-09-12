@@ -8,8 +8,6 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
 
   inputs = {
     cachyos-kernel = true;
-
-    home-manager = true;
     zen-browser-flake = true;
   };
 
@@ -39,7 +37,7 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
     };
   };
 
-  wm.plasma = true;
+  nixos.wayland.plasma = true;
   # etc.noctalia = true;
 
   flake.aspects.core.nixos = {config, ...}: {

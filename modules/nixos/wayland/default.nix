@@ -1,25 +1,19 @@
 {
-  lib,
   config,
+  lib,
   ...
 }: let
-  cfg = config.wm.wayland;
+  cfg = config.nixos.wayland.enable;
 in {
   options = {
-    wm.wayland = lib.mkOption {
+    nixos.wayland.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
     };
   };
 
   config = lib.mkIf cfg {
-    etc = {
-      fonts = true;
-      network = true;
-      sound = true;
-    };
-
-    flake.aspects.desktop.nixos = lib.mkMerge [
+    flake.aspects.wayland.nixos = lib.mkMerge [
       # XDG Portal
       ({pkgs, ...}: {
         environment.systemPackages = [pkgs.xdg-utils];

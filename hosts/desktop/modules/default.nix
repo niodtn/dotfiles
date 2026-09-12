@@ -1,5 +1,5 @@
 {inputs, ...}: {
   imports = [
-    (inputs.import-tree [./etc ./hardware ./wm])
+    (inputs.import-tree [./etc ./hardware ./wayland])
   ];
 }

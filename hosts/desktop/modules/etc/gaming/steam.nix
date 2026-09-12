@@ -54,33 +54,6 @@ in {
         };
       })
 
-      # Niri Window Rules
-      (lib.mkIf config.wm.niri ({config, ...}: {
-        home-manager.users.${config.host.userName} = {
-          wayland.windowManager.niri.settings = {
-            _children = [
-              {
-                window-rule._children = [
-                  {match._props = {app-id = "r\"steam\"";};}
-                  {open-maximized = true;}
-                  {open-floating = false;}
-                ];
-              }
-
-              {
-                window-rule._children = [
-                  {match._props = {app-id = "r\"cs2\"";};}
-                  {open-fullscreen = true;}
-                  {open-floating = true;}
-                  # {variable-refresh-rate = true;}
-                  # {allow-tearing = {};}
-                ];
-              }
-            ];
-          };
-        };
-      }))
-
       # etc
       ({pkgs, ...}: {
         environment.systemPackages = with pkgs; [

@@ -1,20 +1,24 @@
 {
-  lib,
   config,
+  lib,
   ...
-}: {
+}: let
+  cfg = config.nixos.wayland.niri;
+in {
   options = {
-    wm.niri = lib.mkOption {
+    nixos.wayland.niri = lib.mkOption {
       type = lib.types.bool;
       default = false;
     };
   };
 
-  config = lib.mkIf config.wm.niri {
+  config = lib.mkIf cfg {
     inputs.home-manager = true;
 
-    wm.wayland = true;
-    etc.fcitx5 = true;
+    nixos.wayland = {
+      enable = true;
+      fcitx5 = true;
+    };
 
     flake.aspects.desktop.nixos = lib.mkMerge [
       # XDG & Wayland
@@ -47,7 +51,7 @@
           enable = true;
           settings.default_session = {
             command = "dbus-run-session ${config.programs.niri.package}/bin/niri";
-            user = "niodtn";
+            user = config.host.hostName;
           };
         };
 
