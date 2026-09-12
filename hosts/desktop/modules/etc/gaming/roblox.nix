@@ -17,21 +17,26 @@ in {
     gaming.ananicy = true;
 
     flake.aspects.desktop.nixos = {
-      environment.etc."ananicy.d/sober.rules".text = ''
-        {"name": "org.vinegarhq.Sober", "type": "Game"}
-      '';
+      services = {
+        ananicy.extraRules = [
+          {
+            name = "org.vinegarhq.Sober";
+            type = "Game";
+          }
+        ];
 
-      services.flatpak = {
-        packages = ["org.vinegarhq.Sober"];
+        flatpak = {
+          packages = ["org.vinegarhq.Sober"];
 
-        overrides.settings = {
-          "org.vinegarhq.Sober" = {
-            Context = {
-              sockets = ["!wayland" "x11"];
-              devices = ["all"];
-            };
-            Environment = {
-              WAYLAND_DISPLAY = "";
+          overrides.settings = {
+            "org.vinegarhq.Sober" = {
+              Context = {
+                sockets = ["!wayland" "x11"];
+                devices = ["all"];
+              };
+              Environment = {
+                WAYLAND_DISPLAY = "";
+              };
             };
           };
         };
