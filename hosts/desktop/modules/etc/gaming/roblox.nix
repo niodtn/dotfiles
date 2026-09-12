@@ -14,13 +14,13 @@ in {
 
   config = lib.mkIf cfg {
     inputs.nix-flatpak = true;
-
-    gaming = {
-      gamemode = true;
-      gamescope = true;
-    };
+    gaming.ananicy = true;
 
     flake.aspects.desktop.nixos = {
+      environment.etc."ananicy.d/sober.rules".text = ''
+        {"name": "org.vinegarhq.Sober", "type": "Game"}
+      '';
+
       services.flatpak = {
         packages = ["org.vinegarhq.Sober"];
 

@@ -14,7 +14,7 @@ in {
 
   config = lib.mkIf cfg {
     gaming = {
-      gamemode = true;
+      ananicy = true;
       gamescope = true;
     };
 
