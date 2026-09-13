@@ -37,7 +37,7 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
     };
   };
 
-  nixos.wayland.plasma = true;
+  nixos.wayland.hyprland = true;
   # etc.noctalia = true;
 
   flake.aspects.core.nixos = {config, ...}: {
