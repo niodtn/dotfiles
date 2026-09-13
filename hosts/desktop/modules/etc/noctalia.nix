@@ -42,7 +42,7 @@
       })
 
       # Niri
-      (lib.mkIf config.wm.niri ({config, ...}: {
+      (lib.mkIf config.nixos.wayland.niri ({config, ...}: {
         # programs.noctalia-greeter.settings = {
         #   session.default = "Niri";
 
