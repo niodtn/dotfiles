@@ -15,9 +15,13 @@ in {
   config = lib.mkIf cfg {
     inputs.home-manager = true;
 
-    nixos.wayland = {
-      enable = true;
-      fcitx5 = true;
+    nixos = {
+      services.greetd = true;
+
+      wayland = {
+        enable = true;
+        fcitx5 = true;
+      };
     };
 
     flake.aspects.desktop.nixos = lib.mkMerge [
@@ -43,19 +47,6 @@ in {
           pathsToLink = ["/share/wayland-sessions"];
           systemPackages = with pkgs; [xwayland-satellite];
         };
-      })
-
-      # Greetd
-      ({config, ...}: {
-        services.greetd = {
-          enable = true;
-          settings.default_session = {
-            command = "dbus-run-session ${config.programs.niri.package}/bin/niri";
-            user = config.host.hostName;
-          };
-        };
-
-        systemd.user.services.niri.enableDefaultPath = false;
       })
 
       # Niri
