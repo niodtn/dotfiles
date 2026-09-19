@@ -38,7 +38,7 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
   };
 
   nixos.wayland.hyprland = true;
-  # etc.noctalia = true;
+  etc.noctalia = true;
 
   flake.aspects.core.nixos = {config, ...}: {
     host.hostName = baseNameOf ./.;

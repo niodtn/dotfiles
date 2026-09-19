@@ -5,6 +5,6 @@ local mod = "SUPER"
 hl.bind(mod .. " + T", hl.dsp.exec_cmd("ghostty"))
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd("ghostty")
-    hl.exec_cmd("noctalia")
+  hl.exec_cmd("ghostty")
+  hl.exec_cmd("noctalia")
 end)
