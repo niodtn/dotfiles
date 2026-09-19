@@ -20,7 +20,7 @@ in {
         services.greetd = {
           enable = true;
           settings.default_session = {
-            user = config.host.hostName;
+            user = config.host.userName;
           };
         };
       })

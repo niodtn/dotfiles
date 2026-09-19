@@ -34,9 +34,9 @@ in {
       })
 
       # Greetd
-      {
-        services.greetd.settings.default_session.command = "start-hyprland";
-      }
+      ({pkgs, ...}: {
+        services.greetd.settings.default_session.command = "dbus-run-session ${pkgs.hyprland}/bin/start-hyprland";
+      })
 
       # Hyprland
       ({config, ...}: {
