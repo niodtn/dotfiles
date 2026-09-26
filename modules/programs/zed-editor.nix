@@ -47,6 +47,17 @@
           };
         };
       }
+
+      # Python
+      {
+        programs.zed-editor = {
+          userSettings = {
+            lsp.ruff = {
+              initialization_options.settings.lineLength = 120;
+            };
+          };
+        };
+      }
     ];
   };
 in {
