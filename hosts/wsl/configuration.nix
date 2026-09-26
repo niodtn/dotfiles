@@ -1,6 +1,7 @@
 {
   inputs,
   self,
+  lib,
   ...
 }: let
   system = "x86_64-linux";
@@ -17,4 +18,13 @@ in {
       }
     ];
   };
+
+  # config = lib.mkMerge [
+  #   # VSCode Remote
+  #   ({pkgs, ...}: {
+  #     environment.systemPackages = [pkgs.wget];
+  #     programs.nix-ld.enable = true;
+  #     vscode-remote-workaround.enable = true;
+  #   })
+  # ];
 }
