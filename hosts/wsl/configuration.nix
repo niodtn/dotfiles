@@ -12,9 +12,13 @@ in {
       core
       services
 
-      {
+      ({config, ...}:{
         host = {inherit system;};
-      }
+
+        home-manager.users.${config.host.userName} = {
+          imports = [self.modules.homeManager.programs];
+        };
+      })
     ];
   };
 }
