@@ -15,6 +15,10 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
     tailscale = true;
   };
 
+  programs = {
+    fish = true;
+  };
+
   flake.aspects.core.nixos = {config, ...}: {
     host.hostName = baseNameOf ./.;
 
