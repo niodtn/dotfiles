@@ -17,33 +17,35 @@ in {
     inputs.home-manager = true;
 
     flake.aspects.programs = {
-      homeManager.programs = {
-        direnv = {
-          enable = true;
-          silent = true;
-          nix-direnv.enable = true;
-        };
-
-        git = {
-          enable = true;
-          settings.user = {inherit name email;};
-        };
-
-        programs.gh = {
-          enable = true;
-        };
-
-        jujutsu = {
-          enable = true;
-          settings = {
-            user = {inherit name email;};
-            ui.default-commnad = "log";
-            revset-aliases."immutable_heads()" = "trunk() | tags()";
+      homeManager = {
+        programs = {
+          direnv = {
+            enable = true;
+            silent = true;
+            nix-direnv.enable = true;
           };
-        };
 
-        jjui = {
-          enable = true;
+          git = {
+            enable = true;
+            settings.user = {inherit name email;};
+          };
+
+          gh = {
+            enable = true;
+          };
+
+          jujutsu = {
+            enable = true;
+            settings = {
+              user = {inherit name email;};
+              ui.default-commnad = "log";
+              revset-aliases."immutable_heads()" = "trunk() | tags()";
+            };
+          };
+
+          jjui = {
+            enable = true;
+          };
         };
       };
     };
