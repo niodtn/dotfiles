@@ -18,6 +18,7 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
   programs = {
     fish = true;
     starship = true;
+    git = true;
   };
 
   flake.aspects.core.nixos = {config, ...}: {

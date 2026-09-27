@@ -39,8 +39,6 @@ in {
         wayland
         desktop
 
-        direnv
-
         onePassword
 
         zen-browser

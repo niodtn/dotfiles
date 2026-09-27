@@ -14,8 +14,6 @@ in {
       services
       ./darwin
 
-      direnv
-
       onePassword
       cryptomator
 
