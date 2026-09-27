@@ -1,4 +1,8 @@
-{
+{inputs, ...}: {
+  imports = [
+    (inputs.import-tree [./programs ./services])
+  ];
+
   flake.aspects.core.nixos = {config, ...}: {
     users = {
       mutableUsers = false;
