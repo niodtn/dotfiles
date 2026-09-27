@@ -1,24 +1,34 @@
-let
-  common = {config, ...}: {
-    home-manager.users.${config.host.userName} = {
-      programs.starship = {
-        enable = true;
+{
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.programs.starship;
+in {
+  options.programs.starship = lib.mkOption {
+    type = lib.types.bool;
+    default = false;
+  };
 
-        settings = {
-          add_newline = false;
-          character.format = "❯ ";
+  config = lib.mkIf cfg {
+    flake.aspects.programs = {
+      inputs.home-manager = true;
 
-          line_break.disabled = true;
-          git_status.disabled = true;
-          package.disabled = true;
-          python.disabled = true;
+      homeManager = {
+        programs.starship = {
+          enable = true;
+
+          settings = {
+            add_newline = false;
+            character.format = "> ";
+
+            line_break.disabled = true;
+            git_status.disabled = true;
+            package.disabled = true;
+            python.disabled = true;
+          };
         };
       };
     };
-  };
-in {
-  flake.aspects.starship = {
-    nixos = common;
-    darwin = common;
   };
 }

@@ -14,7 +14,6 @@ in {
       services
       ./darwin
 
-      starship
       direnv
 
       onePassword

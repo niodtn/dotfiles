@@ -39,7 +39,6 @@ in {
         wayland
         desktop
 
-        starship
         direnv
 
         onePassword

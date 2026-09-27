@@ -26,6 +26,7 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
 
   programs = {
     fish = true;
+    starship = true;
     ghostty = true;
   };
 
