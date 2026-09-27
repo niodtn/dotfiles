@@ -10,8 +10,12 @@ in {
 
     modules = with self.modules.darwin; [
       core
+      {host = {inherit system;};}
+
       programs
       services
+
+      # --- old ---
       ./darwin
 
       onePassword
@@ -20,14 +24,6 @@ in {
       zen-browser
       zed-editor
       obsidian
-
-      ({config, ...}: {
-        host = {inherit system;};
-
-        home-manager.users.${config.host.userName} = {
-          imports = [self.modules.homeManager.programs];
-        };
-      })
 
       ({config, ...}: {
         home-manager.users.${config.host.userName} = {pkgs, ...}: {

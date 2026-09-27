@@ -2,6 +2,7 @@
   lib,
   config,
   inputs,
+  self,
   ...
 }: {
   options = {
@@ -17,32 +18,45 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flake.aspects.core = let
-      common = {config, ...}: {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          backupFileExtension = "backup";
+    flake.aspects = {
+      core = let
+        common = {config, ...}: {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            backupFileExtension = "backup";
 
-          users.${config.host.userName} = {
-            programs.man.enable = false;
+            users.${config.host.userName} = {
+              programs.man.enable = false;
+            };
           };
         };
+      in {
+        nixos = lib.mkMerge [
+          common
+          {
+            imports = [inputs.home-manager.nixosModules.home-manager];
+          }
+        ];
+        darwin = lib.mkMerge [
+          common
+          ({config, ...}: {
+            imports = [inputs.home-manager.darwinModules.home-manager];
+            users.users.${config.host.userName}.home = "/Users/${config.host.userName}";
+          })
+        ];
       };
-    in {
-      nixos = lib.mkMerge [
-        common
-        {
-          imports = [inputs.home-manager.nixosModules.home-manager];
-        }
-      ];
-      darwin = lib.mkMerge [
-        common
-        ({config, ...}: {
-          imports = [inputs.home-manager.darwinModules.home-manager];
-          users.users.${config.host.userName}.home = "/Users/${config.host.userName}";
-        })
-      ];
+
+      programs = let
+        common = {config, ...}: {
+          home-manager.users.${config.host.userName} = {
+            imports = [self.modules.homeManager.programs];
+          };
+        };
+      in {
+        nixos = common;
+        darwin = common;
+      };
     };
   };
 }

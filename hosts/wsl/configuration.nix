@@ -10,16 +10,10 @@ in {
 
     modules = with self.modules.nixos; [
       core
+      {host = {inherit system;};}
+
       programs
       services
-
-      ({config, ...}: {
-        host = {inherit system;};
-
-        home-manager.users.${config.host.userName} = {
-          imports = [self.modules.homeManager.programs];
-        };
-      })
     ];
   };
 }

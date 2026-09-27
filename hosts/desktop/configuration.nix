@@ -12,14 +12,13 @@ in {
 
       modules = with self.modules.nixos; [
         core
+        {host = {inherit system;};}
 
         ({
           pkgs,
           config,
           ...
         }: {
-          host = {inherit system;};
-
           boot.loader.systemd-boot.enable = true;
           environment.systemPackages = with pkgs; [git];
 
@@ -34,24 +33,20 @@ in {
 
       modules = with self.modules.nixos; [
         core
+        {host = {inherit system;};}
+
         programs
         services
         wayland
         desktop
+
+        # --- old ---
 
         onePassword
 
         zen-browser
         zed-editor
         obsidian
-
-        ({config, ...}: {
-          host = {inherit system;};
-
-          home-manager.users.${config.host.userName} = {
-            imports = [self.modules.homeManager.programs];
-          };
-        })
 
         {
           boot = {
