@@ -16,9 +16,20 @@ in {
     flake.aspects.programs.homeManager = {
       programs.atuin = {
         enable = true;
+        forceOverwriteSettings = true;
+        flags = ["--disable-ctrl-r"];
         settings = {
+          update_check = false;
+          store_failed = false;
+
+          workspaces = true;
+          filter_mode = "session-preload";
+
           style = "auto";
-          invert = true;
+          show_help = false;
+          show_numeric_shortcuts = false;
+
+          ui.columns = ["command"];
         };
       };
     };
