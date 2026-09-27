@@ -13,18 +13,14 @@ in {
   };
 
   config = lib.mkIf cfg {
-    flake.aspects.services.nixos = {
-      config,
-      pkgs,
-      ...
-    }: {
+    flake.aspects.services.nixos = {pkgs, ...}: {
       services.stash = {
         enable = true;
-        username = config.host.userName;
+        username = "admin";
 
-        passwordFile = pkgs.writeText "stash-password" "test";
-        jwtSecretKeyFile = pkgs.writeText "stash-jwt" "test";
-        sessionStoreKeyFile = pkgs.writeText "stash-session" "test";
+        passwordFile = pkgs.writeText "stash-password" "$2b$05$cBmu3g7htwrc7IjrgEUfzeqeeybiu50vE2PuErKC4yPCrOtfvkF.W";
+        jwtSecretKeyFile = pkgs.writeText "stash-jwt" "fixed-jwt-secret-key";
+        sessionStoreKeyFile = pkgs.writeText "stash-session" "fixed-session-key";
 
         settings.port = 9998;
       };

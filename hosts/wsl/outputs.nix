@@ -13,8 +13,6 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
   services = {
     openssh = true;
     tailscale = true;
-
-    stash = true;
   };
 
   programs = {
