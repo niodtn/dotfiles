@@ -13,6 +13,8 @@ in {
   };
 
   config = lib.mkIf cfg {
+    inputs.home-manager = true;
+    
     flake.aspects.programs.homeManager = {
       programs.atuin = {
         enable = true;
