@@ -19,6 +19,11 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
     it8613e = true;
   };
 
+  nixos= {
+    network = true;
+    wayland.plasma = true;
+  };
+  
   services = {
     openssh = true;
     tailscale = true;
@@ -40,7 +45,6 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
     };
   };
 
-  nixos.wayland.plasma = true;
   # etc.noctalia = true;
 
   flake.aspects.core.nixos = {config, ...}: {
