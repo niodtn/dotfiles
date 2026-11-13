@@ -21,7 +21,7 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
 
   services = {
     openssh = true;
-    syncthing = true;
+    tailscale = true;
   };
 
   programs = {

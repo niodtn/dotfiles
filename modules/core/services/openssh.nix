@@ -11,8 +11,6 @@
   };
 
   config = lib.mkIf config.services.openssh {
-    services.tailscale = true;
-
     flake.aspects.services = let
       common = {
         services.openssh = {

@@ -11,7 +11,6 @@
           ./darwin
           ./nixos
           ./programs
-          ./services
         ])
     )
   ];
