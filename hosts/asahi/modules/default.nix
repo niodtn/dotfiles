@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    (inputs.import-tree [./docker ./hardware])
+    (inputs.import-tree [./docker ./hardware ./services])
   ];
 
   flake.aspects.asahi.nixos = lib.mkMerge [  
