@@ -11,22 +11,20 @@ in {
   };
 
   config = lib.mkIf cfg {
-    flake.aspects.programs = {
-      inputs.home-manager = true;
+    inputs.home-manager = true;
 
-      homeManager = {
-        programs.starship = {
-          enable = true;
+    flake.aspects.core.homeManager = {
+      programs.starship = {
+        enable = true;
 
-          settings = {
-            add_newline = false;
-            character.format = "> ";
+        settings = {
+          add_newline = false;
+          character.format = "> ";
 
-            line_break.disabled = true;
-            git_status.disabled = true;
-            package.disabled = true;
-            python.disabled = true;
-          };
+          line_break.disabled = true;
+          git_status.disabled = true;
+          package.disabled = true;
+          python.disabled = true;
         };
       };
     };

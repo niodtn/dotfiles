@@ -11,9 +11,6 @@ in {
     modules = with self.modules.nixos; [
       core
       {host = {inherit system;};}
-
-      programs
-      services
     ];
   };
 }

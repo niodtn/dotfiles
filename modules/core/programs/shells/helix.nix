@@ -15,7 +15,7 @@ in {
   config = lib.mkIf cfg {
     inputs.home-manager = true;
 
-    flake.aspects.programs.homeManager = {
+    flake.aspects.core.homeManager = {
       programs.helix = {
         enable = true;
         defaultEditor = true;

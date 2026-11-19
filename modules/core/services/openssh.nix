@@ -11,7 +11,7 @@
   };
 
   config = lib.mkIf config.services.openssh {
-    flake.aspects.services = let
+    flake.aspects.core = let
       common = {
         services.openssh = {
           enable = true;

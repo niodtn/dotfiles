@@ -16,36 +16,34 @@ in {
   config = lib.mkIf cfg {
     inputs.home-manager = true;
 
-    flake.aspects.programs = {
-      homeManager = {
-        programs = {
-          direnv = {
-            enable = true;
-            silent = true;
-            nix-direnv.enable = true;
-          };
+    flake.aspects.core.homeManager = {
+      programs = {
+        direnv = {
+          enable = true;
+          silent = true;
+          nix-direnv.enable = true;
+        };
 
-          git = {
-            enable = true;
-            settings.user = {inherit name email;};
-          };
+        git = {
+          enable = true;
+          settings.user = {inherit name email;};
+        };
 
-          gh = {
-            enable = true;
-          };
+        gh = {
+          enable = true;
+        };
 
-          jujutsu = {
-            enable = true;
-            settings = {
-              user = {inherit name email;};
-              ui.default-commnad = "log";
-              revset-aliases."immutable_heads()" = "trunk() | tags()";
-            };
+        jujutsu = {
+          enable = true;
+          settings = {
+            user = {inherit name email;};
+            ui.default-commnad = "log";
+            revset-aliases."immutable_heads()" = "trunk() | tags()";
           };
+        };
 
-          jjui = {
-            enable = true;
-          };
+        jjui = {
+          enable = true;
         };
       };
     };

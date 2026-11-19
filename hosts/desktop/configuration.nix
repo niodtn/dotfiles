@@ -35,8 +35,6 @@ in {
         core
         {host = {inherit system;};}
 
-        programs
-        services
         wayland
         desktop
 

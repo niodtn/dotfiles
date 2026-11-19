@@ -13,7 +13,7 @@ in {
   config = lib.mkIf cfg {
     inputs.home-manager = true;
 
-    flake.aspects.programs = {
+    flake.aspects.core = {
       homeManager = {
         programs.fish = {
           enable = true;

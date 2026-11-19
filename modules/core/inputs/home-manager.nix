@@ -27,6 +27,7 @@
             backupFileExtension = "backup";
 
             users.${config.host.userName} = {
+              imports = [self.modules.homeManager.core];
               programs.man.enable = false;
             };
           };
@@ -45,17 +46,6 @@
             users.users.${config.host.userName}.home = "/Users/${config.host.userName}";
           })
         ];
-      };
-
-      programs = let
-        common = {config, ...}: {
-          home-manager.users.${config.host.userName} = {
-            imports = [self.modules.homeManager.programs];
-          };
-        };
-      in {
-        nixos = common;
-        darwin = common;
       };
     };
   };

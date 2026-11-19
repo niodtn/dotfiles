@@ -11,7 +11,7 @@
   };
 
   config = lib.mkIf config.services.tailscale {
-    flake.aspects.services = {
+    flake.aspects.core = {
       nixos = {
         services.tailscale.enable = true;
         networking.firewall.trustedInterfaces = ["tailscale0"];        
