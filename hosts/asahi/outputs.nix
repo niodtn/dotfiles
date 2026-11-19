@@ -7,6 +7,12 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
   ];
 
   inputs.apple-silicon-support = true;
+
+  services = {
+    tailscale = true;
+    openssh = true;
+  };
+
   flake.aspects.core.nixos = {config, ...}: {
     host.hostName = baseNameOf ./.;
 
