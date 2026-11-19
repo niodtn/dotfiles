@@ -3,7 +3,10 @@
     core.nixos = lib.mkMerge [
       {
         boot = {
-          loader.systemd-boot.enable = true;
+          loader.systemd-boot = {
+            enable = true;
+            configurationLimit = 5;
+          };
           loader.efi.canTouchEfiVariables = false;
           initrd.availableKernelModules = ["usb_storage"];
         };
@@ -44,6 +47,22 @@
       # Silent U-BOOT
       {
         nixpkgs.overlays = [
+          # (final: prev: {
+          #   uboot-asahi = prev.uboot-asahi.overrideAttrs (oldAttrs: {
+          #     extraConfig = (oldAttrs.extraConfig or "") + ''
+          #       CONFIG_SILENT_CONSOLE=y
+          #       CONFIG_SILENT_U_BOOT_ONLY=y
+          #       CONFIG_VIDEO_LOGO=n
+          #     '';
+          #     postPatch = (oldAttrs.postPatch or "") + ''
+          #       echo "silent=1" >> board/apple/mac/mac.env
+
+          #       substituteInPlace common/version.c \
+          #         --replace-fail "version_string[] =" 'version_string[] = ""; const char _unused_version[] ='
+          #     '';
+          #   });
+          # })
+
           (final: prev: {
             uboot-asahi = prev.uboot-asahi.overrideAttrs (oldAttrs: {
               extraConfig = (oldAttrs.extraConfig or "") + ''
@@ -51,15 +70,21 @@
                 CONFIG_SILENT_U_BOOT_ONLY=y
                 CONFIG_VIDEO_LOGO=n
               '';
+
               postPatch = (oldAttrs.postPatch or "") + ''
                 echo "silent=1" >> board/apple/mac/mac.env
 
                 substituteInPlace common/version.c \
                   --replace-fail "version_string[] =" 'version_string[] = ""; const char _unused_version[] ='
+
+                substituteInPlace lib/efi_loader/efi_boottime.c \
+                  --replace-fail "EFI_ENTRY" "gd->flags &= ~GD_FLG_SILENT; EFI_ENTRY" || true
               '';
             });
           })
         ];
+
+        boot.loader.timeout = 10;
       }
 
       # Power off when lid is closed
