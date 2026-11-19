@@ -12,7 +12,10 @@ in {
       core
       {host = {inherit system;};}
 
+      programs
       services
+
+      asahi
     ];
   };
 }

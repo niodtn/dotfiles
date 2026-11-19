@@ -13,11 +13,23 @@ inputs.flake-parts.lib.mkFlake {inherit inputs;} {
     openssh = true;
   };
 
+  programs = {
+    # Shells
+    fish = true;
+    starship = true;
+    git = true;
+    helix = true;
+    atuin = true;
+  };
+
+  nixos.network = true;
+
   flake.aspects.core.nixos = {config, ...}: {
     host.hostName = baseNameOf ./.;
 
     # statVersions
     system.stateVersion = "26.11";
+    home-manager.users.${config.host.userName}.home.stateVersion = "26.11";
 
     # Passwords
     users.users = {
