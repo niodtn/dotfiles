@@ -12,6 +12,7 @@ in {
       core
       {host = {inherit system;};}
 
+      docker
       asahi
     ];
   };
